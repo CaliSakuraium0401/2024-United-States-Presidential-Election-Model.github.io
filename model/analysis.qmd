@@ -192,12 +192,11 @@ ggplot(
     )
 ```
 
-aaaa
+|   Candidate   | Pennsylvania | Michigan | Wisconsin | North Carolina | Georgia | Arizona | Nevada |
+|:-------:|:-------:|:------:|:------:|:---------:|:------:|:-------:|:-------:|
+| Kamala Harris |    49.3%     |   49%    |    50%    |      48%       |  48.3%  |  47.5%  | 48.2%  |
+| Donald Trump  |    47.4%     |  46.8%   |   46.5%   |     47.8%      |   48%   |  46.7%  | 46.3%  |
 
-```{r, results='hide'}
-```
+## Electoral Map
 
-| Candidate     | Pennsylvania | Michigan | Wisconsin | North Carolina | Georgia | Arizona | Nevada |
-|---------|---------|:------:|---------|----------|---------|---------|---------|
-| Kamala Harris |              |          |           |                |         |         |        |
-| Donald Trump  |              |          |           |                |         |         |        |
+[![](images/YAPmsScreenshot.png)](https://yapms.com/app?m=o7f94q9u15ib6lo)
