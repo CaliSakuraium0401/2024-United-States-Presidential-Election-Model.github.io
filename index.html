@@ -150,6 +150,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="analysis_files/figure-html/national_polling_chart-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<p>Prior to Joe Biden dropping out of the 2024 United States Election, Donald Trump held the lead in many polls. However after Kamala Harris became the new presumptive nominee, polling has seen a significant shift in the Democratic Party’s favor.</p>
 </section>
 <section id="battleground-state-polling" class="level2">
 <h2 class="anchored" data-anchor-id="battleground-state-polling">Battleground State Polling</h2>
@@ -158,56 +159,66 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="analysis_files/figure-html/battleground_state_summary_chart-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>aaaa</p>
-<div class="cell">
-
-</div>
 <table class="table">
 <colgroup>
 <col style="width: 12%">
 <col style="width: 12%">
-<col style="width: 11%">
 <col style="width: 12%">
-<col style="width: 13%">
+<col style="width: 12%">
+<col style="width: 12%">
 <col style="width: 12%">
 <col style="width: 12%">
 <col style="width: 12%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Candidate</th>
-<th>Pennsylvania</th>
+<th style="text-align: center;">Candidate</th>
+<th style="text-align: center;">Pennsylvania</th>
 <th style="text-align: center;">Michigan</th>
-<th>Wisconsin</th>
-<th>North Carolina</th>
-<th>Georgia</th>
-<th>Arizona</th>
-<th>Nevada</th>
+<th style="text-align: center;">Wisconsin</th>
+<th style="text-align: center;">North Carolina</th>
+<th style="text-align: center;">Georgia</th>
+<th style="text-align: center;">Arizona</th>
+<th style="text-align: center;">Nevada</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Kamala Harris</td>
-<td></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td style="text-align: center;">Kamala Harris</td>
+<td style="text-align: center;">49.3%</td>
+<td style="text-align: center;">49%</td>
+<td style="text-align: center;">50%</td>
+<td style="text-align: center;">48%</td>
+<td style="text-align: center;">48.3%</td>
+<td style="text-align: center;">47.5%</td>
+<td style="text-align: center;">48.2%</td>
 </tr>
 <tr class="even">
-<td>Donald Trump</td>
-<td></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td style="text-align: center;">Donald Trump</td>
+<td style="text-align: center;">47.4%</td>
+<td style="text-align: center;">46.8%</td>
+<td style="text-align: center;">46.5%</td>
+<td style="text-align: center;">47.8%</td>
+<td style="text-align: center;">48%</td>
+<td style="text-align: center;">46.7%</td>
+<td style="text-align: center;">46.3%</td>
 </tr>
 </tbody>
 </table>
+<p>Currently, Kamala Harris holds the lead in most battleground states. However, it is important to note that she <em>only</em> needs Pennsylvania, Michigan, and Wisconsin to get <em>exactly</em> the 270 votes needed to be elected President.</p>
+<p><img src="images/HarrisPathToVictory.png" class="img-fluid"></p>
+<p>On the other hand, Donald Trump would only need the states of Pennsylvania, North Carolina, and Georgia to secure victory.</p>
+<p><img src="images/TrumpPathToVictory.png" class="img-fluid"></p>
+<p>Notice how for both candidates, their paths to victory require the state of Pennsylvania, as such, many experts refer to Pennsylvania as the <em>tipping point state</em>. As if either candidate wins the state of Pennsylvania, the path of victory for the other candidate gets significantly narrower. As a result, both parties have made significant efforts in the state. Harris as well has began an offensive into North Carolina to kill Donald Trumps most likely path of a second term, as same for Harris with Pennsylvania.</p>
+</section>
+<section id="electoral-map" class="level2">
+<h2 class="anchored" data-anchor-id="electoral-map">Electoral Map</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://yapms.com/app?m=o7f94q9u15ib6lo"><img src="images/PollingElectoralMap.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>Based off polling data, this is what the Electoral Map would look like assuming all other states outside of the battleground remain the same. What is interesting however is that this is also the same map that Joe Biden had won in 2020. It is also important to note that between 2020 and 2024 as a result of the 2020 Census, Electoral Votes were redistributed, as such, Biden won 306 with this map in 2020, but for Harris, it would be 303. Regardless, if Harris wins with this map, this would be the first time in United States history that the electoral map has ever stayed the same for two consecutive election cycles.</p>
 <!-- -->
 
 </section>
@@ -567,40 +578,53 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-167"><a href="#cb1-167"></a>  )</span>
 <span id="cb1-168"><a href="#cb1-168"></a><span class="in">```</span></span>
 <span id="cb1-169"><a href="#cb1-169"></a></span>
-<span id="cb1-170"><a href="#cb1-170"></a><span class="fu">## Battleground State Polling</span></span>
+<span id="cb1-170"><a href="#cb1-170"></a>Prior to Joe Biden dropping out of the 2024 United States Election, Donald Trump held the lead in many polls. However after Kamala Harris became the new presumptive nominee, polling has seen a significant shift in the Democratic Party's favor.</span>
 <span id="cb1-171"><a href="#cb1-171"></a></span>
-<span id="cb1-172"><a href="#cb1-172"></a><span class="in">```{r, results='hide'}</span></span>
-<span id="cb1-173"><a href="#cb1-173"></a><span class="co">#| label: battleground_state_summary_chart</span></span>
-<span id="cb1-174"><a href="#cb1-174"></a> </span>
-<span id="cb1-175"><a href="#cb1-175"></a> <span class="fu">ggplot</span>(</span>
-<span id="cb1-176"><a href="#cb1-176"></a>    swing_state_summary,</span>
-<span id="cb1-177"><a href="#cb1-177"></a>    <span class="fu">aes</span>(<span class="at">x=</span>state, <span class="at">y=</span>pct, <span class="at">fill=</span>candidate_name, <span class="at">group=</span>candidate_name)</span>
-<span id="cb1-178"><a href="#cb1-178"></a>) <span class="sc">+</span> </span>
-<span id="cb1-179"><a href="#cb1-179"></a>    <span class="fu">geom_col</span>(<span class="at">position=</span><span class="st">"dodge"</span>) <span class="sc">+</span> </span>
-<span id="cb1-180"><a href="#cb1-180"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(</span>
-<span id="cb1-181"><a href="#cb1-181"></a>        <span class="st">"Donald Trump"</span> <span class="ot">=</span> <span class="st">"#D6090B"</span>,</span>
-<span id="cb1-182"><a href="#cb1-182"></a>        <span class="st">"Kamala Harris"</span> <span class="ot">=</span> <span class="st">"#031BBB"</span></span>
-<span id="cb1-183"><a href="#cb1-183"></a>    )</span>
-<span id="cb1-184"><a href="#cb1-184"></a>    ) <span class="sc">+</span></span>
-<span id="cb1-185"><a href="#cb1-185"></a>    <span class="fu">coord_cartesian</span>(<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">40</span>, <span class="dv">50</span>)) <span class="sc">+</span></span>
-<span id="cb1-186"><a href="#cb1-186"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">90</span>, <span class="at">hjust=</span><span class="fl">0.5</span>)) <span class="sc">+</span> </span>
-<span id="cb1-187"><a href="#cb1-187"></a>    <span class="fu">labs</span>(</span>
-<span id="cb1-188"><a href="#cb1-188"></a>        <span class="at">title=</span><span class="st">"Who Leads In The Battleground States?"</span>,</span>
-<span id="cb1-189"><a href="#cb1-189"></a>        <span class="at">x=</span><span class="st">"State"</span>,</span>
-<span id="cb1-190"><a href="#cb1-190"></a>        <span class="at">y=</span><span class="st">"Percentage"</span>,</span>
-<span id="cb1-191"><a href="#cb1-191"></a>        <span class="at">fill=</span><span class="st">"Candidate"</span></span>
-<span id="cb1-192"><a href="#cb1-192"></a>    )</span>
-<span id="cb1-193"><a href="#cb1-193"></a><span class="in">```</span></span>
-<span id="cb1-194"><a href="#cb1-194"></a></span>
-<span id="cb1-195"><a href="#cb1-195"></a>aaaa</span>
+<span id="cb1-172"><a href="#cb1-172"></a><span class="fu">## Battleground State Polling</span></span>
+<span id="cb1-173"><a href="#cb1-173"></a></span>
+<span id="cb1-174"><a href="#cb1-174"></a><span class="in">```{r, results='hide'}</span></span>
+<span id="cb1-175"><a href="#cb1-175"></a><span class="co">#| label: battleground_state_summary_chart</span></span>
+<span id="cb1-176"><a href="#cb1-176"></a> </span>
+<span id="cb1-177"><a href="#cb1-177"></a> <span class="fu">ggplot</span>(</span>
+<span id="cb1-178"><a href="#cb1-178"></a>    swing_state_summary,</span>
+<span id="cb1-179"><a href="#cb1-179"></a>    <span class="fu">aes</span>(<span class="at">x=</span>state, <span class="at">y=</span>pct, <span class="at">fill=</span>candidate_name, <span class="at">group=</span>candidate_name)</span>
+<span id="cb1-180"><a href="#cb1-180"></a>) <span class="sc">+</span> </span>
+<span id="cb1-181"><a href="#cb1-181"></a>    <span class="fu">geom_col</span>(<span class="at">position=</span><span class="st">"dodge"</span>) <span class="sc">+</span> </span>
+<span id="cb1-182"><a href="#cb1-182"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(</span>
+<span id="cb1-183"><a href="#cb1-183"></a>        <span class="st">"Donald Trump"</span> <span class="ot">=</span> <span class="st">"#D6090B"</span>,</span>
+<span id="cb1-184"><a href="#cb1-184"></a>        <span class="st">"Kamala Harris"</span> <span class="ot">=</span> <span class="st">"#031BBB"</span></span>
+<span id="cb1-185"><a href="#cb1-185"></a>    )</span>
+<span id="cb1-186"><a href="#cb1-186"></a>    ) <span class="sc">+</span></span>
+<span id="cb1-187"><a href="#cb1-187"></a>    <span class="fu">coord_cartesian</span>(<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">40</span>, <span class="dv">50</span>)) <span class="sc">+</span></span>
+<span id="cb1-188"><a href="#cb1-188"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">90</span>, <span class="at">hjust=</span><span class="fl">0.5</span>)) <span class="sc">+</span> </span>
+<span id="cb1-189"><a href="#cb1-189"></a>    <span class="fu">labs</span>(</span>
+<span id="cb1-190"><a href="#cb1-190"></a>        <span class="at">title=</span><span class="st">"Who Leads In The Battleground States?"</span>,</span>
+<span id="cb1-191"><a href="#cb1-191"></a>        <span class="at">x=</span><span class="st">"State"</span>,</span>
+<span id="cb1-192"><a href="#cb1-192"></a>        <span class="at">y=</span><span class="st">"Percentage"</span>,</span>
+<span id="cb1-193"><a href="#cb1-193"></a>        <span class="at">fill=</span><span class="st">"Candidate"</span></span>
+<span id="cb1-194"><a href="#cb1-194"></a>    )</span>
+<span id="cb1-195"><a href="#cb1-195"></a><span class="in">```</span></span>
 <span id="cb1-196"><a href="#cb1-196"></a></span>
-<span id="cb1-197"><a href="#cb1-197"></a><span class="in">```{r, results='hide'}</span></span>
-<span id="cb1-198"><a href="#cb1-198"></a><span class="in">```</span></span>
-<span id="cb1-199"><a href="#cb1-199"></a></span>
-<span id="cb1-200"><a href="#cb1-200"></a>| Candidate     | Pennsylvania | Michigan | Wisconsin | North Carolina | Georgia | Arizona | Nevada |</span>
-<span id="cb1-201"><a href="#cb1-201"></a>|---------|---------|:------:|---------|----------|---------|---------|---------|</span>
-<span id="cb1-202"><a href="#cb1-202"></a>| Kamala Harris |              |          |           |                |         |         |        |</span>
-<span id="cb1-203"><a href="#cb1-203"></a>| Donald Trump  |              |          |           |                |         |         |        |</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-197"><a href="#cb1-197"></a>|   Candidate   | Pennsylvania | Michigan | Wisconsin | North Carolina | Georgia | Arizona | Nevada |</span>
+<span id="cb1-198"><a href="#cb1-198"></a>|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|</span>
+<span id="cb1-199"><a href="#cb1-199"></a>| Kamala Harris |    49.3%     |   49%    |    50%    |      48%       |  48.3%  |  47.5%  | 48.2%  |</span>
+<span id="cb1-200"><a href="#cb1-200"></a>| Donald Trump  |    47.4%     |  46.8%   |   46.5%   |     47.8%      |   48%   |  46.7%  | 46.3%  |</span>
+<span id="cb1-201"><a href="#cb1-201"></a></span>
+<span id="cb1-202"><a href="#cb1-202"></a>Currently, Kamala Harris holds the lead in most battleground states. However, it is important to note that she *only* needs Pennsylvania, Michigan, and Wisconsin to get *exactly* the 270 votes needed to be elected President.</span>
+<span id="cb1-203"><a href="#cb1-203"></a></span>
+<span id="cb1-204"><a href="#cb1-204"></a><span class="al">![](images/HarrisPathToVictory.png)</span></span>
+<span id="cb1-205"><a href="#cb1-205"></a></span>
+<span id="cb1-206"><a href="#cb1-206"></a>On the other hand, Donald Trump would only need the states of Pennsylvania, North Carolina, and Georgia to secure victory.</span>
+<span id="cb1-207"><a href="#cb1-207"></a></span>
+<span id="cb1-208"><a href="#cb1-208"></a><span class="al">![](images/TrumpPathToVictory.png)</span></span>
+<span id="cb1-209"><a href="#cb1-209"></a></span>
+<span id="cb1-210"><a href="#cb1-210"></a>Notice how for both candidates, their paths to victory require the state of Pennsylvania, as such, many experts refer to Pennsylvania as the *tipping point state*. As if either candidate wins the state of Pennsylvania, the path of victory for the other candidate gets significantly narrower. As a result, both parties have made significant efforts in the state. Harris as well has began an offensive into North Carolina to kill Donald Trumps most likely path of a second term, as same for Harris with Pennsylvania.</span>
+<span id="cb1-211"><a href="#cb1-211"></a></span>
+<span id="cb1-212"><a href="#cb1-212"></a><span class="fu">## Electoral Map</span></span>
+<span id="cb1-213"><a href="#cb1-213"></a></span>
+<span id="cb1-214"><a href="#cb1-214"></a><span class="co">[</span><span class="al">![](images/PollingElectoralMap.png)</span><span class="co">](https://yapms.com/app?m=o7f94q9u15ib6lo)</span></span>
+<span id="cb1-215"><a href="#cb1-215"></a></span>
+<span id="cb1-216"><a href="#cb1-216"></a>Based off polling data, this is what the Electoral Map would look like assuming all other states outside of the battleground remain the same. What is interesting however is that this is also the same map that Joe Biden had won in 2020. It is also important to note that between 2020 and 2024 as a result of the 2020 Census, Electoral Votes were redistributed, as such, Biden won 306 with this map in 2020, but for Harris, it would be 303. Regardless, if Harris wins with this map, this would be the first time in United States history that the electoral map has ever stayed the same for two consecutive election cycles.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

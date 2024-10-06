@@ -167,6 +167,8 @@ ggplot(
   )
 ```
 
+Prior to Joe Biden dropping out of the 2024 United States Election, Donald Trump held the lead in many polls. However after Kamala Harris became the new presumptive nominee, polling has seen a significant shift in the Democratic Party's favor.
+
 ## Battleground State Polling
 
 ```{r, results='hide'}
@@ -193,10 +195,22 @@ ggplot(
 ```
 
 |   Candidate   | Pennsylvania | Michigan | Wisconsin | North Carolina | Georgia | Arizona | Nevada |
-|:-------:|:-------:|:------:|:------:|:---------:|:------:|:-------:|:-------:|
+|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|
 | Kamala Harris |    49.3%     |   49%    |    50%    |      48%       |  48.3%  |  47.5%  | 48.2%  |
 | Donald Trump  |    47.4%     |  46.8%   |   46.5%   |     47.8%      |   48%   |  46.7%  | 46.3%  |
 
+Currently, Kamala Harris holds the lead in most battleground states. However, it is important to note that she *only* needs Pennsylvania, Michigan, and Wisconsin to get *exactly* the 270 votes needed to be elected President.
+
+![](images/HarrisPathToVictory.png)
+
+On the other hand, Donald Trump would only need the states of Pennsylvania, North Carolina, and Georgia to secure victory.
+
+![](images/TrumpPathToVictory.png)
+
+Notice how for both candidates, their paths to victory require the state of Pennsylvania, as such, many experts refer to Pennsylvania as the *tipping point state*. As if either candidate wins the state of Pennsylvania, the path of victory for the other candidate gets significantly narrower. As a result, both parties have made significant efforts in the state. Harris as well has began an offensive into North Carolina to kill Donald Trumps most likely path of a second term, as same for Harris with Pennsylvania.
+
 ## Electoral Map
 
-[![](images/YAPmsScreenshot.png)](https://yapms.com/app?m=o7f94q9u15ib6lo)
+[![](images/PollingElectoralMap.png)](https://yapms.com/app?m=o7f94q9u15ib6lo)
+
+Based off polling data, this is what the Electoral Map would look like assuming all other states outside of the battleground remain the same. What is interesting however is that this is also the same map that Joe Biden had won in 2020. It is also important to note that between 2020 and 2024 as a result of the 2020 Census, Electoral Votes were redistributed, as such, Biden won 306 with this map in 2020, but for Harris, it would be 303. Regardless, if Harris wins with this map, this would be the first time in United States history that the electoral map has ever stayed the same for two consecutive election cycles.
