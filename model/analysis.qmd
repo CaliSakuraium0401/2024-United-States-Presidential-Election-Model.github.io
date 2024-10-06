@@ -1,0 +1,203 @@
+---
+title: "2024 United States Presidential Election Analysis"
+author: "CaliSakuraium"
+format:
+  html:
+    code-fold: true
+    code-tools: true
+    df-print: paged
+    code-line-numbers: true
+editor: visual
+execute:
+  warning: false
+  message: false
+  keep-md: true
+  echo: false
+---
+
+The 2024 United States presidential election will be the 60th presidential election. It will be between current Democratic Vice President Kamala Devi Harris and former Republican President Donald John Trump.
+
+```{r, results='hide'}
+#| label: load-packages
+
+library(dplyr)
+library(ggplot2)
+library(ggthemes)
+library(tidyverse)
+```
+
+```{r, results='hide'}
+#| label: create_filtered_df
+
+national_presidential_polling <- read_csv('polling/national_presidential.csv')
+
+xnational_presidential_polling <- national_presidential_polling |>
+    mutate(
+        sample_size = as.numeric(sample_size),
+        pollscore = as.numeric(pollscore),
+        start_date = as.Date(start_date, format="%m/%d/%y"),
+        end_date = as.Date(end_date, format="%m/%d/%y")
+    ) |>
+    filter(
+        !is.na(sample_size),
+        internal != "TRUE",
+        !partisan %in% c("DEM", "REP"),
+        candidate_name %in% c("Kamala Harris", "Donald Trump"),
+        start_date >= '2024-07-21'
+    )
+
+avg_national_presidential_polling <- national_presidential_polling |>
+    mutate(
+        sample_size = as.numeric(sample_size),
+        pollscore = as.numeric(pollscore),
+        start_date = as.Date(start_date, format="%m/%d/%y"),
+        end_date = as.Date(end_date, format="%m/%d/%y")
+    ) |>
+    filter(
+        !is.na(sample_size),
+        internal != "TRUE",
+        !partisan %in% c("DEM", "REP"),
+        candidate_name %in% c("Kamala Harris", "Donald Trump"),
+        start_date >= '2024-07-21'
+    ) |>
+    summarize(
+        pct = round(weighted.mean(pct, as.numeric(sample_size), na.rm = TRUE),1),
+        .by = c(start_date,candidate_name)
+    ) |>
+    arrange(start_date)
+
+avg_swing_presidential_polling <- national_presidential_polling |>
+    mutate(
+        sample_size = as.numeric(sample_size),
+        pollscore = as.numeric(pollscore),
+        start_date = as.Date(start_date, format="%m/%d/%y"),
+        end_date = as.Date(end_date, format="%m/%d/%y")
+    ) |>
+    filter(
+        !is.na(sample_size),
+        internal != "TRUE",
+        !partisan %in% c("DEM", "REP"),
+        state %in% c("Pennsylvania", "Michigan", "Wisconsin", "North Carolina", "Georgia", "Arizona", "Nevada"),
+        candidate_name %in% c("Kamala Harris", "Donald Trump"),
+        start_date >= '2024-07-21'
+    ) |>
+    summarize(
+        a_pct = round(weighted.mean(pct, as.numeric(sample_size), na.rm = TRUE),1),
+        .by = c(start_date,state,candidate_name)
+    ) |>
+    arrange(start_date)
+
+swing_state_summary <- avg_swing_presidential_polling |>
+    group_by(state, candidate_name) |>
+    summarize(pct = round(mean(a_pct, na.rm = TRUE),1))
+```
+
+```{r, results='hide'}
+#| label: create_filtered_df_2
+
+pennsylvania_summary <- avg_swing_presidential_polling |> 
+    filter(state == "Pennsylvania") |>
+    group_by(state, candidate_name) |>
+    summarize(pct = round(mean(a_pct, na.rm = TRUE),1)) |>
+    arrange(desc(candidate_name))
+
+michigan_summary <- avg_swing_presidential_polling |> 
+    filter(state == "Michigan") |>
+    group_by(state, candidate_name) |>
+    summarize(pct = round(mean(a_pct, na.rm = TRUE),1)) |>
+    arrange(desc(candidate_name))
+
+wisconsin_summary <- avg_swing_presidential_polling |> 
+    filter(state == "Wisconsin") |>
+    group_by(state, candidate_name) |>
+    summarize(pct = round(mean(a_pct, na.rm = TRUE),1)) |>
+    arrange(desc(candidate_name))
+
+georgia_summary <- avg_swing_presidential_polling |> 
+    filter(state == "Georgia") |>
+    group_by(state, candidate_name) |>
+    summarize(pct = round(mean(a_pct, na.rm = TRUE),1)) |>
+    arrange(desc(candidate_name))
+
+north_carolina_summary <- avg_swing_presidential_polling |> 
+    filter(state == "North Carolina") |>
+    group_by(state, candidate_name) |>
+    summarize(pct = round(mean(a_pct, na.rm = TRUE),1)) |>
+    arrange(desc(candidate_name))
+
+nevada_summary <- avg_swing_presidential_polling |> 
+    filter(state == "Nevada") |>
+    group_by(state, candidate_name) |>
+    summarize(pct = round(mean(a_pct, na.rm = TRUE),1)) |>
+    arrange(desc(candidate_name))
+
+arizona_summary <- avg_swing_presidential_polling |> 
+    filter(state == "Arizona") |>
+    group_by(state, candidate_name) |>
+    summarize(pct = round(mean(a_pct, na.rm = TRUE),1)) |>
+    arrange(desc(candidate_name))
+```
+
+## National Polling
+
+```{r, results='hide'}
+#| label: national_polling_chart
+
+ggplot(
+    avg_national_presidential_polling,
+    aes(x=start_date,y=pct,color=candidate_name,fill=candidate_name, shape=candidate_name)
+) + geom_smooth() + 
+    geom_point(
+        data=xnational_presidential_polling,
+        mapping=aes(x=start_date,y=pct,alpha=0.03)
+    ) +
+    scale_color_manual(values=c("Donald Trump" = "#D6090B","Kamala Harris" = "#031BBB")) +
+    scale_fill_manual(values=c("Donald Trump" = "#D6090B","Kamala Harris" = "#031BBB")) +
+    theme(axis.text.x = element_text(angle=90, hjust=0.5)) +
+    labs(
+        title="Who Leads Nationally?",
+        x="Date",
+        y="Percentage",
+        color="Candidate",
+        shape="Candidate"
+    ) + 
+    guides (
+        fill="none",
+        alpha="none",
+  )
+```
+
+## Battleground State Polling
+
+```{r, results='hide'}
+#| label: battleground_state_summary_chart
+ 
+ ggplot(
+    swing_state_summary,
+    aes(x=state, y=pct, fill=candidate_name, group=candidate_name)
+) + 
+    geom_col(position="dodge") + 
+    scale_fill_manual(values=c(
+        "Donald Trump" = "#D6090B",
+        "Kamala Harris" = "#031BBB"
+    )
+    ) +
+    coord_cartesian(ylim=c(40, 50)) +
+    theme(axis.text.x = element_text(angle=90, hjust=0.5)) + 
+    labs(
+        title="Who Leads In The Battleground States?",
+        x="State",
+        y="Percentage",
+        fill="Candidate"
+    )
+```
+
+aaaa
+
+```{r, results='hide'}
+```
+
+| Candidate     | Pennsylvania | Michigan | Wisconsin | North Carolina | Georgia | Arizona | Nevada |
+|---------|---------|:------:|---------|----------|---------|---------|---------|
+| Kamala Harris |              |          |           |                |         |         |        |
+| Donald Trump  |              |          |           |                |         |         |        |
