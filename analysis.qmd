@@ -194,10 +194,10 @@ Prior to Joe Biden dropping out of the 2024 United States Election, Donald Trump
     )
 ```
 
-|   Candidate   | Pennsylvania | Michigan | Wisconsin | North Carolina | Georgia | Arizona | Nevada |
+|   Candidate   | Pennsylvania | Michigan  | Wisconsin | North Carolina |  Georgia  |  Arizona  |  Nevada   |
 |:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|
-| Kamala Harris |    49.3%     |   49%    |    50%    |      48%       |  48.3%  |  47.5%  | 48.2%  |
-| Donald Trump  |    47.4%     |  46.8%   |   46.5%   |     47.8%      |   48%   |  46.7%  | 46.3%  |
+| Kamala Harris | ***49.3%***  | ***49%*** | ***50%*** |     47.8%      | **48.3%** | **47.5%** | **48.2%** |
+| Donald Trump  |    47.4%     |   46.8%   |   46.5%   |   ***48%***    |    48%    |   46.7%   |   46.3%   |
 
 Currently, Kamala Harris holds the lead in most battleground states. However, it is important to note that she *only* needs Pennsylvania, Michigan, and Wisconsin to get *exactly* the 270 votes needed to be elected President.
 
