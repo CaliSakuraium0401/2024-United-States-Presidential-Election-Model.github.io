@@ -160,48 +160,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <table class="table">
-<colgroup>
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-<col style="width: 12%">
-</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;">Candidate</th>
-<th style="text-align: center;">Pennsylvania</th>
-<th style="text-align: center;">Michigan</th>
-<th style="text-align: center;">Wisconsin</th>
-<th style="text-align: center;">North Carolina</th>
-<th style="text-align: center;">Georgia</th>
-<th style="text-align: center;">Arizona</th>
-<th style="text-align: center;">Nevada</th>
+<th style="text-align: left;">State</th>
+<th>Kamala Harris</th>
+<th style="text-align: left;">Donald Trump</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">Kamala Harris</td>
-<td style="text-align: center;"><strong><em>49.3%</em></strong></td>
-<td style="text-align: center;"><strong><em>49%</em></strong></td>
-<td style="text-align: center;"><strong><em>50%</em></strong></td>
-<td style="text-align: center;">47.8%</td>
-<td style="text-align: center;"><strong>48.3%</strong></td>
-<td style="text-align: center;"><strong>47.5%</strong></td>
-<td style="text-align: center;"><strong>48.2%</strong></td>
+<td style="text-align: left;">Pennsylvania</td>
+<td>49.3 %</td>
+<td style="text-align: left;">47.4 %</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">Donald Trump</td>
-<td style="text-align: center;">47.4%</td>
-<td style="text-align: center;">46.8%</td>
-<td style="text-align: center;">46.5%</td>
-<td style="text-align: center;"><strong><em>48%</em></strong></td>
-<td style="text-align: center;">48%</td>
-<td style="text-align: center;">46.7%</td>
-<td style="text-align: center;">46.3%</td>
+<td style="text-align: left;">Michigan</td>
+<td>49 %</td>
+<td style="text-align: left;">46.8 %</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Wisconsin</td>
+<td>50 %</td>
+<td style="text-align: left;">46.5 %</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">North Carolina</td>
+<td>47.8 %</td>
+<td style="text-align: left;">48 %</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Georgia</td>
+<td>48.3 %</td>
+<td style="text-align: left;">48 %</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Arizona</td>
+<td>47.5 %</td>
+<td style="text-align: left;">46.7 %</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Nevada</td>
+<td>48.2 %</td>
+<td style="text-align: left;">46.3 %</td>
 </tr>
 </tbody>
 </table>
@@ -512,119 +512,145 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-101"><a href="#cb1-101"></a>    <span class="fu">summarize</span>(<span class="at">pct =</span> <span class="fu">round</span>(<span class="fu">mean</span>(a_pct, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),<span class="dv">1</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb1-102"><a href="#cb1-102"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(candidate_name))</span>
 <span id="cb1-103"><a href="#cb1-103"></a></span>
-<span id="cb1-104"><a href="#cb1-104"></a>michigan_summary <span class="ot">&lt;-</span> avg_swing_presidential_polling <span class="sc">|&gt;</span> </span>
-<span id="cb1-105"><a href="#cb1-105"></a>    <span class="fu">filter</span>(state <span class="sc">==</span> <span class="st">"Michigan"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1-106"><a href="#cb1-106"></a>    <span class="fu">group_by</span>(state, candidate_name) <span class="sc">|&gt;</span></span>
-<span id="cb1-107"><a href="#cb1-107"></a>    <span class="fu">summarize</span>(<span class="at">pct =</span> <span class="fu">round</span>(<span class="fu">mean</span>(a_pct, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),<span class="dv">1</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb1-108"><a href="#cb1-108"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(candidate_name))</span>
-<span id="cb1-109"><a href="#cb1-109"></a></span>
-<span id="cb1-110"><a href="#cb1-110"></a>wisconsin_summary <span class="ot">&lt;-</span> avg_swing_presidential_polling <span class="sc">|&gt;</span> </span>
-<span id="cb1-111"><a href="#cb1-111"></a>    <span class="fu">filter</span>(state <span class="sc">==</span> <span class="st">"Wisconsin"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1-112"><a href="#cb1-112"></a>    <span class="fu">group_by</span>(state, candidate_name) <span class="sc">|&gt;</span></span>
-<span id="cb1-113"><a href="#cb1-113"></a>    <span class="fu">summarize</span>(<span class="at">pct =</span> <span class="fu">round</span>(<span class="fu">mean</span>(a_pct, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),<span class="dv">1</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb1-114"><a href="#cb1-114"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(candidate_name))</span>
+<span id="cb1-104"><a href="#cb1-104"></a>pa_harris <span class="ot">&lt;-</span> pennsylvania_summary<span class="sc">$</span>pct[<span class="dv">1</span>]</span>
+<span id="cb1-105"><a href="#cb1-105"></a>pa_trump <span class="ot">&lt;-</span> pennsylvania_summary<span class="sc">$</span>pct[<span class="dv">2</span>]</span>
+<span id="cb1-106"><a href="#cb1-106"></a></span>
+<span id="cb1-107"><a href="#cb1-107"></a>michigan_summary <span class="ot">&lt;-</span> avg_swing_presidential_polling <span class="sc">|&gt;</span> </span>
+<span id="cb1-108"><a href="#cb1-108"></a>    <span class="fu">filter</span>(state <span class="sc">==</span> <span class="st">"Michigan"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-109"><a href="#cb1-109"></a>    <span class="fu">group_by</span>(state, candidate_name) <span class="sc">|&gt;</span></span>
+<span id="cb1-110"><a href="#cb1-110"></a>    <span class="fu">summarize</span>(<span class="at">pct =</span> <span class="fu">round</span>(<span class="fu">mean</span>(a_pct, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),<span class="dv">1</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb1-111"><a href="#cb1-111"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(candidate_name))</span>
+<span id="cb1-112"><a href="#cb1-112"></a></span>
+<span id="cb1-113"><a href="#cb1-113"></a>mi_harris <span class="ot">&lt;-</span> michigan_summary<span class="sc">$</span>pct[<span class="dv">1</span>]</span>
+<span id="cb1-114"><a href="#cb1-114"></a>mi_trump <span class="ot">&lt;-</span> michigan_summary<span class="sc">$</span>pct[<span class="dv">2</span>]</span>
 <span id="cb1-115"><a href="#cb1-115"></a></span>
-<span id="cb1-116"><a href="#cb1-116"></a>georgia_summary <span class="ot">&lt;-</span> avg_swing_presidential_polling <span class="sc">|&gt;</span> </span>
-<span id="cb1-117"><a href="#cb1-117"></a>    <span class="fu">filter</span>(state <span class="sc">==</span> <span class="st">"Georgia"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-116"><a href="#cb1-116"></a>wisconsin_summary <span class="ot">&lt;-</span> avg_swing_presidential_polling <span class="sc">|&gt;</span> </span>
+<span id="cb1-117"><a href="#cb1-117"></a>    <span class="fu">filter</span>(state <span class="sc">==</span> <span class="st">"Wisconsin"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb1-118"><a href="#cb1-118"></a>    <span class="fu">group_by</span>(state, candidate_name) <span class="sc">|&gt;</span></span>
 <span id="cb1-119"><a href="#cb1-119"></a>    <span class="fu">summarize</span>(<span class="at">pct =</span> <span class="fu">round</span>(<span class="fu">mean</span>(a_pct, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),<span class="dv">1</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb1-120"><a href="#cb1-120"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(candidate_name))</span>
 <span id="cb1-121"><a href="#cb1-121"></a></span>
-<span id="cb1-122"><a href="#cb1-122"></a>north_carolina_summary <span class="ot">&lt;-</span> avg_swing_presidential_polling <span class="sc">|&gt;</span> </span>
-<span id="cb1-123"><a href="#cb1-123"></a>    <span class="fu">filter</span>(state <span class="sc">==</span> <span class="st">"North Carolina"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1-124"><a href="#cb1-124"></a>    <span class="fu">group_by</span>(state, candidate_name) <span class="sc">|&gt;</span></span>
-<span id="cb1-125"><a href="#cb1-125"></a>    <span class="fu">summarize</span>(<span class="at">pct =</span> <span class="fu">round</span>(<span class="fu">mean</span>(a_pct, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),<span class="dv">1</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb1-126"><a href="#cb1-126"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(candidate_name))</span>
-<span id="cb1-127"><a href="#cb1-127"></a></span>
-<span id="cb1-128"><a href="#cb1-128"></a>nevada_summary <span class="ot">&lt;-</span> avg_swing_presidential_polling <span class="sc">|&gt;</span> </span>
-<span id="cb1-129"><a href="#cb1-129"></a>    <span class="fu">filter</span>(state <span class="sc">==</span> <span class="st">"Nevada"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1-130"><a href="#cb1-130"></a>    <span class="fu">group_by</span>(state, candidate_name) <span class="sc">|&gt;</span></span>
-<span id="cb1-131"><a href="#cb1-131"></a>    <span class="fu">summarize</span>(<span class="at">pct =</span> <span class="fu">round</span>(<span class="fu">mean</span>(a_pct, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),<span class="dv">1</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb1-132"><a href="#cb1-132"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(candidate_name))</span>
+<span id="cb1-122"><a href="#cb1-122"></a>wi_harris <span class="ot">&lt;-</span> wisconsin_summary<span class="sc">$</span>pct[<span class="dv">1</span>]</span>
+<span id="cb1-123"><a href="#cb1-123"></a>wi_trump <span class="ot">&lt;-</span> wisconsin_summary<span class="sc">$</span>pct[<span class="dv">2</span>]</span>
+<span id="cb1-124"><a href="#cb1-124"></a></span>
+<span id="cb1-125"><a href="#cb1-125"></a>georgia_summary <span class="ot">&lt;-</span> avg_swing_presidential_polling <span class="sc">|&gt;</span> </span>
+<span id="cb1-126"><a href="#cb1-126"></a>    <span class="fu">filter</span>(state <span class="sc">==</span> <span class="st">"Georgia"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-127"><a href="#cb1-127"></a>    <span class="fu">group_by</span>(state, candidate_name) <span class="sc">|&gt;</span></span>
+<span id="cb1-128"><a href="#cb1-128"></a>    <span class="fu">summarize</span>(<span class="at">pct =</span> <span class="fu">round</span>(<span class="fu">mean</span>(a_pct, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),<span class="dv">1</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb1-129"><a href="#cb1-129"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(candidate_name))</span>
+<span id="cb1-130"><a href="#cb1-130"></a></span>
+<span id="cb1-131"><a href="#cb1-131"></a>ga_harris <span class="ot">&lt;-</span> georgia_summary<span class="sc">$</span>pct[<span class="dv">1</span>]</span>
+<span id="cb1-132"><a href="#cb1-132"></a>ga_trump <span class="ot">&lt;-</span> georgia_summary<span class="sc">$</span>pct[<span class="dv">2</span>]</span>
 <span id="cb1-133"><a href="#cb1-133"></a></span>
-<span id="cb1-134"><a href="#cb1-134"></a>arizona_summary <span class="ot">&lt;-</span> avg_swing_presidential_polling <span class="sc">|&gt;</span> </span>
-<span id="cb1-135"><a href="#cb1-135"></a>    <span class="fu">filter</span>(state <span class="sc">==</span> <span class="st">"Arizona"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-134"><a href="#cb1-134"></a>north_carolina_summary <span class="ot">&lt;-</span> avg_swing_presidential_polling <span class="sc">|&gt;</span> </span>
+<span id="cb1-135"><a href="#cb1-135"></a>    <span class="fu">filter</span>(state <span class="sc">==</span> <span class="st">"North Carolina"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb1-136"><a href="#cb1-136"></a>    <span class="fu">group_by</span>(state, candidate_name) <span class="sc">|&gt;</span></span>
 <span id="cb1-137"><a href="#cb1-137"></a>    <span class="fu">summarize</span>(<span class="at">pct =</span> <span class="fu">round</span>(<span class="fu">mean</span>(a_pct, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),<span class="dv">1</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb1-138"><a href="#cb1-138"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(candidate_name))</span>
-<span id="cb1-139"><a href="#cb1-139"></a><span class="in">```</span></span>
-<span id="cb1-140"><a href="#cb1-140"></a></span>
-<span id="cb1-141"><a href="#cb1-141"></a><span class="fu">## National Polling</span></span>
+<span id="cb1-139"><a href="#cb1-139"></a></span>
+<span id="cb1-140"><a href="#cb1-140"></a>nc_harris <span class="ot">&lt;-</span> north_carolina_summary<span class="sc">$</span>pct[<span class="dv">1</span>]</span>
+<span id="cb1-141"><a href="#cb1-141"></a>nc_trump <span class="ot">&lt;-</span> north_carolina_summary<span class="sc">$</span>pct[<span class="dv">2</span>]</span>
 <span id="cb1-142"><a href="#cb1-142"></a></span>
-<span id="cb1-143"><a href="#cb1-143"></a><span class="in">```{r, results='hide'}</span></span>
-<span id="cb1-144"><a href="#cb1-144"></a><span class="co">#| label: national_polling_chart</span></span>
-<span id="cb1-145"><a href="#cb1-145"></a></span>
-<span id="cb1-146"><a href="#cb1-146"></a><span class="fu">ggplot</span>(</span>
-<span id="cb1-147"><a href="#cb1-147"></a>    avg_national_presidential_polling,</span>
-<span id="cb1-148"><a href="#cb1-148"></a>    <span class="fu">aes</span>(<span class="at">x=</span>start_date,<span class="at">y=</span>pct,<span class="at">color=</span>candidate_name,<span class="at">fill=</span>candidate_name, <span class="at">shape=</span>candidate_name)</span>
-<span id="cb1-149"><a href="#cb1-149"></a>) <span class="sc">+</span> <span class="fu">geom_smooth</span>() <span class="sc">+</span> </span>
-<span id="cb1-150"><a href="#cb1-150"></a>    <span class="fu">geom_point</span>(</span>
-<span id="cb1-151"><a href="#cb1-151"></a>        <span class="at">data=</span>xnational_presidential_polling,</span>
-<span id="cb1-152"><a href="#cb1-152"></a>        <span class="at">mapping=</span><span class="fu">aes</span>(<span class="at">x=</span>start_date,<span class="at">y=</span>pct,<span class="at">alpha=</span><span class="fl">0.03</span>)</span>
-<span id="cb1-153"><a href="#cb1-153"></a>    ) <span class="sc">+</span></span>
-<span id="cb1-154"><a href="#cb1-154"></a>    <span class="fu">scale_color_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"Donald Trump"</span> <span class="ot">=</span> <span class="st">"#D6090B"</span>,<span class="st">"Kamala Harris"</span> <span class="ot">=</span> <span class="st">"#031BBB"</span>)) <span class="sc">+</span></span>
-<span id="cb1-155"><a href="#cb1-155"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"Donald Trump"</span> <span class="ot">=</span> <span class="st">"#D6090B"</span>,<span class="st">"Kamala Harris"</span> <span class="ot">=</span> <span class="st">"#031BBB"</span>)) <span class="sc">+</span></span>
-<span id="cb1-156"><a href="#cb1-156"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">90</span>, <span class="at">hjust=</span><span class="fl">0.5</span>)) <span class="sc">+</span></span>
-<span id="cb1-157"><a href="#cb1-157"></a>    <span class="fu">labs</span>(</span>
-<span id="cb1-158"><a href="#cb1-158"></a>        <span class="at">title=</span><span class="st">"Who Leads Nationally?"</span>,</span>
-<span id="cb1-159"><a href="#cb1-159"></a>        <span class="at">x=</span><span class="st">"Date"</span>,</span>
-<span id="cb1-160"><a href="#cb1-160"></a>        <span class="at">y=</span><span class="st">"Percentage"</span>,</span>
-<span id="cb1-161"><a href="#cb1-161"></a>        <span class="at">color=</span><span class="st">"Candidate"</span>,</span>
-<span id="cb1-162"><a href="#cb1-162"></a>        <span class="at">shape=</span><span class="st">"Candidate"</span></span>
-<span id="cb1-163"><a href="#cb1-163"></a>    ) <span class="sc">+</span> </span>
-<span id="cb1-164"><a href="#cb1-164"></a>    <span class="fu">guides</span> (</span>
-<span id="cb1-165"><a href="#cb1-165"></a>        <span class="at">fill=</span><span class="st">"none"</span>,</span>
-<span id="cb1-166"><a href="#cb1-166"></a>        <span class="at">alpha=</span><span class="st">"none"</span>,</span>
-<span id="cb1-167"><a href="#cb1-167"></a>  )</span>
-<span id="cb1-168"><a href="#cb1-168"></a><span class="in">```</span></span>
-<span id="cb1-169"><a href="#cb1-169"></a></span>
-<span id="cb1-170"><a href="#cb1-170"></a>Prior to Joe Biden dropping out of the 2024 United States Election, Donald Trump held the lead in many polls. However after Kamala Harris became the new presumptive nominee, polling has seen a significant shift in the Democratic Party's favor.</span>
-<span id="cb1-171"><a href="#cb1-171"></a></span>
-<span id="cb1-172"><a href="#cb1-172"></a><span class="fu">## Battleground State Polling</span></span>
-<span id="cb1-173"><a href="#cb1-173"></a></span>
-<span id="cb1-174"><a href="#cb1-174"></a><span class="in">```{r, results='hide'}</span></span>
-<span id="cb1-175"><a href="#cb1-175"></a><span class="co">#| label: battleground_state_summary_chart</span></span>
-<span id="cb1-176"><a href="#cb1-176"></a> </span>
-<span id="cb1-177"><a href="#cb1-177"></a> <span class="fu">ggplot</span>(</span>
-<span id="cb1-178"><a href="#cb1-178"></a>    swing_state_summary,</span>
-<span id="cb1-179"><a href="#cb1-179"></a>    <span class="fu">aes</span>(<span class="at">x=</span>state, <span class="at">y=</span>pct, <span class="at">fill=</span>candidate_name, <span class="at">group=</span>candidate_name)</span>
-<span id="cb1-180"><a href="#cb1-180"></a>) <span class="sc">+</span> </span>
-<span id="cb1-181"><a href="#cb1-181"></a>    <span class="fu">geom_col</span>(<span class="at">position=</span><span class="st">"dodge"</span>) <span class="sc">+</span> </span>
-<span id="cb1-182"><a href="#cb1-182"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(</span>
-<span id="cb1-183"><a href="#cb1-183"></a>        <span class="st">"Donald Trump"</span> <span class="ot">=</span> <span class="st">"#D6090B"</span>,</span>
-<span id="cb1-184"><a href="#cb1-184"></a>        <span class="st">"Kamala Harris"</span> <span class="ot">=</span> <span class="st">"#031BBB"</span></span>
-<span id="cb1-185"><a href="#cb1-185"></a>    )</span>
-<span id="cb1-186"><a href="#cb1-186"></a>    ) <span class="sc">+</span></span>
-<span id="cb1-187"><a href="#cb1-187"></a>    <span class="fu">coord_cartesian</span>(<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">40</span>, <span class="dv">50</span>)) <span class="sc">+</span></span>
-<span id="cb1-188"><a href="#cb1-188"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">90</span>, <span class="at">hjust=</span><span class="fl">0.5</span>)) <span class="sc">+</span> </span>
-<span id="cb1-189"><a href="#cb1-189"></a>    <span class="fu">labs</span>(</span>
-<span id="cb1-190"><a href="#cb1-190"></a>        <span class="at">title=</span><span class="st">"Who Leads In The Battleground States?"</span>,</span>
-<span id="cb1-191"><a href="#cb1-191"></a>        <span class="at">x=</span><span class="st">"State"</span>,</span>
-<span id="cb1-192"><a href="#cb1-192"></a>        <span class="at">y=</span><span class="st">"Percentage"</span>,</span>
-<span id="cb1-193"><a href="#cb1-193"></a>        <span class="at">fill=</span><span class="st">"Candidate"</span></span>
-<span id="cb1-194"><a href="#cb1-194"></a>    )</span>
-<span id="cb1-195"><a href="#cb1-195"></a><span class="in">```</span></span>
-<span id="cb1-196"><a href="#cb1-196"></a></span>
-<span id="cb1-197"><a href="#cb1-197"></a>|   Candidate   | Pennsylvania | Michigan  | Wisconsin | North Carolina |  Georgia  |  Arizona  |  Nevada   |</span>
-<span id="cb1-198"><a href="#cb1-198"></a>|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|</span>
-<span id="cb1-199"><a href="#cb1-199"></a>| Kamala Harris | ***49.3%***  | ***49%*** | ***50%*** |     47.8%      | **48.3%** | **47.5%** | **48.2%** |</span>
-<span id="cb1-200"><a href="#cb1-200"></a>| Donald Trump  |    47.4%     |   46.8%   |   46.5%   |   ***48%***    |    48%    |   46.7%   |   46.3%   |</span>
-<span id="cb1-201"><a href="#cb1-201"></a></span>
-<span id="cb1-202"><a href="#cb1-202"></a>Currently, Kamala Harris holds the lead in most battleground states. However, it is important to note that she *only* needs Pennsylvania, Michigan, and Wisconsin to get *exactly* the 270 votes needed to be elected President.</span>
-<span id="cb1-203"><a href="#cb1-203"></a></span>
-<span id="cb1-204"><a href="#cb1-204"></a><span class="al">![](images/HarrisPathToVictory.png)</span></span>
-<span id="cb1-205"><a href="#cb1-205"></a></span>
-<span id="cb1-206"><a href="#cb1-206"></a>On the other hand, Donald Trump would only need the states of Pennsylvania, North Carolina, and Georgia to secure victory.</span>
-<span id="cb1-207"><a href="#cb1-207"></a></span>
-<span id="cb1-208"><a href="#cb1-208"></a><span class="al">![](images/TrumpPathToVictory.png)</span></span>
-<span id="cb1-209"><a href="#cb1-209"></a></span>
-<span id="cb1-210"><a href="#cb1-210"></a>Notice how for both candidates, their paths to victory require the state of Pennsylvania, as such, many experts refer to Pennsylvania as the *tipping point state*. As if either candidate wins the state of Pennsylvania, the path of victory for the other candidate gets significantly narrower. As a result, both parties have made significant efforts in the state. Harris as well has began an offensive into North Carolina to kill Donald Trumps most likely path of a second term, as same for Harris with Pennsylvania.</span>
-<span id="cb1-211"><a href="#cb1-211"></a></span>
-<span id="cb1-212"><a href="#cb1-212"></a><span class="fu">## Electoral Map</span></span>
-<span id="cb1-213"><a href="#cb1-213"></a></span>
-<span id="cb1-214"><a href="#cb1-214"></a><span class="co">[</span><span class="al">![](images/PollingElectoralMap.png)</span><span class="co">](https://yapms.com/app?m=o7f94q9u15ib6lo)</span></span>
-<span id="cb1-215"><a href="#cb1-215"></a></span>
-<span id="cb1-216"><a href="#cb1-216"></a>Based off polling data, this is what the Electoral Map would look like assuming all other states outside of the battleground remain the same. What is interesting however is that this is also the same map that Joe Biden had won in 2020. It is also important to note that between 2020 and 2024 as a result of the 2020 Census, Electoral Votes were redistributed, as such, Biden won 306 with this map in 2020, but for Harris, it would be 303. Regardless, if Harris wins with this map, this would be the first time in United States history that the electoral map has ever stayed the same for two consecutive election cycles.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-143"><a href="#cb1-143"></a>nevada_summary <span class="ot">&lt;-</span> avg_swing_presidential_polling <span class="sc">|&gt;</span> </span>
+<span id="cb1-144"><a href="#cb1-144"></a>    <span class="fu">filter</span>(state <span class="sc">==</span> <span class="st">"Nevada"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-145"><a href="#cb1-145"></a>    <span class="fu">group_by</span>(state, candidate_name) <span class="sc">|&gt;</span></span>
+<span id="cb1-146"><a href="#cb1-146"></a>    <span class="fu">summarize</span>(<span class="at">pct =</span> <span class="fu">round</span>(<span class="fu">mean</span>(a_pct, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),<span class="dv">1</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb1-147"><a href="#cb1-147"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(candidate_name))</span>
+<span id="cb1-148"><a href="#cb1-148"></a></span>
+<span id="cb1-149"><a href="#cb1-149"></a>nv_harris <span class="ot">&lt;-</span> nevada_summary<span class="sc">$</span>pct[<span class="dv">1</span>]</span>
+<span id="cb1-150"><a href="#cb1-150"></a>nv_trump <span class="ot">&lt;-</span> nevada_summary<span class="sc">$</span>pct[<span class="dv">2</span>]</span>
+<span id="cb1-151"><a href="#cb1-151"></a></span>
+<span id="cb1-152"><a href="#cb1-152"></a>arizona_summary <span class="ot">&lt;-</span> avg_swing_presidential_polling <span class="sc">|&gt;</span> </span>
+<span id="cb1-153"><a href="#cb1-153"></a>    <span class="fu">filter</span>(state <span class="sc">==</span> <span class="st">"Arizona"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-154"><a href="#cb1-154"></a>    <span class="fu">group_by</span>(state, candidate_name) <span class="sc">|&gt;</span></span>
+<span id="cb1-155"><a href="#cb1-155"></a>    <span class="fu">summarize</span>(<span class="at">pct =</span> <span class="fu">round</span>(<span class="fu">mean</span>(a_pct, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),<span class="dv">1</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb1-156"><a href="#cb1-156"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(candidate_name))</span>
+<span id="cb1-157"><a href="#cb1-157"></a></span>
+<span id="cb1-158"><a href="#cb1-158"></a>az_harris <span class="ot">&lt;-</span> arizona_summary<span class="sc">$</span>pct[<span class="dv">1</span>]</span>
+<span id="cb1-159"><a href="#cb1-159"></a>az_trump <span class="ot">&lt;-</span> arizona_summary<span class="sc">$</span>pct[<span class="dv">2</span>]</span>
+<span id="cb1-160"><a href="#cb1-160"></a><span class="in">```</span></span>
+<span id="cb1-161"><a href="#cb1-161"></a></span>
+<span id="cb1-162"><a href="#cb1-162"></a><span class="fu">## National Polling</span></span>
+<span id="cb1-163"><a href="#cb1-163"></a></span>
+<span id="cb1-164"><a href="#cb1-164"></a><span class="in">```{r, results='hide'}</span></span>
+<span id="cb1-165"><a href="#cb1-165"></a><span class="co">#| label: national_polling_chart</span></span>
+<span id="cb1-166"><a href="#cb1-166"></a></span>
+<span id="cb1-167"><a href="#cb1-167"></a><span class="fu">ggplot</span>(</span>
+<span id="cb1-168"><a href="#cb1-168"></a>    avg_national_presidential_polling,</span>
+<span id="cb1-169"><a href="#cb1-169"></a>    <span class="fu">aes</span>(<span class="at">x=</span>start_date,<span class="at">y=</span>pct,<span class="at">color=</span>candidate_name,<span class="at">fill=</span>candidate_name, <span class="at">shape=</span>candidate_name)</span>
+<span id="cb1-170"><a href="#cb1-170"></a>) <span class="sc">+</span> <span class="fu">geom_smooth</span>() <span class="sc">+</span> </span>
+<span id="cb1-171"><a href="#cb1-171"></a>    <span class="fu">geom_point</span>(</span>
+<span id="cb1-172"><a href="#cb1-172"></a>        <span class="at">data=</span>xnational_presidential_polling,</span>
+<span id="cb1-173"><a href="#cb1-173"></a>        <span class="at">mapping=</span><span class="fu">aes</span>(<span class="at">x=</span>start_date,<span class="at">y=</span>pct,<span class="at">alpha=</span><span class="fl">0.03</span>)</span>
+<span id="cb1-174"><a href="#cb1-174"></a>    ) <span class="sc">+</span></span>
+<span id="cb1-175"><a href="#cb1-175"></a>    <span class="fu">scale_color_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"Donald Trump"</span> <span class="ot">=</span> <span class="st">"#D6090B"</span>,<span class="st">"Kamala Harris"</span> <span class="ot">=</span> <span class="st">"#031BBB"</span>)) <span class="sc">+</span></span>
+<span id="cb1-176"><a href="#cb1-176"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"Donald Trump"</span> <span class="ot">=</span> <span class="st">"#D6090B"</span>,<span class="st">"Kamala Harris"</span> <span class="ot">=</span> <span class="st">"#031BBB"</span>)) <span class="sc">+</span></span>
+<span id="cb1-177"><a href="#cb1-177"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">90</span>, <span class="at">hjust=</span><span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb1-178"><a href="#cb1-178"></a>    <span class="fu">labs</span>(</span>
+<span id="cb1-179"><a href="#cb1-179"></a>        <span class="at">title=</span><span class="st">"Who Leads Nationally?"</span>,</span>
+<span id="cb1-180"><a href="#cb1-180"></a>        <span class="at">x=</span><span class="st">"Date"</span>,</span>
+<span id="cb1-181"><a href="#cb1-181"></a>        <span class="at">y=</span><span class="st">"Percentage"</span>,</span>
+<span id="cb1-182"><a href="#cb1-182"></a>        <span class="at">color=</span><span class="st">"Candidate"</span>,</span>
+<span id="cb1-183"><a href="#cb1-183"></a>        <span class="at">shape=</span><span class="st">"Candidate"</span></span>
+<span id="cb1-184"><a href="#cb1-184"></a>    ) <span class="sc">+</span> </span>
+<span id="cb1-185"><a href="#cb1-185"></a>    <span class="fu">guides</span> (</span>
+<span id="cb1-186"><a href="#cb1-186"></a>        <span class="at">fill=</span><span class="st">"none"</span>,</span>
+<span id="cb1-187"><a href="#cb1-187"></a>        <span class="at">alpha=</span><span class="st">"none"</span>,</span>
+<span id="cb1-188"><a href="#cb1-188"></a>  )</span>
+<span id="cb1-189"><a href="#cb1-189"></a><span class="in">```</span></span>
+<span id="cb1-190"><a href="#cb1-190"></a></span>
+<span id="cb1-191"><a href="#cb1-191"></a>Prior to Joe Biden dropping out of the 2024 United States Election, Donald Trump held the lead in many polls. However after Kamala Harris became the new presumptive nominee, polling has seen a significant shift in the Democratic Party's favor.</span>
+<span id="cb1-192"><a href="#cb1-192"></a></span>
+<span id="cb1-193"><a href="#cb1-193"></a><span class="fu">## Battleground State Polling</span></span>
+<span id="cb1-194"><a href="#cb1-194"></a></span>
+<span id="cb1-195"><a href="#cb1-195"></a><span class="in">```{r, results='hide'}</span></span>
+<span id="cb1-196"><a href="#cb1-196"></a><span class="co">#| label: battleground_state_summary_chart</span></span>
+<span id="cb1-197"><a href="#cb1-197"></a> </span>
+<span id="cb1-198"><a href="#cb1-198"></a> <span class="fu">ggplot</span>(</span>
+<span id="cb1-199"><a href="#cb1-199"></a>    swing_state_summary,</span>
+<span id="cb1-200"><a href="#cb1-200"></a>    <span class="fu">aes</span>(<span class="at">x=</span>state, <span class="at">y=</span>pct, <span class="at">fill=</span>candidate_name, <span class="at">group=</span>candidate_name)</span>
+<span id="cb1-201"><a href="#cb1-201"></a>) <span class="sc">+</span> </span>
+<span id="cb1-202"><a href="#cb1-202"></a>    <span class="fu">geom_col</span>(<span class="at">position=</span><span class="st">"dodge"</span>) <span class="sc">+</span> </span>
+<span id="cb1-203"><a href="#cb1-203"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(</span>
+<span id="cb1-204"><a href="#cb1-204"></a>        <span class="st">"Donald Trump"</span> <span class="ot">=</span> <span class="st">"#D6090B"</span>,</span>
+<span id="cb1-205"><a href="#cb1-205"></a>        <span class="st">"Kamala Harris"</span> <span class="ot">=</span> <span class="st">"#031BBB"</span></span>
+<span id="cb1-206"><a href="#cb1-206"></a>    )</span>
+<span id="cb1-207"><a href="#cb1-207"></a>    ) <span class="sc">+</span></span>
+<span id="cb1-208"><a href="#cb1-208"></a>    <span class="fu">coord_cartesian</span>(<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">40</span>, <span class="dv">50</span>)) <span class="sc">+</span></span>
+<span id="cb1-209"><a href="#cb1-209"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">90</span>, <span class="at">hjust=</span><span class="fl">0.5</span>)) <span class="sc">+</span> </span>
+<span id="cb1-210"><a href="#cb1-210"></a>    <span class="fu">labs</span>(</span>
+<span id="cb1-211"><a href="#cb1-211"></a>        <span class="at">title=</span><span class="st">"Who Leads In The Battleground States?"</span>,</span>
+<span id="cb1-212"><a href="#cb1-212"></a>        <span class="at">x=</span><span class="st">"State"</span>,</span>
+<span id="cb1-213"><a href="#cb1-213"></a>        <span class="at">y=</span><span class="st">"Percentage"</span>,</span>
+<span id="cb1-214"><a href="#cb1-214"></a>        <span class="at">fill=</span><span class="st">"Candidate"</span></span>
+<span id="cb1-215"><a href="#cb1-215"></a>    )</span>
+<span id="cb1-216"><a href="#cb1-216"></a><span class="in">```</span></span>
+<span id="cb1-217"><a href="#cb1-217"></a></span>
+<span id="cb1-218"><a href="#cb1-218"></a>| State          | Kamala Harris   | Donald Trump   |</span>
+<span id="cb1-219"><a href="#cb1-219"></a>|:---------------|-----------------|:---------------|</span>
+<span id="cb1-220"><a href="#cb1-220"></a>| Pennsylvania   | <span class="in">`r pa_harris`</span> % | <span class="in">`r pa_trump`</span> % |</span>
+<span id="cb1-221"><a href="#cb1-221"></a>| Michigan       | <span class="in">`r mi_harris`</span> % | <span class="in">`r mi_trump`</span> % |</span>
+<span id="cb1-222"><a href="#cb1-222"></a>| Wisconsin      | <span class="in">`r wi_harris`</span> % | <span class="in">`r wi_trump`</span> % |</span>
+<span id="cb1-223"><a href="#cb1-223"></a>| North Carolina | <span class="in">`r nc_harris`</span> % | <span class="in">`r nc_trump`</span> % |</span>
+<span id="cb1-224"><a href="#cb1-224"></a>| Georgia        | <span class="in">`r ga_harris`</span> % | <span class="in">`r ga_trump`</span> % |</span>
+<span id="cb1-225"><a href="#cb1-225"></a>| Arizona        | <span class="in">`r az_harris`</span> % | <span class="in">`r az_trump`</span> % |</span>
+<span id="cb1-226"><a href="#cb1-226"></a>| Nevada         | <span class="in">`r nv_harris`</span> % | <span class="in">`r nv_trump`</span> % |</span>
+<span id="cb1-227"><a href="#cb1-227"></a></span>
+<span id="cb1-228"><a href="#cb1-228"></a>Currently, Kamala Harris holds the lead in most battleground states. However, it is important to note that she *only* needs Pennsylvania, Michigan, and Wisconsin to get *exactly* the 270 votes needed to be elected President.</span>
+<span id="cb1-229"><a href="#cb1-229"></a></span>
+<span id="cb1-230"><a href="#cb1-230"></a><span class="al">![](images/HarrisPathToVictory.png)</span></span>
+<span id="cb1-231"><a href="#cb1-231"></a></span>
+<span id="cb1-232"><a href="#cb1-232"></a>On the other hand, Donald Trump would only need the states of Pennsylvania, North Carolina, and Georgia to secure victory.</span>
+<span id="cb1-233"><a href="#cb1-233"></a></span>
+<span id="cb1-234"><a href="#cb1-234"></a><span class="al">![](images/TrumpPathToVictory.png)</span></span>
+<span id="cb1-235"><a href="#cb1-235"></a></span>
+<span id="cb1-236"><a href="#cb1-236"></a>Notice how for both candidates, their paths to victory require the state of Pennsylvania, as such, many experts refer to Pennsylvania as the *tipping point state*. As if either candidate wins the state of Pennsylvania, the path of victory for the other candidate gets significantly narrower. As a result, both parties have made significant efforts in the state. Harris as well has began an offensive into North Carolina to kill Donald Trumps most likely path of a second term, as same for Harris with Pennsylvania.</span>
+<span id="cb1-237"><a href="#cb1-237"></a></span>
+<span id="cb1-238"><a href="#cb1-238"></a><span class="fu">## Electoral Map</span></span>
+<span id="cb1-239"><a href="#cb1-239"></a></span>
+<span id="cb1-240"><a href="#cb1-240"></a><span class="co">[</span><span class="al">![](images/PollingElectoralMap.png)</span><span class="co">](https://yapms.com/app?m=o7f94q9u15ib6lo)</span></span>
+<span id="cb1-241"><a href="#cb1-241"></a></span>
+<span id="cb1-242"><a href="#cb1-242"></a>Based off polling data, this is what the Electoral Map would look like assuming all other states outside of the battleground remain the same. What is interesting however is that this is also the same map that Joe Biden had won in 2020. It is also important to note that between 2020 and 2024 as a result of the 2020 Census, Electoral Votes were redistributed, as such, Biden won 306 with this map in 2020, but for Harris, it would be 303. Regardless, if Harris wins with this map, this would be the first time in United States history that the electoral map has ever stayed the same for two consecutive election cycles.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

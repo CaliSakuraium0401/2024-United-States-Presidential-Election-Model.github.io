@@ -101,11 +101,17 @@ pennsylvania_summary <- avg_swing_presidential_polling |>
     summarize(pct = round(mean(a_pct, na.rm = TRUE),1)) |>
     arrange(desc(candidate_name))
 
+pa_harris <- pennsylvania_summary$pct[1]
+pa_trump <- pennsylvania_summary$pct[2]
+
 michigan_summary <- avg_swing_presidential_polling |> 
     filter(state == "Michigan") |>
     group_by(state, candidate_name) |>
     summarize(pct = round(mean(a_pct, na.rm = TRUE),1)) |>
     arrange(desc(candidate_name))
+
+mi_harris <- michigan_summary$pct[1]
+mi_trump <- michigan_summary$pct[2]
 
 wisconsin_summary <- avg_swing_presidential_polling |> 
     filter(state == "Wisconsin") |>
@@ -113,11 +119,17 @@ wisconsin_summary <- avg_swing_presidential_polling |>
     summarize(pct = round(mean(a_pct, na.rm = TRUE),1)) |>
     arrange(desc(candidate_name))
 
+wi_harris <- wisconsin_summary$pct[1]
+wi_trump <- wisconsin_summary$pct[2]
+
 georgia_summary <- avg_swing_presidential_polling |> 
     filter(state == "Georgia") |>
     group_by(state, candidate_name) |>
     summarize(pct = round(mean(a_pct, na.rm = TRUE),1)) |>
     arrange(desc(candidate_name))
+
+ga_harris <- georgia_summary$pct[1]
+ga_trump <- georgia_summary$pct[2]
 
 north_carolina_summary <- avg_swing_presidential_polling |> 
     filter(state == "North Carolina") |>
@@ -125,17 +137,26 @@ north_carolina_summary <- avg_swing_presidential_polling |>
     summarize(pct = round(mean(a_pct, na.rm = TRUE),1)) |>
     arrange(desc(candidate_name))
 
+nc_harris <- north_carolina_summary$pct[1]
+nc_trump <- north_carolina_summary$pct[2]
+
 nevada_summary <- avg_swing_presidential_polling |> 
     filter(state == "Nevada") |>
     group_by(state, candidate_name) |>
     summarize(pct = round(mean(a_pct, na.rm = TRUE),1)) |>
     arrange(desc(candidate_name))
 
+nv_harris <- nevada_summary$pct[1]
+nv_trump <- nevada_summary$pct[2]
+
 arizona_summary <- avg_swing_presidential_polling |> 
     filter(state == "Arizona") |>
     group_by(state, candidate_name) |>
     summarize(pct = round(mean(a_pct, na.rm = TRUE),1)) |>
     arrange(desc(candidate_name))
+
+az_harris <- arizona_summary$pct[1]
+az_trump <- arizona_summary$pct[2]
 ```
 
 ## National Polling
@@ -194,10 +215,15 @@ Prior to Joe Biden dropping out of the 2024 United States Election, Donald Trump
     )
 ```
 
-|   Candidate   | Pennsylvania | Michigan  | Wisconsin | North Carolina |  Georgia  |  Arizona  |  Nevada   |
-|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|
-| Kamala Harris | ***49.3%***  | ***49%*** | ***50%*** |     47.8%      | **48.3%** | **47.5%** | **48.2%** |
-| Donald Trump  |    47.4%     |   46.8%   |   46.5%   |   ***48%***    |    48%    |   46.7%   |   46.3%   |
+| State          | Kamala Harris   | Donald Trump   |
+|:---------------|-----------------|:---------------|
+| Pennsylvania   | `r pa_harris` % | `r pa_trump` % |
+| Michigan       | `r mi_harris` % | `r mi_trump` % |
+| Wisconsin      | `r wi_harris` % | `r wi_trump` % |
+| North Carolina | `r nc_harris` % | `r nc_trump` % |
+| Georgia        | `r ga_harris` % | `r ga_trump` % |
+| Arizona        | `r az_harris` % | `r az_trump` % |
+| Nevada         | `r nv_harris` % | `r nv_trump` % |
 
 Currently, Kamala Harris holds the lead in most battleground states. However, it is important to note that she *only* needs Pennsylvania, Michigan, and Wisconsin to get *exactly* the 270 votes needed to be elected President.
 
