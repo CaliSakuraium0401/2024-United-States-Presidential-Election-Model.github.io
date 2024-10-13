@@ -1,12 +1,12 @@
 ---
 title: "2024 United States Presidential Election Analysis"
-author: "CaliSakuraium"
 format:
   html:
     code-fold: true
     code-tools: true
     df-print: paged
     code-line-numbers: true
+    toc: true
 editor: visual
 execute:
   warning: false
@@ -15,20 +15,25 @@ execute:
   echo: false
 ---
 
-The 2024 United States presidential election will be the 60th presidential election. It will be between current Democratic Vice President Kamala Devi Harris and former Republican President Donald John Trump.
-
 ```{r, results='hide'}
 #| label: load-packages
-
 library(dplyr)
 library(ggplot2)
 library(ggthemes)
 library(tidyverse)
+library(tidyr)
 ```
 
-```{r, results='hide'}
-#| label: create_filtered_df
+# Election Overview
 
+The 2024 United States presidential election will be the 60th quadrennial presidential election, set to be held on Tuesday, November 5, 2024. The current President, [Joe Biden](https://en.wikipedia.org/wiki/Joe_Biden), initially ran for re-election but dropped out after health concerns following his performance in a [debate that took place in June](https://en.wikipedia.org/wiki/2024_United_States_presidential_debates#June_27:_First_presidential_debate_(CNN,_Atlanta)). The election will be between current [Democratic](https://en.wikipedia.org/wiki/Democratic_Party_(United_States)) Vice President, [Kamala Devi Harris](https://en.wikipedia.org/wiki/Kamala_Harris) and former [Republican](https://en.wikipedia.org/wiki/Republican_Party_(United_States)) President [Donald John Trump](https://en.wikipedia.org/wiki/Donald_Trump).
+
+# Polling
+
+## National
+
+```{r, results='hide'}
+#| label: national_and_battleground_data
 national_presidential_polling <- read_csv('polling/national_presidential.csv')
 
 xnational_presidential_polling <- national_presidential_polling |>
@@ -74,7 +79,6 @@ avg_swing_presidential_polling <- national_presidential_polling |>
         end_date = as.Date(end_date, format="%m/%d/%y")
     ) |>
     filter(
-        !is.na(sample_size),
         internal != "TRUE",
         !partisan %in% c("DEM", "REP"),
         state %in% c("Pennsylvania", "Michigan", "Wisconsin", "North Carolina", "Georgia", "Arizona", "Nevada"),
@@ -82,7 +86,7 @@ avg_swing_presidential_polling <- national_presidential_polling |>
         start_date >= '2024-07-21'
     ) |>
     summarize(
-        a_pct = round(weighted.mean(pct, as.numeric(sample_size), na.rm = TRUE),1),
+        a_pct = round(weighted.mean(pct, as.numeric(pollscore), na.rm = TRUE),1),
         .by = c(start_date,state,candidate_name)
     ) |>
     arrange(start_date)
@@ -93,8 +97,38 @@ swing_state_summary <- avg_swing_presidential_polling |>
 ```
 
 ```{r, results='hide'}
-#| label: create_filtered_df_2
+#| label: national_polling_chart
+ggplot(
+    avg_national_presidential_polling,
+    aes(x=start_date,y=pct,color=candidate_name,fill=candidate_name, shape=candidate_name)
+) + geom_smooth() + 
+    geom_point(
+        data=xnational_presidential_polling,
+        mapping=aes(x=start_date,y=pct,alpha=0.03)
+    ) +
+    scale_color_manual(values=c("Donald Trump" = "#D6090B","Kamala Harris" = "#031BBB")) +
+    scale_fill_manual(values=c("Donald Trump" = "#D6090B","Kamala Harris" = "#031BBB")) +
+    theme(axis.text.x = element_text(angle=90, hjust=0.5)) +
+    labs(
+        title="Who Leads Nationally?",
+        caption="Source: https://projects.fivethirtyeight.com/polls/president-general/2024/national/",
+        x="Date",
+        y="Percentage",
+        color="Candidate",
+        shape="Candidate"
+    ) + 
+    guides (
+        fill="none",
+        alpha="none",
+  )
+```
 
+Previously before [Joe Biden](https://en.wikipedia.org/wiki/Joe_Biden) had dropped out of the 2024 Election, [Donald John Trump](https://en.wikipedia.org/wiki/Donald_Trump) lead many of the polls. When [Kamala Devi Harris](https://en.wikipedia.org/wiki/Kamala_Harris) became the new presidential nominee for the [Democratic Party](https://en.wikipedia.org/wiki/Democratic_Party_(United_States)), polls have seen a massive shift toward their favor.
+
+## Battleground States
+
+```{r, results='hide'}
+#| label: battleground_state_data
 pennsylvania_summary <- avg_swing_presidential_polling |> 
     filter(state == "Pennsylvania") |>
     group_by(state, candidate_name) |>
@@ -159,42 +193,8 @@ az_harris <- arizona_summary$pct[1]
 az_trump <- arizona_summary$pct[2]
 ```
 
-## National Polling
-
 ```{r, results='hide'}
-#| label: national_polling_chart
-
-ggplot(
-    avg_national_presidential_polling,
-    aes(x=start_date,y=pct,color=candidate_name,fill=candidate_name, shape=candidate_name)
-) + geom_smooth() + 
-    geom_point(
-        data=xnational_presidential_polling,
-        mapping=aes(x=start_date,y=pct,alpha=0.03)
-    ) +
-    scale_color_manual(values=c("Donald Trump" = "#D6090B","Kamala Harris" = "#031BBB")) +
-    scale_fill_manual(values=c("Donald Trump" = "#D6090B","Kamala Harris" = "#031BBB")) +
-    theme(axis.text.x = element_text(angle=90, hjust=0.5)) +
-    labs(
-        title="Who Leads Nationally?",
-        x="Date",
-        y="Percentage",
-        color="Candidate",
-        shape="Candidate"
-    ) + 
-    guides (
-        fill="none",
-        alpha="none",
-  )
-```
-
-Prior to Joe Biden dropping out of the 2024 United States Election, Donald Trump held the lead in many polls. However after Kamala Harris became the new presumptive nominee, polling has seen a significant shift in the Democratic Party's favor.
-
-## Battleground State Polling
-
-```{r, results='hide'}
-#| label: battleground_state_summary_chart
- 
+#| label: battleground_summary_chart
  ggplot(
     swing_state_summary,
     aes(x=state, y=pct, fill=candidate_name, group=candidate_name)
@@ -209,34 +209,319 @@ Prior to Joe Biden dropping out of the 2024 United States Election, Donald Trump
     theme(axis.text.x = element_text(angle=90, hjust=0.5)) + 
     labs(
         title="Who Leads In The Battleground States?",
+        caption="Source: https://projects.fivethirtyeight.com/polls/president-general/2024/national/",
         x="State",
         y="Percentage",
         fill="Candidate"
     )
 ```
 
-| State          | Kamala Harris   | Donald Trump   |
-|:---------------|-----------------|:---------------|
-| Pennsylvania   | `r pa_harris` % | `r pa_trump` % |
-| Michigan       | `r mi_harris` % | `r mi_trump` % |
-| Wisconsin      | `r wi_harris` % | `r wi_trump` % |
-| North Carolina | `r nc_harris` % | `r nc_trump` % |
-| Georgia        | `r ga_harris` % | `r ga_trump` % |
-| Arizona        | `r az_harris` % | `r az_trump` % |
-| Nevada         | `r nv_harris` % | `r nv_trump` % |
+|   | State | EV | Kamala Harris | Donald Trump |
+|-----|:--------------|---------------|:--------------|:--------------|
+| ![](images/Flag_Pennsylvania.png) | Pennsylvania | 19 | `r pa_harris` % | `r pa_trump` % |
+| ![](images/Flag_Michigan.png) | Michigan | 5 | `r mi_harris` % | `r mi_trump` % |
+| ![](images/Flag_Wisconsin.png) | Wisconsin | 10 | `r wi_harris` % | `r wi_trump` % |
+| ![](images/Flag_NorthCarolina.png) | North Carolina | 16 | `r nc_harris` % | `r nc_trump` % |
+| ![](images/Flag_Georgia.png) | Georgia | 16 | `r ga_harris` % | `r ga_trump` % |
+| ![](images/Flag_Arizona.png) | Arizona | 11 | `r az_harris` % | `r az_trump` % |
+| ![](images/Flag_Nevada.png) | Nevada | 6 | `r nv_harris` % | `r nv_trump` % |
 
-Currently, Kamala Harris holds the lead in most battleground states. However, it is important to note that she *only* needs Pennsylvania, Michigan, and Wisconsin to get *exactly* the 270 votes needed to be elected President.
+Currently, [Kamala Harris](https://en.wikipedia.org/wiki/Kamala_Harris) holds the lead in most battleground states. It is important to note that she *only* needs Pennsylvania, Michigan, and Wisconsin to achieve the exact threshold of 270 Elecotral Votes needed to be elected President. On the other hand, Donald Trump would only need the states of Pennsylvania, North Carolina, and Georgia to also achieve that threshold.
 
-![](images/HarrisPathToVictory.png)
+|       Harris Path To Victory        |       Trump Path To Victory        |
+|:-----------------------------------:|:----------------------------------:|
+| ![](images/HarrisPathToVictory.png) | ![](images/TrumpPathToVictory.png) |
 
-On the other hand, Donald Trump would only need the states of Pennsylvania, North Carolina, and Georgia to secure victory.
+## Favorability
 
-![](images/TrumpPathToVictory.png)
+```{r, results='hide'}
+#| label: favorability_data
 
-Notice how for both candidates, their paths to victory require the state of Pennsylvania, as such, many experts refer to Pennsylvania as the *tipping point state*. As if either candidate wins the state of Pennsylvania, the path of victory for the other candidate gets significantly narrower. As a result, both parties have made significant efforts in the state. Harris as well has began an offensive into North Carolina to kill Donald Trumps most likely path of a second term, as same for Harris with Pennsylvania.
+favorability_polling_ut <- read_csv("polling/favorability.csv")
 
-## Electoral Map
+favorability_polling <- favorability_polling_ut |>
+    select(pollster, sponsors, numeric_grade, pollscore, 
+    transparency_score, start_date, end_date, sample_size,
+    population, internal, partisan, politician, favorable:very_unfavorable) |>
+    filter(
+        !is.na(favorable),
+        !is.na(unfavorable),
+        !is.na(very_favorable),
+        !is.na(somewhat_favorable),
+        !is.na(somewhat_unfavorable),
+        !is.na(very_unfavorable),
+        internal != "TRUE",
+        !partisan %in% c("DEM", "REP"),
+        politician %in% c("Donald Trump", "JD Vance", "Kamala Harris", "Tim Walz")
+    ) |>
+    mutate(
+        start_date = as.Date(start_date, format="%m/%d/%y"),
+        end_date = as.Date(end_date, format="%m/%d/%y")
+    )
 
-[![](images/PollingElectoralMap.png)](https://yapms.com/app?m=o7f94q9u15ib6lo)
+favorability_polling_duo <- favorability_polling |>
+    select(pollster:alternate_answers) |>
+    rename(
+        `Favorable` = favorable,
+        `Unfavorable` = unfavorable,
+        `Alternate Answer` = alternate_answers
+    ) |>
+    pivot_longer(
+        `Favorable`:`Alternate Answer`,
+        names_to = "view",
+        values_to = "pct"
+    )
 
-Based off polling data, this is what the Electoral Map would look like assuming all other states outside of the battleground remain the same. What is interesting however is that this is also the same map that Joe Biden had won in 2020. It is also important to note that between 2020 and 2024 as a result of the 2020 Census, Electoral Votes were redistributed, as such, Biden won 306 with this map in 2020, but for Harris, it would be 303. Regardless, if Harris wins with this map, this would be the first time in United States history that the electoral map has ever stayed the same for two consecutive election cycles.
+favorability_polling_duo_summary <- favorability_polling_duo |>
+    filter(!is.na(sample_size)) |>
+    summarize(
+        pct = weighted.mean(pct, sample_size),
+        .by = c(start_date, politician, view, pct)
+    ) |> 
+    arrange(start_date)
+
+favorability_polling_scale <- favorability_polling |>
+    select(-favorable, unfavorable, alternate_answers) |>
+        rename(
+        `Very Favorable` = very_favorable,
+        `Somewhat Favorable` = somewhat_favorable,
+        `Somewhat Unfavorable` = somewhat_unfavorable,
+        `Very Unfavorable` = very_unfavorable,
+    ) |>
+    pivot_longer(
+        `Very Favorable`:`Very Unfavorable`,
+        names_to = "view",
+        values_to = "pct"
+    ) 
+
+favorability_polling_scale_summary <- favorability_polling_scale |>
+    filter(!is.na(sample_size)) |>
+    summarize(
+        pct = weighted.mean(pct, sample_size),
+        .by = c(start_date, politician, view, pct)
+    ) |> 
+    arrange(start_date)
+```
+
+## Issues
+
+### Abortion
+
+```{r, results='hide'}
+#| label: abortion_view_data
+ut_abortion_polling <- read_csv('polling/abortion_view.csv')
+
+abortion_polling <- ut_abortion_polling |>
+    pivot_longer(
+    legal_any:no_opinion,
+    names_to="stance",
+    values_to = "pct",
+    ) |> mutate(
+        pct = as.numeric(pct),
+        date = as.factor(date)
+    ) |> separate(date, into=c("year", "monthday"),sep=4, remove=TRUE) |> 
+    separate(monthday, into=c("month", "days"),sep=4, remove=TRUE) |>
+    select(!days)
+
+abortion_polling_summary <- ut_abortion_polling |> 
+    separate(date, into=c("year", "monthday"),sep=4, remove=TRUE) |> 
+    separate(monthday, into=c("month", "days"),sep=4, remove=TRUE) |>
+    mutate(month = trimws(month)) |>
+    select(!days) |>
+    summarize(
+        `Legal Under Any Circumstances` = mean(legal_any),
+        `Legal Under Certain Circumstances` = mean(legal_limited),
+        `Illegal Under Any Circumstances` = mean(illegal_all),
+        .by = c(year,month)
+    ) |>
+    pivot_longer(
+        `Legal Under Any Circumstances`:`Illegal Under Any Circumstances`,
+        names_to="stance",
+        values_to = "pct"  
+    )
+```
+
+```{r, results='hide'}
+#| label: abortion_view_chart
+ggplot(
+    abortion_polling_summary,
+    aes(x=as.numeric(year), y=pct, group=stance, color=stance, fill=stance)
+) +
+    geom_line() +
+    scale_color_manual(
+        values = c(
+            "Legal Under Any Circumstances" = "#527F3F",
+            "Legal Under Certain Circumstances" = "#3F7F7F",
+            "Illegal Under Any Circumstances" = "#7F3F3F"
+        )
+    ) +
+    scale_fill_manual(
+        values = c(
+            "Legal Under Any Circumstances" = "#527F3F",
+            "Legal Under Certain Circumstances" = "#3F7F7F",
+            "Illegal Under Any Circumstances" = "#7F3F3F"
+        )
+    ) +
+    theme(
+        axis.text.x = element_text(angle = 90, hjust = 0.5)
+    ) +
+    labs(
+        title = "What Are Americans' Opinions On Abortion?",
+        caption="Source: https://news.gallup.com/poll/1576/abortion.aspx",
+        x = "Year",
+        y = "Percentage",
+        color = "Stance/Position"
+    ) + guides(
+        fill = "none"
+    )
+```
+
+```{r, results='hide'}
+#| label: abortion_stance_data
+abortion_stance_ut <- read_csv('polling/abortion_stance.csv')
+
+abortion_stance <- abortion_stance_ut |>
+    mutate(
+        dont_know_terms = na_if(dont_know_terms, "*"),
+        no_opinion = na_if(no_opinion, "*"),
+        dont_know_terms = as.numeric(dont_know_terms),
+        no_opinion = as.numeric(no_opinion)
+    ) |> separate(
+        date,
+        into=c("year", "monthday"),
+        sep=4,
+        remove=TRUE
+        ) |>
+        separate(
+        monthday,
+        into=c("month", "day"),
+        sep=4
+        ) |>
+        select(-month, -day) |>
+        rename(
+            `Pro-Choice` = pro_choice,
+            `Pro-Life` = pro_life,
+            `Mixed/Neither` = mixed_neither,
+            `Don't Know Terms` = dont_know_terms,
+            `No Opinion` = no_opinion
+        ) |>
+        pivot_longer(
+            `Pro-Choice`:`No Opinion`,
+            names_to = "stance",
+            values_to = "pct"
+        ) |>
+        filter(!is.na(pct)) |>
+        mutate(year = as.factor(year))
+```
+
+```{r, results='hide'}
+#| label: abortion_stance_chart
+ggplot(
+    abortion_stance,
+    aes(x=year,y=pct,color=stance,group=stance)
+) + geom_line() + 
+    scale_color_manual(
+        values = c(
+            "Pro-Choice" = "#6D7F3F",
+            "Pro-Life" = "#3F7F7F",
+            "Mixed/Neither" = "#503F7F",
+            "No Opinion" = "#7F3F3F"
+            )) +
+    labs(
+    title="What Are Americans Stances on Abortion?",
+    x="Year",y="Percentage",
+    caption="Source: https://news.gallup.com/poll/1576/abortion.aspx",
+    color="Stance"
+    ) +
+    theme(
+        axis.text.x = element_text(angle = 90, hjust = 0.5)
+    )
+```
+
+```{r, results='hide'}
+#| label: abortion_impact_data
+abortion_impact_polling_ut <- read_csv('polling/abortion_impact.csv')
+
+abortion_impact_polling <- abortion_impact_polling_ut |>
+    separate(date, into=c("year", "monthday"), sep=4) |>
+    separate(monthday, into=c("month", "day"), sep=4) |>
+    select(-day) |>
+    rename(
+        `Must Share Views` = must_share_views,
+        `Important Factor` = one_of_the_many_important_factors,
+        `Not A Major Issue` = not_a_major_issue,
+        `No Opinion` = no_opinion
+    ) |>
+    pivot_longer(
+        `Must Share Views`:`No Opinion`,
+        names_to = "impact",
+        values_to = "pct"
+    ) |>
+    mutate(
+        year = as.factor(year),
+        month = trimws(month),
+        pct = as.numeric(pct)
+    ) |>
+    arrange(desc(year))
+
+abortion_impact_polling_summary <- abortion_impact_polling |>
+    summarise(
+        pct = mean(pct),
+        .by = c(year, impact)
+    )
+```
+
+```{r, results='hide'}
+#| label: abortion_impact_chart
+ggplot(
+    abortion_impact_polling_summary,
+    aes(x=year,y=pct,group=impact,color=impact)
+) + geom_line() + scale_color_manual(
+        values = c(
+            "Must Share Views" = "#6D7F3F",
+            "Important Factor" = "#3F7F7F",
+            "Not A Major Issue" = "#503F7F",
+            "No Opinion" = "#7F3F3F"
+            )) +
+    labs(
+        title="Does Candidates Stance Impact Vote?",
+        x="Year",y="Percentage",
+        caption="Source: https://news.gallup.com/poll/1576/abortion.aspx",
+        color="Stance"
+    ) +
+    theme(
+        axis.text.x = element_text(angle = 90, hjust = 0.5)
+    )
+```
+
+### Border/Immigration
+
+W.I.P
+
+### Climate Change
+
+W.I.P
+
+### Democracy
+
+W.I.P
+
+### Economy
+
+W.I.P
+
+### Education
+
+W.I.P
+
+### Forign Policy
+
+W.I.P
+
+### Healthcare
+
+W.I.P
+
+### LGBTQ+ Rights
+
+W.I.P
