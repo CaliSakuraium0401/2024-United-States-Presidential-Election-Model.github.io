@@ -1,10 +1,16 @@
 # [**2024 United States Presidential Election Analysis**](https://calisakuraium0401.github.io/2024-United-States-Presidential-Election-Model.github.io/)
 ## Things To Be Added: 
-
--   Approval Rating Polling
-
--   Individual Swing State Polling Over Time
-
--   Expand Upon Likely Scenarios
-
--   Improve Analysis
+- Improve Analysis (WIP)
+- Favorability Polling (WIP)
+- Issue Polling Section (WIP)
+    - Abortion Subsection (WIP)
+    - Border/Immigration (Not Started)
+    - Climate Change (Not Started)
+    - Democracy (Not Started)
+    - Economy (Not Started)
+    - Education (Not Started)
+    - Foreign Policy (Not Started)
+    - Healthcare (Not Started)
+    - LGBTQ+ Rights (Not Started)
+- Individual Swing State Polling Over Time (Not Started)
+- Expand Upon Likely Scenarios (Not Started)
