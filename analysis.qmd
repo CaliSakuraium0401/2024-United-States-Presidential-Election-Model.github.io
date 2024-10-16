@@ -45,6 +45,7 @@ xnational_presidential_polling <- national_presidential_polling |>
     ) |>
     filter(
         !is.na(sample_size),
+        !pollster %in% c("Trafalgar Group", "Patriot Polling", "SoCal Strategies", "RMG Research", "InsiderAdvantage", "co/efficient"),
         internal != "TRUE",
         !partisan %in% c("DEM", "REP"),
         candidate_name %in% c("Kamala Harris", "Donald Trump"),
@@ -60,6 +61,7 @@ avg_national_presidential_polling <- national_presidential_polling |>
     ) |>
     filter(
         !is.na(sample_size),
+        !pollster %in% c("Trafalgar Group", "Patriot Polling", "SoCal Strategies", "RMG Research", "InsiderAdvantage", "co/efficient"),
         internal != "TRUE",
         !partisan %in% c("DEM", "REP"),
         candidate_name %in% c("Kamala Harris", "Donald Trump"),
@@ -79,6 +81,7 @@ avg_swing_presidential_polling <- national_presidential_polling |>
         end_date = as.Date(end_date, format="%m/%d/%y")
     ) |>
     filter(
+        !pollster %in% c("Trafalgar Group", "Patriot Polling", "SoCal Strategies", "RMG Research", "InsiderAdvantage", "co/efficient"),
         internal != "TRUE",
         !partisan %in% c("DEM", "REP"),
         state %in% c("Pennsylvania", "Michigan", "Wisconsin", "North Carolina", "Georgia", "Arizona", "Nevada"),
@@ -217,7 +220,7 @@ az_trump <- arizona_summary$pct[2]
 ```
 
 |   | State | EV | Kamala Harris | Donald Trump |
-|-----|:--------------|---------------|:--------------|:--------------|
+|---------------|:--------------|---------------|:--------------|:--------------|
 | ![](images/Flag_Pennsylvania.png) | Pennsylvania | 19 | `r pa_harris` % | `r pa_trump` % |
 | ![](images/Flag_Michigan.png) | Michigan | 5 | `r mi_harris` % | `r mi_trump` % |
 | ![](images/Flag_Wisconsin.png) | Wisconsin | 10 | `r wi_harris` % | `r wi_trump` % |
@@ -250,6 +253,7 @@ favorability_polling <- favorability_polling_ut |>
         !is.na(somewhat_favorable),
         !is.na(somewhat_unfavorable),
         !is.na(very_unfavorable),
+        !pollster %in% c("Trafalgar Group", "Patriot Polling", "SoCal Strategies", "RMG Research", "InsiderAdvantage", "co/efficient"),
         internal != "TRUE",
         !partisan %in% c("DEM", "REP"),
         politician %in% c("Donald Trump", "JD Vance", "Kamala Harris", "Tim Walz")
