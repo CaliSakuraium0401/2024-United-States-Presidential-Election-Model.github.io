@@ -220,7 +220,7 @@ az_trump <- arizona_summary$pct[2]
 ```
 
 |   | State | EV | Kamala Harris | Donald Trump |
-|---------------|:--------------|---------------|:--------------|:--------------|
+|-----|:--------------|---------------|:--------------|:--------------|
 | ![](images/Flag_Pennsylvania.png) | Pennsylvania | 19 | `r pa_harris` % | `r pa_trump` % |
 | ![](images/Flag_Michigan.png) | Michigan | 5 | `r mi_harris` % | `r mi_trump` % |
 | ![](images/Flag_Wisconsin.png) | Wisconsin | 10 | `r wi_harris` % | `r wi_trump` % |
