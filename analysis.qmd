@@ -38,77 +38,84 @@ national_presidential_polling <- read_csv('polling/national_presidential.csv')
 
 xnational_presidential_polling <- national_presidential_polling |>
     mutate(
-        sample_size = as.numeric(sample_size),
         pollscore = as.numeric(pollscore),
+        sample_size = as.numeric(sample_size),
+        numeric_grade = as.numeric(numeric_grade),
         start_date = as.Date(start_date, format="%m/%d/%y"),
         end_date = as.Date(end_date, format="%m/%d/%y")
     ) |>
     filter(
-        !is.na(sample_size),
-        !pollster %in% c("Trafalgar Group", "Patriot Polling", "SoCal Strategies", "RMG Research", "InsiderAdvantage", "co/efficient"),
-        internal != "TRUE",
-        !partisan %in% c("DEM", "REP"),
-        candidate_name %in% c("Kamala Harris", "Donald Trump"),
-        start_date >= '2024-07-21'
-    )
+      end_date >= '2024-07-21',
+      candidate_name %in% c("Kamala Harris", "Donald Trump"),
+      is.na(state),
+      !is.na(sample_size),
+        (
+        !partisan %in% c("DEM", "REP") |
+        !pollster %in% c("Trafalgar Group", "Patriot Polling", "SoCal Strategies", "RMG 
+         Research","InsiderAdvantage", "co/efficient")
+        )
+    ) |>
+    rename(date = end_date) |>
+    select(pollster, date, candidate_name, pct)
 
 avg_national_presidential_polling <- national_presidential_polling |>
     mutate(
-        sample_size = as.numeric(sample_size),
         pollscore = as.numeric(pollscore),
+        sample_size = as.numeric(sample_size),
+        numeric_grade = as.numeric(numeric_grade),
         start_date = as.Date(start_date, format="%m/%d/%y"),
         end_date = as.Date(end_date, format="%m/%d/%y")
     ) |>
     filter(
-        !is.na(sample_size),
-        !pollster %in% c("Trafalgar Group", "Patriot Polling", "SoCal Strategies", "RMG Research", "InsiderAdvantage", "co/efficient"),
-        internal != "TRUE",
-        !partisan %in% c("DEM", "REP"),
-        candidate_name %in% c("Kamala Harris", "Donald Trump"),
-        start_date >= '2024-07-21'
-    ) |>
+      end_date >= '2024-07-21',
+      candidate_name %in% c("Kamala Harris", "Donald Trump"),
+      is.na(state),
+      !is.na(sample_size),
+        (
+        !partisan %in% c("DEM", "REP") |
+        !pollster %in% c("Trafalgar Group", "Patriot Polling", "SoCal Strategies", "RMG 
+         Research","InsiderAdvantage", "co/efficient")
+        )
+    ) |> 
     summarize(
-        pct = round(weighted.mean(pct, as.numeric(sample_size), na.rm = TRUE),1),
-        .by = c(start_date,candidate_name)
+        pct = round(weighted.mean(pct, sample_size, na.rm = TRUE),1),
+        .by = c(end_date,candidate_name)
     ) |>
-    arrange(start_date)
+    rename(date = end_date) |>
+    arrange(date)
 
 avg_swing_presidential_polling <- national_presidential_polling |>
     mutate(
-        sample_size = as.numeric(sample_size),
         pollscore = as.numeric(pollscore),
+        sample_size = as.numeric(sample_size),
+        numeric_grade = as.numeric(numeric_grade),
         start_date = as.Date(start_date, format="%m/%d/%y"),
         end_date = as.Date(end_date, format="%m/%d/%y")
     ) |>
     filter(
-        !pollster %in% c("Trafalgar Group", "Patriot Polling", "SoCal Strategies", "RMG Research", "InsiderAdvantage", "co/efficient"),
-        internal != "TRUE",
-        !partisan %in% c("DEM", "REP"),
-        state %in% c("Pennsylvania", "Michigan", "Wisconsin", "North Carolina", "Georgia", "Arizona", "Nevada"),
-        candidate_name %in% c("Kamala Harris", "Donald Trump"),
-        start_date >= '2024-07-21'
-    ) |>
-    summarize(
-        a_pct = round(weighted.mean(pct, as.numeric(pollscore), na.rm = TRUE),1),
-        .by = c(start_date,state,candidate_name)
-    ) |>
-    arrange(start_date)
+      end_date >= '2024-07-21',
+      candidate_name %in% c("Kamala Harris", "Donald Trump"),
+      !is.na(sample_size),
+      state %in% c("Pennsylvania", "Michigan", "Wisconsin", "North Carolina", "Georgia", "Arizona", "Nevada"),
+        (
+        !partisan %in% c("DEM", "REP") |
+        !pollster %in% c("Trafalgar Group", "Patriot Polling", "SoCal Strategies", "RMG Research", 
+        "InsiderAdvantage", "co/efficient")
+        )
+    )
 
 swing_state_summary <- avg_swing_presidential_polling |>
     group_by(state, candidate_name) |>
-    summarize(pct = round(mean(a_pct, na.rm = TRUE),1))
+    summarize(pct = round(weighted.mean(pct, sample_size, na.rm = TRUE),1))
 ```
 
 ```{r, results='hide'}
 #| label: national_polling_chart
 ggplot(
     avg_national_presidential_polling,
-    aes(x=start_date,y=pct,color=candidate_name,fill=candidate_name, shape=candidate_name)
+    aes(x=date,y=pct,color=candidate_name,fill=candidate_name, shape=candidate_name)
 ) + geom_smooth() + 
-    geom_point(
-        data=xnational_presidential_polling,
-        mapping=aes(x=start_date,y=pct,alpha=0.03)
-    ) +
+    geom_point(data=xnational_presidential_polling,mapping=aes(x=date,y=pct),alpha=0.1) +
     scale_color_manual(values=c("Donald Trump" = "#D6090B","Kamala Harris" = "#031BBB")) +
     scale_fill_manual(values=c("Donald Trump" = "#D6090B","Kamala Harris" = "#031BBB")) +
     theme(axis.text.x = element_text(angle=90, hjust=0.5)) +
@@ -132,64 +139,50 @@ Previously before [Joe Biden](https://en.wikipedia.org/wiki/Joe_Biden) had dropp
 
 ```{r, results='hide'}
 #| label: battleground_state_data
-pennsylvania_summary <- avg_swing_presidential_polling |> 
+pennsylvania_summary <- swing_state_summary |> 
     filter(state == "Pennsylvania") |>
-    group_by(state, candidate_name) |>
-    summarize(pct = round(mean(a_pct, na.rm = TRUE),1)) |>
     arrange(desc(candidate_name))
 
 pa_harris <- pennsylvania_summary$pct[1]
 pa_trump <- pennsylvania_summary$pct[2]
 
-michigan_summary <- avg_swing_presidential_polling |> 
+michigan_summary <- swing_state_summary |> 
     filter(state == "Michigan") |>
-    group_by(state, candidate_name) |>
-    summarize(pct = round(mean(a_pct, na.rm = TRUE),1)) |>
     arrange(desc(candidate_name))
 
 mi_harris <- michigan_summary$pct[1]
 mi_trump <- michigan_summary$pct[2]
 
-wisconsin_summary <- avg_swing_presidential_polling |> 
+wisconsin_summary <- swing_state_summary |> 
     filter(state == "Wisconsin") |>
-    group_by(state, candidate_name) |>
-    summarize(pct = round(mean(a_pct, na.rm = TRUE),1)) |>
     arrange(desc(candidate_name))
 
 wi_harris <- wisconsin_summary$pct[1]
 wi_trump <- wisconsin_summary$pct[2]
 
-georgia_summary <- avg_swing_presidential_polling |> 
+georgia_summary <- swing_state_summary |> 
     filter(state == "Georgia") |>
-    group_by(state, candidate_name) |>
-    summarize(pct = round(mean(a_pct, na.rm = TRUE),1)) |>
     arrange(desc(candidate_name))
 
 ga_harris <- georgia_summary$pct[1]
 ga_trump <- georgia_summary$pct[2]
 
-north_carolina_summary <- avg_swing_presidential_polling |> 
+north_carolina_summary <- swing_state_summary |> 
     filter(state == "North Carolina") |>
-    group_by(state, candidate_name) |>
-    summarize(pct = round(mean(a_pct, na.rm = TRUE),1)) |>
     arrange(desc(candidate_name))
 
 nc_harris <- north_carolina_summary$pct[1]
 nc_trump <- north_carolina_summary$pct[2]
 
-nevada_summary <- avg_swing_presidential_polling |> 
+nevada_summary <- swing_state_summary |> 
     filter(state == "Nevada") |>
-    group_by(state, candidate_name) |>
-    summarize(pct = round(mean(a_pct, na.rm = TRUE),1)) |>
     arrange(desc(candidate_name))
 
 nv_harris <- nevada_summary$pct[1]
 nv_trump <- nevada_summary$pct[2]
 
-arizona_summary <- avg_swing_presidential_polling |> 
+arizona_summary <- swing_state_summary |> 
     filter(state == "Arizona") |>
-    group_by(state, candidate_name) |>
-    summarize(pct = round(mean(a_pct, na.rm = TRUE),1)) |>
     arrange(desc(candidate_name))
 
 az_harris <- arizona_summary$pct[1]
@@ -220,7 +213,7 @@ az_trump <- arizona_summary$pct[2]
 ```
 
 |   | State | EV | Kamala Harris | Donald Trump |
-|-----|:--------------|---------------|:--------------|:--------------|
+|------|:--------------|------|:--------------|:--------------|
 | ![](images/Flag_Pennsylvania.png) | Pennsylvania | 19 | `r pa_harris` % | `r pa_trump` % |
 | ![](images/Flag_Michigan.png) | Michigan | 5 | `r mi_harris` % | `r mi_trump` % |
 | ![](images/Flag_Wisconsin.png) | Wisconsin | 10 | `r wi_harris` % | `r wi_trump` % |
