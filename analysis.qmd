@@ -142,54 +142,61 @@ Previously before [Joe Biden](https://en.wikipedia.org/wiki/Joe_Biden) had dropp
 
 ```{r, results='hide'}
 #| label: battleground_state_data
-pennsylvania_summary <- swing_state_summary |> 
-    filter(state == "Pennsylvania") |>
-    arrange(desc(candidate_name))
+pa_harris <- swing_state_summary |> 
+    filter(state == "Pennsylvania", candidate_name == "Kamala Harris") |> 
+    pull(pct)
 
-pa_harris <- pennsylvania_summary$pct[1]
-pa_trump <- pennsylvania_summary$pct[2]
+pa_trump <- swing_state_summary |> 
+    filter(state == "Pennsylvania", candidate_name == "Donald Trump") |> 
+    pull(pct)
 
-michigan_summary <- swing_state_summary |> 
-    filter(state == "Michigan") |>
-    arrange(desc(candidate_name))
+mi_harris <- swing_state_summary |> 
+    filter(state == "Michigan", candidate_name == "Kamala Harris") |> 
+    pull(pct)
 
-mi_harris <- michigan_summary$pct[1]
-mi_trump <- michigan_summary$pct[2]
+mi_trump <- swing_state_summary |> 
+    filter(state == "Michigan", candidate_name == "Donald Trump") |> 
+    pull(pct)
 
-wisconsin_summary <- swing_state_summary |> 
-    filter(state == "Wisconsin") |>
-    arrange(desc(candidate_name))
+wi_harris <- swing_state_summary |> 
+    filter(state == "Wisconsin", candidate_name == "Kamala Harris") |> 
+    pull(pct)
 
-wi_harris <- wisconsin_summary$pct[1]
-wi_trump <- wisconsin_summary$pct[2]
+wi_trump <- swing_state_summary |> 
+    filter(state == "Wisconsin", candidate_name == "Donald Trump") |> 
+    pull(pct)
 
-georgia_summary <- swing_state_summary |> 
-    filter(state == "Georgia") |>
-    arrange(desc(candidate_name))
+ga_harris <- swing_state_summary |> 
+    filter(state == "Georgia", candidate_name == "Kamala Harris") |> 
+    pull(pct)
 
-ga_harris <- georgia_summary$pct[1]
-ga_trump <- georgia_summary$pct[2]
+ga_trump <- swing_state_summary |> 
+    filter(state == "Georgia", candidate_name == "Donald Trump") |> 
+    pull(pct)
 
-north_carolina_summary <- swing_state_summary |> 
-    filter(state == "North Carolina") |>
-    arrange(desc(candidate_name))
+nc_harris <- swing_state_summary |> 
+    filter(state == "North Carolina", candidate_name == "Kamala Harris") |> 
+    pull(pct)
 
-nc_harris <- north_carolina_summary$pct[1]
-nc_trump <- north_carolina_summary$pct[2]
+nc_trump <- swing_state_summary |> 
+    filter(state == "North Carolina", candidate_name == "Donald Trump") |> 
+    pull(pct)
 
-nevada_summary <- swing_state_summary |> 
-    filter(state == "Nevada") |>
-    arrange(desc(candidate_name))
+nv_harris <- swing_state_summary |> 
+    filter(state == "Nevada", candidate_name == "Kamala Harris") |> 
+    pull(pct)
 
-nv_harris <- nevada_summary$pct[1]
-nv_trump <- nevada_summary$pct[2]
+nv_trump <- swing_state_summary |> 
+    filter(state == "Nevada", candidate_name == "Donald Trump") |> 
+    pull(pct)
 
-arizona_summary <- swing_state_summary |> 
-    filter(state == "Arizona") |>
-    arrange(desc(candidate_name))
+az_harris <- swing_state_summary |> 
+    filter(state == "Arizona", candidate_name == "Kamala Harris") |> 
+    pull(pct)
 
-az_harris <- arizona_summary$pct[1]
-az_trump <- arizona_summary$pct[2]
+az_trump <- swing_state_summary |> 
+    filter(state == "Arizona", candidate_name == "Donald Trump") |> 
+    pull(pct)
 ```
 
 ```{r, results='hide'}
