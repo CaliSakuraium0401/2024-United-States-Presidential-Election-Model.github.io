@@ -468,32 +468,29 @@ ggplot(
 ut_abortion_polling <- read_csv('polling/abortion_view.csv')
 
 abortion_polling <- ut_abortion_polling |>
-    pivot_longer(
-    legal_any:no_opinion,
-    names_to="stance",
-    values_to = "pct",
-    ) |> mutate(
-        pct = as.numeric(pct),
-        date = as.factor(date)
-    ) |> separate(date, into=c("year", "monthday"),sep=4, remove=TRUE) |> 
-    separate(monthday, into=c("month", "days"),sep=4, remove=TRUE) |>
-    select(!days)
-
-abortion_polling_summary <- ut_abortion_polling |> 
-    separate(date, into=c("year", "monthday"),sep=4, remove=TRUE) |> 
-    separate(monthday, into=c("month", "days"),sep=4, remove=TRUE) |>
-    mutate(month = trimws(month)) |>
-    select(!days) |>
-    summarize(
-        `Legal Under Any Circumstances` = mean(legal_any),
-        `Legal Under Certain Circumstances` = mean(legal_limited),
-        `Illegal Under Any Circumstances` = mean(illegal_all),
-        .by = c(year,month)
+    rename(
+        `Legal Under Any Circumstances` = legal_any,
+        `Legal Under Certain Circumstances`= legal_limited,
+        `Illegal Under Any Circumstances` = illegal_all,
+        `No Opinion` = no_opinion
     ) |>
     pivot_longer(
-        `Legal Under Any Circumstances`:`Illegal Under Any Circumstances`,
-        names_to="stance",
-        values_to = "pct"  
+    `Legal Under Any Circumstances`:`No Opinion`,
+    names_to="view",
+    values_to = "pct",
+    ) |> 
+    separate(date, into=c("year", "monthday"),sep=4, remove=TRUE) |> 
+    separate(monthday, into=c("month", "days"),sep=4, remove=TRUE) |>
+    select(!days) |>
+    mutate(
+         year = as.double(year),
+         month = trimws(month)
+    )
+
+abortion_polling_summary <- abortion_polling |> 
+    summarize(
+        pct = round(mean(pct),1),
+        .by = c(year, view)
     )
 ```
 
@@ -501,17 +498,11 @@ abortion_polling_summary <- ut_abortion_polling |>
 #| label: abortion_view_chart
 ggplot(
     abortion_polling_summary,
-    aes(x=as.numeric(year), y=pct, group=stance, color=stance, fill=stance)
+    aes(x=year, y=pct, group=view, color=view)
 ) +
     geom_line() +
+    geom_point(size=0.5) +
     scale_color_manual(
-        values = c(
-            "Legal Under Any Circumstances" = "#527F3F",
-            "Legal Under Certain Circumstances" = "#3F7F7F",
-            "Illegal Under Any Circumstances" = "#7F3F3F"
-        )
-    ) +
-    scale_fill_manual(
         values = c(
             "Legal Under Any Circumstances" = "#527F3F",
             "Legal Under Certain Circumstances" = "#3F7F7F",
@@ -522,27 +513,27 @@ ggplot(
         axis.text.x = element_text(angle = 90, hjust = 0.5)
     ) +
     labs(
-        title = "What Are Americans' Opinions On Abortion?",
+        title = "What Are Americans View On Abortion Legality?",
         caption="Source: https://news.gallup.com/poll/1576/abortion.aspx",
         x = "Year",
         y = "Percentage",
-        color = "Stance/Position"
+        color = "View"
     ) + guides(
         fill = "none"
-    )
+    ) +
+    scale_x_continuous(breaks = seq(1975, 2024, 3)) +
+    scale_y_continuous(breaks = seq(0, 60, 10))
 ```
 
 ```{r, results='hide'}
 #| label: abortion_stance_data
 abortion_stance_ut <- read_csv('polling/abortion_stance.csv')
 
+abortion_stance_ut <- abortion_stance_ut |>
+    select(-dont_know_terms,-no_opinion)
+
 abortion_stance <- abortion_stance_ut |>
-    mutate(
-        dont_know_terms = na_if(dont_know_terms, "*"),
-        no_opinion = na_if(no_opinion, "*"),
-        dont_know_terms = as.numeric(dont_know_terms),
-        no_opinion = as.numeric(no_opinion)
-    ) |> separate(
+    separate(
         date,
         into=c("year", "monthday"),
         sep=4,
@@ -553,35 +544,39 @@ abortion_stance <- abortion_stance_ut |>
         into=c("month", "day"),
         sep=4
         ) |>
-        select(-month, -day) |>
+        select(-day) |>
         rename(
             `Pro-Choice` = pro_choice,
             `Pro-Life` = pro_life,
             `Mixed/Neither` = mixed_neither,
-            `Don't Know Terms` = dont_know_terms,
-            `No Opinion` = no_opinion
         ) |>
         pivot_longer(
-            `Pro-Choice`:`No Opinion`,
+            `Pro-Choice`:`Mixed/Neither`,
             names_to = "stance",
             values_to = "pct"
-        ) |>
-        filter(!is.na(pct)) |>
-        mutate(year = as.factor(year))
+        ) |> mutate(
+         year = as.double(year),
+         month = trimws(month)
+        )
+
+abortion_stance_summary <- abortion_stance |>
+    summarize(pct = round(mean(pct),1),
+              .by = c(year, stance)
+             )
 ```
 
 ```{r, results='hide'}
 #| label: abortion_stance_chart
 ggplot(
-    abortion_stance,
+    abortion_stance_summary,
     aes(x=year,y=pct,color=stance,group=stance)
 ) + geom_line() + 
+    geom_point(size=0.5) +
     scale_color_manual(
         values = c(
             "Pro-Choice" = "#6D7F3F",
             "Pro-Life" = "#3F7F7F",
-            "Mixed/Neither" = "#503F7F",
-            "No Opinion" = "#7F3F3F"
+            "Mixed/Neither" = "#503F7F"
             )) +
     labs(
     title="What Are Americans Stances on Abortion?",
@@ -591,7 +586,9 @@ ggplot(
     ) +
     theme(
         axis.text.x = element_text(angle = 90, hjust = 0.5)
-    )
+    ) +
+    scale_x_continuous(breaks = seq(1995, 2024, 3)) +
+    scale_y_continuous(breaks = seq(0, 60, 10))
 ```
 
 ```{r, results='hide'}
@@ -614,7 +611,7 @@ abortion_impact_polling <- abortion_impact_polling_ut |>
         values_to = "pct"
     ) |>
     mutate(
-        year = as.factor(year),
+        year = as.double(year),
         month = trimws(month),
         pct = as.numeric(pct)
     ) |>
@@ -632,7 +629,9 @@ abortion_impact_polling_summary <- abortion_impact_polling |>
 ggplot(
     abortion_impact_polling_summary,
     aes(x=year,y=pct,group=impact,color=impact)
-) + geom_line() + scale_color_manual(
+) + geom_line() + 
+    geom_point(size=0.5) +
+    scale_color_manual(
         values = c(
             "Must Share Views" = "#6D7F3F",
             "Important Factor" = "#3F7F7F",
@@ -640,14 +639,16 @@ ggplot(
             "No Opinion" = "#7F3F3F"
             )) +
     labs(
-        title="Does Candidates Stance Impact Vote?",
+        title="Does Candidates Position On Abortion Impact Vote?",
         x="Year",y="Percentage",
         caption="Source: https://news.gallup.com/poll/1576/abortion.aspx",
         color="Stance"
     ) +
     theme(
         axis.text.x = element_text(angle = 90, hjust = 0.5)
-    )
+    ) +
+    scale_x_continuous(breaks = seq(1992, 2024, 2)) +
+    scale_y_continuous(breaks = seq(0, 70, 10))
 ```
 
 ### Border/Immigration
