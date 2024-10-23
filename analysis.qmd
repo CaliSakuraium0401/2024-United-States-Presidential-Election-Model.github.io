@@ -14,7 +14,7 @@ editor: visual
 execute:
   warning: false
   message: false
-  keep-md: true
+  keep-md: false
   echo: false
 ---
 
@@ -216,7 +216,7 @@ az_trump <- arizona_summary$pct[2]
 ```
 
 |   | State | EV | Kamala Harris | Donald Trump |
-|----------|:--------------|---------------|:--------------|:--------------|
+|---------------|:--------------|---------------|:--------------|:--------------|
 | ![](images/Flag_Pennsylvania.png){width="50%"} | Pennsylvania | 19 | `r pa_harris` % | `r pa_trump` % |
 | ![](images/Flag_Michigan.png){width="50%"} | Michigan | 5 | `r mi_harris` % | `r mi_trump` % |
 | ![](images/Flag_Wisconsin.png){width="50%"} | Wisconsin | 10 | `r wi_harris` % | `r wi_trump` % |
@@ -663,7 +663,7 @@ W.I.P
 
 W.I.P
 
-### Forign Policy
+### Foreign Policy
 
 W.I.P
 
