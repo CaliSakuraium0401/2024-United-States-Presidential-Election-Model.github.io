@@ -217,13 +217,13 @@ az_trump <- arizona_summary$pct[2]
 
 |   | State | EV | Kamala Harris | Donald Trump |
 |---------------|:--------------|---------------|:--------------|:--------------|
-| ![](images/Flag_Pennsylvania.png){width="50%"} | Pennsylvania | 19 | `r pa_harris` % | `r pa_trump` % |
-| ![](images/Flag_Michigan.png){width="50%"} | Michigan | 5 | `r mi_harris` % | `r mi_trump` % |
-| ![](images/Flag_Wisconsin.png){width="50%"} | Wisconsin | 10 | `r wi_harris` % | `r wi_trump` % |
-| ![](images/Flag_NorthCarolina.png){width="50%"} | North Carolina | 16 | `r nc_harris` % | `r nc_trump` % |
-| ![](images/Flag_Georgia.png){width="50%"} | Georgia | 16 | `r ga_harris` % | `r ga_trump` % |
-| ![](images/Flag_Arizona.png){width="50%"} | Arizona | 11 | `r az_harris` % | `r az_trump` % |
-| ![](images/Flag_Nevada.png){width="50%"} | Nevada | 6 | `r nv_harris` % | `r nv_trump` % |
+| ![](images/Flag_Pennsylvania.png){width="40%"} | Pennsylvania | 19 | `r pa_harris` % | `r pa_trump` % |
+| ![](images/Flag_Michigan.png){width="40%"} | Michigan | 5 | `r mi_harris` % | `r mi_trump` % |
+| ![](images/Flag_Wisconsin.png){width="40%"} | Wisconsin | 10 | `r wi_harris` % | `r wi_trump` % |
+| ![](images/Flag_NorthCarolina.png){width="40%"} | North Carolina | 16 | `r nc_harris` % | `r nc_trump` % |
+| ![](images/Flag_Georgia.png){width="40%"} | Georgia | 16 | `r ga_harris` % | `r ga_trump` % |
+| ![](images/Flag_Arizona.png){width="40%"} | Arizona | 11 | `r az_harris` % | `r az_trump` % |
+| ![](images/Flag_Nevada.png){width="40%"} | Nevada | 6 | `r nv_harris` % | `r nv_trump` % |
 
 Currently, [Kamala Harris](https://en.wikipedia.org/wiki/Kamala_Harris) holds the lead in most battleground states. It is important to note that she *only* needs Pennsylvania, Michigan, and Wisconsin to achieve the exact threshold of 270 Elecotral Votes needed to be elected President. On the other hand, Donald Trump would only need the states of Pennsylvania, North Carolina, and Georgia to also achieve that threshold.
 
