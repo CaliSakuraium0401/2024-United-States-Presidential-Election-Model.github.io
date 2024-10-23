@@ -213,7 +213,7 @@ az_trump <- arizona_summary$pct[2]
 ```
 
 |   | State | EV | Kamala Harris | Donald Trump |
-|------|:--------------|------|:--------------|:--------------|
+|-----|:--------------|-----|:--------------|:--------------|
 | ![](images/Flag_Pennsylvania.png) | Pennsylvania | 19 | `r pa_harris` % | `r pa_trump` % |
 | ![](images/Flag_Michigan.png) | Michigan | 5 | `r mi_harris` % | `r mi_trump` % |
 | ![](images/Flag_Wisconsin.png) | Wisconsin | 10 | `r wi_harris` % | `r wi_trump` % |
@@ -236,25 +236,30 @@ Currently, [Kamala Harris](https://en.wikipedia.org/wiki/Kamala_Harris) holds th
 favorability_polling_ut <- read_csv("polling/favorability.csv")
 
 favorability_polling <- favorability_polling_ut |>
-    select(pollster, sponsors, numeric_grade, pollscore, 
-    transparency_score, start_date, end_date, sample_size,
-    population, internal, partisan, politician, favorable:very_unfavorable) |>
-    filter(
-        !is.na(favorable),
-        !is.na(unfavorable),
-        !is.na(very_favorable),
-        !is.na(somewhat_favorable),
-        !is.na(somewhat_unfavorable),
-        !is.na(very_unfavorable),
-        !pollster %in% c("Trafalgar Group", "Patriot Polling", "SoCal Strategies", "RMG Research", "InsiderAdvantage", "co/efficient"),
-        internal != "TRUE",
-        !partisan %in% c("DEM", "REP"),
-        politician %in% c("Donald Trump", "JD Vance", "Kamala Harris", "Tim Walz")
-    ) |>
     mutate(
+        pollscore = as.numeric(pollscore),
+        sample_size = as.numeric(sample_size),
+        numeric_grade = as.numeric(numeric_grade),
         start_date = as.Date(start_date, format="%m/%d/%y"),
         end_date = as.Date(end_date, format="%m/%d/%y")
-    )
+    ) |>
+    filter(
+      politician %in% c("Kamala Harris", "Donald Trump", "JD Vance", "Tim Walz"),
+      is.na(state),
+      !is.na(sample_size),
+      !is.na(favorable),
+      !is.na(unfavorable),
+      !is.na(very_favorable),
+      !is.na(somewhat_favorable),
+      !is.na(somewhat_unfavorable),
+      !is.na(very_unfavorable),
+        (
+        !partisan %in% c("DEM", "REP") |
+        !pollster %in% c("Trafalgar Group", "Patriot Polling", "SoCal Strategies", "RMG 
+         Research","InsiderAdvantage", "co/efficient")
+        )) |>
+    select(pollster, pollscore, numeric_grade, sample_size, end_date, politician:very_unfavorable) |>
+    rename(date = end_date)
 
 favorability_polling_duo <- favorability_polling |>
     select(pollster:alternate_answers) |>
@@ -267,15 +272,28 @@ favorability_polling_duo <- favorability_polling |>
         `Favorable`:`Alternate Answer`,
         names_to = "view",
         values_to = "pct"
-    )
+    ) |>
+    arrange(desc(date)) |>
+    relocate(view,.after=politician)
 
-favorability_polling_duo_summary <- favorability_polling_duo |>
-    filter(!is.na(sample_size)) |>
+favorability_polling_duo_summary <- favorability_polling |>
+    select(pollster:alternate_answers) |>
+    rename(
+        `Favorable` = favorable,
+        `Unfavorable` = unfavorable,
+        `Alternate Answer` = alternate_answers
+    ) |>
+    pivot_longer(
+        `Favorable`:`Alternate Answer`,
+        names_to = "view",
+        values_to = "pct"
+    ) |>
     summarize(
-        pct = weighted.mean(pct, sample_size),
-        .by = c(start_date, politician, view, pct)
+        pct = round(weighted.mean(pct, sample_size, na.rm = TRUE),1),
+        .by = c(date,view,politician)
     ) |> 
-    arrange(start_date)
+    arrange(desc(date)) |>
+    relocate(view,.after=politician)
 
 favorability_polling_scale <- favorability_polling |>
     select(-favorable, unfavorable, alternate_answers) |>
@@ -289,15 +307,146 @@ favorability_polling_scale <- favorability_polling |>
         `Very Favorable`:`Very Unfavorable`,
         names_to = "view",
         values_to = "pct"
-    ) 
-
-favorability_polling_scale_summary <- favorability_polling_scale |>
-    filter(!is.na(sample_size)) |>
+    ) |>
     summarize(
-        pct = weighted.mean(pct, sample_size),
-        .by = c(start_date, politician, view, pct)
+        pct = round(weighted.mean(pct, sample_size, na.rm = TRUE),1),
+        .by = c(date,view,politician)
     ) |> 
-    arrange(start_date)
+    arrange(desc(date)) |>
+    relocate(view,.after=politician)
+```
+
+```{r, results='hide'}
+#| label: kamala-harris-favorability
+ggplot(
+    favorability_polling_duo_summary |> filter(politician == "Kamala Harris", !view == "Alternate Answer"),
+    aes(x=date,y=pct,group_by=view,color=view,fill=view)
+) + 
+    geom_smooth() +
+    geom_point(
+        data=favorability_polling_duo |> filter(politician == "Kamala Harris", !view == "Alternate Answer"),
+        mapping=aes(x=date,y=pct),
+        alpha=0.1
+    ) +
+    labs(
+        title="What Are Americans View On Kamala Harris?",
+        subtitle="2024 Presidential Democratic Nominee",
+        caption="Source: https://projects.fivethirtyeight.com/polls/favorability/",
+        x="Date",
+        y="Percentage",
+        color="View"
+        ) +
+    scale_color_manual(
+        values = c(
+            "Favorable" = "#527F3F",
+            "Unfavorable" = "#7F3F3F")
+        ) +
+    scale_fill_manual(
+        values = c(
+            "Favorable" = "#527F3F",
+            "Unfavorable" = "#7F3F3F")
+        ) +
+    guides(fill = "none")
+```
+
+```{r, results='hide'}
+#| label: tim-walz-favorability
+ggplot(
+    favorability_polling_duo_summary |> filter(politician == "Tim Walz", !view == "Alternate Answer"),
+    aes(x=date,y=pct,group_by=view,color=view,fill=view)
+) + 
+    geom_smooth() +
+    geom_point(
+        data=favorability_polling_duo |> filter(politician == "Tim Walz", !view == "Alternate Answer"),
+        mapping=aes(x=date,y=pct),
+        alpha=0.1
+    ) +
+    labs(
+        title="What Are Americans View On Tim Walz?",
+        subtitle="2024 Vice-Presidential Democratic Nominee",
+        caption="Source: https://projects.fivethirtyeight.com/polls/favorability/",
+        x="Date",
+        y="Percentage",
+        color="View"
+        ) +
+    scale_color_manual(
+        values = c(
+            "Favorable" = "#527F3F",
+            "Unfavorable" = "#7F3F3F")
+        ) +
+    scale_fill_manual(
+        values = c(
+            "Favorable" = "#527F3F",
+            "Unfavorable" = "#7F3F3F")
+        ) +
+    guides(fill = "none")
+```
+
+```{r, results='hide'}
+#| label: donald-trump-favorability
+ggplot(
+    favorability_polling_duo_summary |> filter(politician == "Donald Trump", !view == "Alternate Answer"),
+    aes(x=date,y=pct,group_by=view,color=view,fill=view)
+) + 
+    geom_smooth() +
+    geom_point(
+        data=favorability_polling_duo |> filter(politician == "Donald Trump", !view == "Alternate Answer"),
+        mapping=aes(x=date,y=pct),
+        alpha=0.1
+    ) +
+    labs(
+        title="What Are Americans View On Donald Trump?",
+        subtitle="2024 Presidential Republican Nominee",
+        caption="Source: https://projects.fivethirtyeight.com/polls/favorability/",
+        x="Date",
+        y="Percentage",
+        color="View"
+        ) +
+    scale_color_manual(
+        values = c(
+            "Favorable" = "#527F3F",
+            "Unfavorable" = "#7F3F3F")
+        ) +
+    scale_fill_manual(
+        values = c(
+            "Favorable" = "#527F3F",
+            "Unfavorable" = "#7F3F3F")
+        ) +
+    guides(fill = "none")
+```
+
+```{r, results='hide'}
+#| label: jd-vance-favorability
+ggplot(
+    favorability_polling_duo_summary |> filter(politician == "JD Vance", !view == "Alternate Answer"),
+    aes(x=date,y=pct,group_by=view,color=view,fill=view)
+) + 
+    geom_smooth() +
+    geom_point(
+        data=favorability_polling_duo |> filter(politician == "JD Vance", !view == "Alternate Answer"),
+        mapping=aes(x=date,y=pct),
+        alpha=0.1
+    ) +
+    labs(
+        title="What Are Americans View On J.D. Vance?",
+        subtitle="2024 Vice-Presidential Republican Nominee",
+        caption="Source: https://projects.fivethirtyeight.com/polls/favorability/",
+        x="Date",
+        y="Percentage",
+        color="View"
+        ) +
+    scale_color_manual(
+        values = c(
+            "Favorable" = "#527F3F",
+            "Unfavorable" = "#7F3F3F")
+        ) +
+    scale_fill_manual(
+        values = c(
+            "Favorable" = "#527F3F",
+            "Unfavorable" = "#7F3F3F")
+        ) +
+    guides(fill = "none")
+
 ```
 
 ## Issues
