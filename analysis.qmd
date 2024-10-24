@@ -1,8 +1,8 @@
 ---
-title: "2024 United States Presidential Election Analysis"
+title: "2024 United States Presidential Election Model"
 subtitle: "A Comprehensive Review of Candidates, Polls, and Trends"
 author: "CaliSakuraium"
-date: "Last Updated October 23, 2024"
+date: "October 24 2024"
 format:
   html:
     code-fold: true
@@ -525,6 +525,8 @@ ggplot(
     scale_y_continuous(breaks = seq(0, 60, 10))
 ```
 
+The majority of Americans consistently favor abortion being legal under certain circumstances, fluctuating between 50% and 60% over the years. Though support for legal under any circumstances has seen much more support in recent years, increasing from 20% in the 1970s to roughly 35% in 2023. Meanwhile, those who believe abortion should be illegal under any circumstances has declined rapidly in recent years, dropping from 21% in 2019 to around 12% in 2023. The dynamics of abortion legality views has seen massive shifts mostly due to the overturning of Roe V Wade in 2022.
+
 ```{r, results='hide'}
 #| label: abortion_stance_data
 abortion_stance_ut <- read_csv('polling/abortion_stance.csv')
@@ -591,6 +593,26 @@ ggplot(
     scale_y_continuous(breaks = seq(0, 60, 10))
 ```
 
+Most Americans also view themselves as Pro-Choice, the stance that people have the right to control their own bodies, with support increasing ever since Roe v Wade was overturned, this aligns with most people in the Democratic Party. On the other hand, most people in the Republican Party align with the Pro-Life stance, who want abortion to be illegal or inaccessible. With that being said, as result of this, abortion has been one of the biggest strengths that the Democratic Party has. Ever since Roe v Wade was overturned, they have over-performed in various races, especially when either the overturning of Roe v Wade was recent or if abortion had a huge part to play in the election.
+
+-   [2022 Alaska's at-large congressional district special election](https://en.wikipedia.org/wiki/2022_Alaska%27s_at-large_congressional_district_special_election)
+
+<!-- -->
+
+-   [2022 New York's 19th congressional district special election](https://en.wikipedia.org/wiki/2022_New_York%27s_19th_congressional_district_special_election)
+
+-   [2022 United States Midterms](https://en.wikipedia.org/wiki/2022_United_States_elections)
+
+-   [2023 Wisconsin Supreme Court election](https://en.wikipedia.org/wiki/2023_Wisconsin_Supreme_Court_election)
+
+-   [2023 Pennsylvania Supreme Court elections](https://en.wikipedia.org/wiki/2023_Pennsylvania_elections#Justice_of_the_Supreme_Court)
+
+-   [2023 Kentucky gubernatorial election](https://en.wikipedia.org/wiki/2023_Kentucky_gubernatorial_election)
+
+-   [2023 Virginia House of Delegates election](https://en.wikipedia.org/wiki/2023_Virginia_House_of_Delegates_election)
+
+-   [2023 Virginia Senate election](https://en.wikipedia.org/wiki/2023_Virginia_Senate_election)
+
 ```{r, results='hide'}
 #| label: abortion_impact_data
 abortion_impact_polling_ut <- read_csv('polling/abortion_impact.csv')
@@ -651,6 +673,10 @@ ggplot(
     scale_y_continuous(breaks = seq(0, 70, 10))
 ```
 
+So it is obvious to also say that abortion will be a major factor in this election as well. Around 45% of Americans say a candidate's stance on abortion is a major factor, with around 31% also saying that the candidate ***has*** to have the same stance as them. Meanwhile 19% say abortion is not a major issue to them, and finally with around 4% saying that they "have no opinion."
+
+Kamala Harris has made promises to restore Roe v Wade into federal law if elected with a democratic trifecta. Donald Trump meanwhile has said that he would leave it up for the individual states to decide their laws on abortion. Though Donald Trump has also never answered if he would veto a federal abortion ban or not should one reach his desk as President, to which, Kamala Harris has argued he would sign. Abortion referendums in battleground states like Nevada and Arizona would legalize abortion as a constitutional right in those states. Such referendums are likely to drive out the voters that Kamala Harris needs to win those states and the election as a result.
+
 ### Border/Immigration
 
 W.I.P
@@ -682,3 +708,5 @@ W.I.P
 ### LGBTQ+ Rights
 
 W.I.P
+
+# Prediction
