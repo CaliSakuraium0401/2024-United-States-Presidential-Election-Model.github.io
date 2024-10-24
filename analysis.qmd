@@ -500,8 +500,8 @@ ggplot(
     abortion_polling_summary,
     aes(x=year, y=pct, group=view, color=view)
 ) +
-    geom_line() +
-    geom_point(size=0.5) +
+    geom_line(size=0.6) +
+    geom_point(size=0.8) +
     scale_color_manual(
         values = c(
             "Legal Under Any Circumstances" = "#527F3F",
@@ -570,8 +570,8 @@ abortion_stance_summary <- abortion_stance |>
 ggplot(
     abortion_stance_summary,
     aes(x=year,y=pct,color=stance,group=stance)
-) + geom_line() + 
-    geom_point(size=0.5) +
+) + geom_line(size=0.6) + 
+    geom_point(size=0.8) +
     scale_color_manual(
         values = c(
             "Pro-Choice" = "#6D7F3F",
@@ -629,8 +629,8 @@ abortion_impact_polling_summary <- abortion_impact_polling |>
 ggplot(
     abortion_impact_polling_summary,
     aes(x=year,y=pct,group=impact,color=impact)
-) + geom_line() + 
-    geom_point(size=0.5) +
+) + geom_line(size=0.6) + 
+    geom_point(size=0.8) +
     scale_color_manual(
         values = c(
             "Must Share Views" = "#6D7F3F",
