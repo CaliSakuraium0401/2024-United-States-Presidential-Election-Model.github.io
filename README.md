@@ -4,18 +4,20 @@
 
 ## What To Expect
 
--   ☑️ National Polling (Improve Analysis)
--   ☑️ Battleground State Polling (Improve Analysis)
--   ☑️ Favorability Polling (Needs Analysis)
--   ☑️ Issues Section
-    -   ✅ Abortion
-    -   ❌ Border/Immigration (Not Started)
-    -   ❌ Climate Change (Not Started)
-    -   ❌ Democracy (Not Started)
-    -   ❌ Economy (Not Started)
-    -   ❌ Education (Not Started)
-    -   ❌ Foreign Policy (Not Started)
-    -   ❌ Healthcare (Not Started)
-    -   ❌ LGBTQ+ Rights (Not Started)
--   ❌ Prediction Section (Not Started)
--   ❌ Expand Upon Likely Scenarios (Not Started)
+- ☑️ Polling Analysis
+    - ☑️ National Polling (Improve Analysis)
+    - ☑️ Battleground State Polling (Improve Analysis)
+    - ☑️ Favorability Polling (Needs Analysis)
+- ☑️ Issues Analysis
+    - ✅ Abortion
+    - ❌ Border/Immigration (Not Started)
+    - ❌ Climate Change (Not Started)
+    - ❌ Democracy (Not Started)
+    - ❌ Economy (Not Started)
+    - ❌ Education (Not Started)
+    - ❌ Foreign Policy (Not Started)
+    - ❌ Healthcare (Not Started)
+    - ❌ LGBTQ+ Rights (Not Started)
+- ❌ Prediction (Not Started)
+    - ❌ My Prediction
+    - ❌ Likely Scenarios (Not Started)

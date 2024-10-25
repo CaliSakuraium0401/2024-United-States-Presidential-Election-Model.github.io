@@ -232,7 +232,7 @@ az_trump <- swing_state_summary |>
 | ![](images/Flag_Arizona.png){width="40%"} | Arizona | 11 | `r az_harris` % | `r az_trump` % |
 | ![](images/Flag_Nevada.png){width="40%"} | Nevada | 6 | `r nv_harris` % | `r nv_trump` % |
 
-Currently, [Kamala Harris](https://en.wikipedia.org/wiki/Kamala_Harris) holds the lead in most battleground states. It is important to note that she *only* needs Pennsylvania, Michigan, and Wisconsin to achieve the exact threshold of 270 Elecotral Votes needed to be elected President. On the other hand, Donald Trump would only need the states of Pennsylvania, North Carolina, and Georgia to also achieve that threshold.
+Currently, Kamala Harris holds the lead in most battleground states. It is important to note that she *only* needs Pennsylvania, Michigan, and Wisconsin to achieve the exact threshold of 270 Elecotral Votes needed to be elected President. On the other hand, Donald Trump would only need the states of Pennsylvania, North Carolina, and Georgia to also achieve that threshold.
 
 |       Harris Path To Victory        |       Trump Path To Victory        |
 |:-----------------------------------:|:----------------------------------:|
@@ -470,9 +470,9 @@ ggplot(
     theme(axis.text.x = element_text(angle=90, hjust=0.5))
 ```
 
-## Issues
+# Issues
 
-### Abortion
+## Abortion
 
 ```{r, results='hide'}
 #| label: abortion_view_data
@@ -679,36 +679,44 @@ So it is obvious to also say that abortion will be a major factor in this electi
 
 Kamala Harris has made promises to restore Roe v Wade into federal law if elected with a democratic trifecta. Donald Trump meanwhile has said that he would leave it up for the individual states to decide their laws on abortion. Though Donald Trump has also never answered if he would veto a federal abortion ban or not should one reach his desk as President, to which, Kamala Harris has argued he would sign. Abortion referendums in battleground states like Nevada and Arizona would legalize abortion as a constitutional right in those states. Such referendums are likely to drive out the voters that Kamala Harris needs to win those states and the election as a result.
 
-### Border/Immigration
+## Border/Immigration
 
 W.I.P
 
-### Climate Change
+## Climate Change
 
 W.I.P
 
-### Democracy
+## Democracy
 
 W.I.P
 
-### Economy
+## Economy
 
 W.I.P
 
-### Education
+## Education
 
 W.I.P
 
-### Foreign Policy
+## Foreign Policy
 
 W.I.P
 
-### Healthcare
+## Healthcare
 
 W.I.P
 
-### LGBTQ+ Rights
+## LGBTQ+ Rights
 
 W.I.P
 
 # Prediction
+
+## My Prediction
+
+W.I.P
+
+## Likely Scenarios
+
+W.I.P
