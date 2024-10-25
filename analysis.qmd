@@ -1,6 +1,6 @@
 ---
 title: "2024 United States Presidential Election Model"
-subtitle: "A Comprehensive Review of Candidates, Polls, and Trends"
+subtitle: "Analysis of Polls and Trends"
 author: "CaliSakuraium"
 date: "October 24 2024"
 format:
@@ -29,7 +29,7 @@ library(tidyr)
 
 # Election Overview
 
-The 2024 United States presidential election will be the 60th quadrennial presidential election, set to be held on Tuesday, November 5, 2024. The current President, [Joe Biden](https://en.wikipedia.org/wiki/Joe_Biden), initially ran for re-election but dropped out after health concerns following his performance in a [debate that took place in June](https://en.wikipedia.org/wiki/2024_United_States_presidential_debates#June_27:_First_presidential_debate_(CNN,_Atlanta)). The election will be between current [Democratic](https://en.wikipedia.org/wiki/Democratic_Party_(United_States)) Vice President, [Kamala Devi Harris](https://en.wikipedia.org/wiki/Kamala_Harris) and former [Republican](https://en.wikipedia.org/wiki/Republican_Party_(United_States)) President [Donald John Trump](https://en.wikipedia.org/wiki/Donald_Trump).
+The 2024 United States presidential election will be the 60th quadrennial presidential election, set to be held on Tuesday, November 5, 2024. The current President, Joe Biden, initially ran for re-election but dropped out after health concerns following his performance in a [*debate that took place in June*](https://en.wikipedia.org/wiki/2024_United_States_presidential_debates#June_27:_First_presidential_debate_(CNN,_Atlanta)). The election will be between current Democratic Vice President, Kamala Devi Harris and former Republican President Donald John Trump.
 
 # Polling
 
@@ -136,7 +136,7 @@ ggplot(
   )
 ```
 
-Previously before [Joe Biden](https://en.wikipedia.org/wiki/Joe_Biden) had dropped out of the 2024 Election, [Donald John Trump](https://en.wikipedia.org/wiki/Donald_Trump) lead many of the polls. When [Kamala Devi Harris](https://en.wikipedia.org/wiki/Kamala_Harris) became the new presidential nominee for the [Democratic Party](https://en.wikipedia.org/wiki/Democratic_Party_(United_States)), polls have seen a massive shift toward their favor.
+Previously before Joe Biden had dropped out of the 2024 Election, Donald John Trump lead many of the polls. When Kamala Devi Harris became the new presidential nominee for the Democratic Party, polls have seen a massive shift toward their favor.
 
 ## Battleground States
 
@@ -326,6 +326,8 @@ favorability_polling_scale <- favorability_polling |>
     relocate(view,.after=politician)
 ```
 
+### Kamala Harris
+
 ```{r, results='hide'}
 #| label: kamala-harris-favorability
 ggplot(
@@ -356,8 +358,11 @@ ggplot(
             "Favorable" = "#527F3F",
             "Unfavorable" = "#7F3F3F")
         ) +
-    guides(fill = "none")
+    guides(fill = "none") +
+    theme(axis.text.x = element_text(angle=90, hjust=0.5))
 ```
+
+### Tim Walz
 
 ```{r, results='hide'}
 #| label: tim-walz-favorability
@@ -389,8 +394,11 @@ ggplot(
             "Favorable" = "#527F3F",
             "Unfavorable" = "#7F3F3F")
         ) +
-    guides(fill = "none")
+    guides(fill = "none") +
+    theme(axis.text.x = element_text(angle=90, hjust=0.5))
 ```
+
+### Donald Trump
 
 ```{r, results='hide'}
 #| label: donald-trump-favorability
@@ -422,8 +430,11 @@ ggplot(
             "Favorable" = "#527F3F",
             "Unfavorable" = "#7F3F3F")
         ) +
-    guides(fill = "none")
+    guides(fill = "none") +
+    theme(axis.text.x = element_text(angle=90, hjust=0.5))
 ```
+
+### J.D. Vance
 
 ```{r, results='hide'}
 #| label: jd-vance-favorability
@@ -455,8 +466,8 @@ ggplot(
             "Favorable" = "#527F3F",
             "Unfavorable" = "#7F3F3F")
         ) +
-    guides(fill = "none")
-
+    guides(fill = "none") +
+    theme(axis.text.x = element_text(angle=90, hjust=0.5))
 ```
 
 ## Issues
@@ -596,21 +607,12 @@ ggplot(
 Most Americans also view themselves as Pro-Choice, the stance that people have the right to control their own bodies, with support increasing ever since Roe v Wade was overturned, this aligns with most people in the Democratic Party. On the other hand, most people in the Republican Party align with the Pro-Life stance, who want abortion to be illegal or inaccessible. With that being said, as result of this, abortion has been one of the biggest strengths that the Democratic Party has. Ever since Roe v Wade was overturned, they have over-performed in various races, especially when either the overturning of Roe v Wade was recent or if abortion had a huge part to play in the election.
 
 -   [2022 Alaska's at-large congressional district special election](https://en.wikipedia.org/wiki/2022_Alaska%27s_at-large_congressional_district_special_election)
-
-<!-- -->
-
 -   [2022 New York's 19th congressional district special election](https://en.wikipedia.org/wiki/2022_New_York%27s_19th_congressional_district_special_election)
-
 -   [2022 United States Midterms](https://en.wikipedia.org/wiki/2022_United_States_elections)
-
 -   [2023 Wisconsin Supreme Court election](https://en.wikipedia.org/wiki/2023_Wisconsin_Supreme_Court_election)
-
 -   [2023 Pennsylvania Supreme Court elections](https://en.wikipedia.org/wiki/2023_Pennsylvania_elections#Justice_of_the_Supreme_Court)
-
 -   [2023 Kentucky gubernatorial election](https://en.wikipedia.org/wiki/2023_Kentucky_gubernatorial_election)
-
 -   [2023 Virginia House of Delegates election](https://en.wikipedia.org/wiki/2023_Virginia_House_of_Delegates_election)
-
 -   [2023 Virginia Senate election](https://en.wikipedia.org/wiki/2023_Virginia_Senate_election)
 
 ```{r, results='hide'}
