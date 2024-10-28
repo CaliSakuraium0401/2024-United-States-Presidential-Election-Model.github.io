@@ -2,7 +2,7 @@
 title: "2024 United States Presidential Election Model"
 subtitle: "Analysis of Polls and Trends"
 author: "CaliSakuraium"
-date: "October 24 2024"
+date: "October 27 2024"
 format:
   html:
     code-fold: true
@@ -681,7 +681,210 @@ Kamala Harris has made promises to restore Roe v Wade into federal law if electe
 
 ## Border/Immigration
 
-W.I.P
+```{r, results='hide'}
+#| label: immigration_view_data
+ut_immigration_view <- read_csv('polling/immigration_view.csv')
+
+immigration_view <- ut_immigration_view |>
+    separate(date, into=c("month", "dayyear"), sep=4) |>
+    separate(dayyear, into=c("day", "year"), sep=2) |>
+    mutate(
+        month = trimws(month),
+        day = as.numeric(trimws(day)),
+        year = as.numeric(trimws(year))
+    ) |>
+    rename(
+        `Immigration is a good thing` = `immigration good`,
+        `Immigration is a bad thing` = `immigration bad`
+    ) |>
+    pivot_longer(
+        `Immigration is a good thing`:`Immigration is a bad thing`,
+        names_to = "stance",
+        values_to = "pct"
+    )
+```
+
+```{r, results='hide'}
+#| label: immigration_view_chart
+ggplot(
+    immigration_view,
+    aes(x=year,y=pct,color=stance,group=stance)
+    ) +
+    geom_line(size=0.6) + 
+    geom_point(size=0.8) +
+    scale_color_manual(
+        values = c(
+            "Immigration is a good thing" = "#6D7F3F",
+            "Immigration is a bad thing" = "#3F7F7F"
+            )
+        ) +
+    labs(
+        title="What Are Americans Views on Immigration?",
+        x="Year",y="Percentage",
+        caption="Source: https://news.gallup.com/poll/647123/sharply-americans-curb-immigration.aspx",
+        color="View"
+    ) +
+    theme(
+        axis.text.x = element_text(angle = 90, hjust = 0.5)
+    )
+```
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+
+```{r, results='hide'}
+#| label: immigration_view_party_data
+ut_immigration_view_party <- read_csv('polling/immigration_view_party.csv')
+
+immigration_view_party <- ut_immigration_view_party |>
+    separate(date, into=c("month", "dayyear"), sep=4) |>
+    separate(dayyear, into=c("day", "year"), sep=2) |>
+    mutate(
+        month = trimws(month),
+        day = as.numeric(trimws(day)),
+        year = as.numeric(trimws(year))
+    ) |>
+    rename(
+        `Republicans` = `immigration good republicans`,
+        `Independents` = `immigration good independents`,
+        `Democrats` = `immigration good democrats`
+    ) |>
+    pivot_longer(
+        `Republicans`:`Democrats`,
+        names_to = "affiliation",
+        values_to = "immigration_good_pct"
+    ) |>
+    arrange(desc(year))
+```
+
+```{r, results='hide'}
+#| label: immigration_view_party_graph
+ggplot(
+    immigration_view_party,
+    aes(x=year,y=immigration_good_pct,color=affiliation,group=affiliation)
+    ) +
+    geom_line(size=0.6) + 
+    geom_point(size=0.8) +
+        scale_color_manual(values=c(
+            "Republicans" = "#D6090B",
+            "Independents" = "#6A8C89",
+            "Democrats" = "#031BBB"
+            )
+        ) +
+    scale_y_continuous(breaks = seq(0, 100, 10)) +
+    labs(
+        title="How Positively Do Americans View Immigration?",
+        subtitle="How Americans View Immigration By Party/Political Affiliation",
+        x="Year",y="Percentage",
+        caption="Source: https://news.gallup.com/poll/647123/sharply-americans-curb-immigration.aspx",
+        color="Political Affiliation"
+    ) +
+    theme(
+        axis.text.x = element_text(angle = 90, hjust = 0.5)
+    )
+```
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+
+```{r, results='hide'}
+#| label: immigration_level_data
+ut_immigration_level <- read_csv('polling/immigration_level.csv')
+
+immigration_level <- ut_immigration_level |>
+    separate(date, into=c("month", "dayyear"), sep=4) |>
+    separate(dayyear, into=c("day", "year"), sep=2) |>
+    mutate(
+        month = trimws(month),
+        day = as.numeric(trimws(day)),
+        year = as.numeric(trimws(year))
+    ) |>
+    rename(
+        `Increase` = `increase immigration level`,
+        `Maintain` = `keep immigration level`,
+        `Decrease` = `decrease imigration level`
+    ) |>
+    pivot_longer(
+        `Increase`:`Decrease`,
+        names_to = "immigration_level_stance",
+        values_to = "pct"
+    ) |>
+    arrange(desc(year))
+```
+
+```{r, results='hide'}
+#| label: immigration_level_graph
+ggplot(
+    immigration_level,
+    aes(x=year,y=pct,color=immigration_level_stance,group=immigration_level_stance)
+    ) +
+    geom_line(size=0.6) + 
+    geom_point(size=0.8) +
+    scale_color_manual(
+        values = c(
+            "Increase" = "#527F3F",
+            "Maintain" = "#3F7F7F",
+            "Decrease" = "#7F3F3F"
+            )) +
+    labs(
+        title="What Are Americans Stances on Immigration Levels?",
+        x="Year",y="Percentage",
+        caption="Source: https://news.gallup.com/poll/647123/sharply-americans-curb-immigration.aspx",
+        color="Stance"
+    ) +
+    theme(
+        axis.text.x = element_text(angle = 90, hjust = 0.5)
+    ) +
+    scale_x_continuous(breaks=seq(1965, 2025, 5)) +
+    scale_y_continuous(breaks = seq(0, 100, 10))
+```
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+```{r, results='hide'}
+#| label: immigration_level_party_data
+ut_immigration_level_party <- read_csv('polling/immigration_level_party.csv')
+
+immigration_level_party <- ut_immigration_level_party |>
+    rename(
+        `Increase` = `increase immigration level`,
+        `Maintain` = `keep immigration level`,
+        `Decrease` = `decrease imigration level`
+    ) |>
+    pivot_longer(
+        `Increase`:`Decrease`,
+        names_to = "immigration_level_stance",
+        values_to = "pct"
+    ) |>
+    summarize(
+        pct = mean(pct),
+        .by = c(affiliation, immigration_level_stance)
+    )
+```
+
+```{r, results='hide'}
+#| label: immigration_level_party_graph
+ggplot(
+    immigration_level_party,
+    aes(x=pct,y=affiliation,fill=immigration_level_stance)
+    ) +
+    geom_col() +
+    scale_fill_manual(
+        values = c(
+            "Decrease" = "#254445",
+            "Increase" = "#06874B",
+            "Maintain" = "#6A8C89"
+            )) +
+    labs(
+        title="How Americans View Immigration Levels By Party/Political Affiliation?",
+        y="",x="Percentage",
+        caption="Source: https://news.gallup.com/poll/647123/sharply-americans-curb-immigration.aspx",
+        fill="Stance"
+    ) +
+   theme(
+        axis.text.y = element_text(angle = 360)
+    )
+```
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
 
 ## Climate Change
 
