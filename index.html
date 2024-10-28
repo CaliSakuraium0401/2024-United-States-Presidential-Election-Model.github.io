@@ -411,6 +411,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/immigration_impact_chart-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/immigration_impact_party_chart-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
 </section>
 <section id="climate-change" class="level2">
 <h2 class="anchored" data-anchor-id="climate-change">Climate Change</h2>
@@ -1703,7 +1723,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-773"><a href="#cb1-773"></a><span class="in">    scale_y_continuous(breaks = seq(0, 100, 10)) +</span></span>
 <span id="cb1-774"><a href="#cb1-774"></a><span class="in">    labs(</span></span>
 <span id="cb1-775"><a href="#cb1-775"></a><span class="in">        title="How Positively Do Americans View Immigration?",</span></span>
-<span id="cb1-776"><a href="#cb1-776"></a><span class="in">        subtitle="How Americans View Immigration By Party/Political Affiliation",</span></span>
+<span id="cb1-776"><a href="#cb1-776"></a><span class="in">        subtitle="By Party/Political Affiliation",</span></span>
 <span id="cb1-777"><a href="#cb1-777"></a><span class="in">        x="Year",y="Percentage",</span></span>
 <span id="cb1-778"><a href="#cb1-778"></a><span class="in">        caption="Source: https://news.gallup.com/poll/647123/sharply-americans-curb-immigration.aspx",</span></span>
 <span id="cb1-779"><a href="#cb1-779"></a><span class="in">        color="Political Affiliation"</span></span>
@@ -1755,7 +1775,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-825"><a href="#cb1-825"></a><span class="in">            "Decrease" = "#7F3F3F"</span></span>
 <span id="cb1-826"><a href="#cb1-826"></a><span class="in">            )) +</span></span>
 <span id="cb1-827"><a href="#cb1-827"></a><span class="in">    labs(</span></span>
-<span id="cb1-828"><a href="#cb1-828"></a><span class="in">        title="What Are Americans Stances on Immigration Levels?",</span></span>
+<span id="cb1-828"><a href="#cb1-828"></a><span class="in">        title="How Americans View Immigration Levels?",</span></span>
 <span id="cb1-829"><a href="#cb1-829"></a><span class="in">        x="Year",y="Percentage",</span></span>
 <span id="cb1-830"><a href="#cb1-830"></a><span class="in">        caption="Source: https://news.gallup.com/poll/647123/sharply-americans-curb-immigration.aspx",</span></span>
 <span id="cb1-831"><a href="#cb1-831"></a><span class="in">        color="Stance"</span></span>
@@ -1804,55 +1824,128 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-874"><a href="#cb1-874"></a><span class="in">            "Maintain" = "#6A8C89"</span></span>
 <span id="cb1-875"><a href="#cb1-875"></a><span class="in">            )) +</span></span>
 <span id="cb1-876"><a href="#cb1-876"></a><span class="in">    labs(</span></span>
-<span id="cb1-877"><a href="#cb1-877"></a><span class="in">        title="How Americans View Immigration Levels By Party/Political Affiliation?",</span></span>
-<span id="cb1-878"><a href="#cb1-878"></a><span class="in">        y="",x="Percentage",</span></span>
-<span id="cb1-879"><a href="#cb1-879"></a><span class="in">        caption="Source: https://news.gallup.com/poll/647123/sharply-americans-curb-immigration.aspx",</span></span>
-<span id="cb1-880"><a href="#cb1-880"></a><span class="in">        fill="Stance"</span></span>
-<span id="cb1-881"><a href="#cb1-881"></a><span class="in">    ) +</span></span>
-<span id="cb1-882"><a href="#cb1-882"></a><span class="in">   theme(</span></span>
-<span id="cb1-883"><a href="#cb1-883"></a><span class="in">        axis.text.y = element_text(angle = 360)</span></span>
-<span id="cb1-884"><a href="#cb1-884"></a><span class="in">    )</span></span>
-<span id="cb1-885"><a href="#cb1-885"></a><span class="in">```</span></span>
-<span id="cb1-886"><a href="#cb1-886"></a></span>
-<span id="cb1-887"><a href="#cb1-887"></a>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</span>
-<span id="cb1-888"><a href="#cb1-888"></a></span>
-<span id="cb1-889"><a href="#cb1-889"></a><span class="fu">## Climate Change</span></span>
-<span id="cb1-890"><a href="#cb1-890"></a></span>
-<span id="cb1-891"><a href="#cb1-891"></a>W.I.P</span>
-<span id="cb1-892"><a href="#cb1-892"></a></span>
-<span id="cb1-893"><a href="#cb1-893"></a><span class="fu">## Democracy</span></span>
-<span id="cb1-894"><a href="#cb1-894"></a></span>
-<span id="cb1-895"><a href="#cb1-895"></a>W.I.P</span>
-<span id="cb1-896"><a href="#cb1-896"></a></span>
-<span id="cb1-897"><a href="#cb1-897"></a><span class="fu">## Economy</span></span>
-<span id="cb1-898"><a href="#cb1-898"></a></span>
-<span id="cb1-899"><a href="#cb1-899"></a>W.I.P</span>
-<span id="cb1-900"><a href="#cb1-900"></a></span>
-<span id="cb1-901"><a href="#cb1-901"></a><span class="fu">## Education</span></span>
-<span id="cb1-902"><a href="#cb1-902"></a></span>
-<span id="cb1-903"><a href="#cb1-903"></a>W.I.P</span>
-<span id="cb1-904"><a href="#cb1-904"></a></span>
-<span id="cb1-905"><a href="#cb1-905"></a><span class="fu">## Foreign Policy</span></span>
-<span id="cb1-906"><a href="#cb1-906"></a></span>
-<span id="cb1-907"><a href="#cb1-907"></a>W.I.P</span>
-<span id="cb1-908"><a href="#cb1-908"></a></span>
-<span id="cb1-909"><a href="#cb1-909"></a><span class="fu">## Healthcare</span></span>
-<span id="cb1-910"><a href="#cb1-910"></a></span>
-<span id="cb1-911"><a href="#cb1-911"></a>W.I.P</span>
-<span id="cb1-912"><a href="#cb1-912"></a></span>
-<span id="cb1-913"><a href="#cb1-913"></a><span class="fu">## LGBTQ+ Rights</span></span>
-<span id="cb1-914"><a href="#cb1-914"></a></span>
-<span id="cb1-915"><a href="#cb1-915"></a>W.I.P</span>
-<span id="cb1-916"><a href="#cb1-916"></a></span>
-<span id="cb1-917"><a href="#cb1-917"></a><span class="fu"># Prediction</span></span>
-<span id="cb1-918"><a href="#cb1-918"></a></span>
-<span id="cb1-919"><a href="#cb1-919"></a><span class="fu">## My Prediction</span></span>
-<span id="cb1-920"><a href="#cb1-920"></a></span>
-<span id="cb1-921"><a href="#cb1-921"></a>W.I.P</span>
-<span id="cb1-922"><a href="#cb1-922"></a></span>
-<span id="cb1-923"><a href="#cb1-923"></a><span class="fu">## Likely Scenarios</span></span>
-<span id="cb1-924"><a href="#cb1-924"></a></span>
-<span id="cb1-925"><a href="#cb1-925"></a>W.I.P</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-877"><a href="#cb1-877"></a><span class="in">        title="How Americans View Immigration Levels?",</span></span>
+<span id="cb1-878"><a href="#cb1-878"></a><span class="in">        subtitle="By Party/Political Affiliation",</span></span>
+<span id="cb1-879"><a href="#cb1-879"></a><span class="in">        y="",x="Percentage",</span></span>
+<span id="cb1-880"><a href="#cb1-880"></a><span class="in">        caption="Source: https://news.gallup.com/poll/647123/sharply-americans-curb-immigration.aspx",</span></span>
+<span id="cb1-881"><a href="#cb1-881"></a><span class="in">        fill="Stance"</span></span>
+<span id="cb1-882"><a href="#cb1-882"></a><span class="in">    ) +</span></span>
+<span id="cb1-883"><a href="#cb1-883"></a><span class="in">   theme(</span></span>
+<span id="cb1-884"><a href="#cb1-884"></a><span class="in">        axis.text.y = element_text(angle = 360)</span></span>
+<span id="cb1-885"><a href="#cb1-885"></a><span class="in">    )</span></span>
+<span id="cb1-886"><a href="#cb1-886"></a><span class="in">```</span></span>
+<span id="cb1-887"><a href="#cb1-887"></a></span>
+<span id="cb1-888"><a href="#cb1-888"></a>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</span>
+<span id="cb1-889"><a href="#cb1-889"></a></span>
+<span id="cb1-890"><a href="#cb1-890"></a><span class="in">```{r, results='hide'}</span></span>
+<span id="cb1-891"><a href="#cb1-891"></a><span class="in">#| label: immigration_impact_data</span></span>
+<span id="cb1-892"><a href="#cb1-892"></a><span class="in">immigration_impact &lt;- read_csv('polling/immigration_impact.csv') |&gt;</span></span>
+<span id="cb1-893"><a href="#cb1-893"></a><span class="in">    pivot_longer(</span></span>
+<span id="cb1-894"><a href="#cb1-894"></a><span class="in">        `Candidate must share views`:`Not a major issue`,</span></span>
+<span id="cb1-895"><a href="#cb1-895"></a><span class="in">        names_to = "impact",</span></span>
+<span id="cb1-896"><a href="#cb1-896"></a><span class="in">        values_to = "pct"</span></span>
+<span id="cb1-897"><a href="#cb1-897"></a><span class="in">    ) </span></span>
+<span id="cb1-898"><a href="#cb1-898"></a><span class="in">```</span></span>
+<span id="cb1-899"><a href="#cb1-899"></a></span>
+<span id="cb1-900"><a href="#cb1-900"></a><span class="in">```{r, results='hide'}</span></span>
+<span id="cb1-901"><a href="#cb1-901"></a><span class="in">#| label: immigration_impact_chart</span></span>
+<span id="cb1-902"><a href="#cb1-902"></a><span class="in">ggplot(</span></span>
+<span id="cb1-903"><a href="#cb1-903"></a><span class="in">    immigration_impact,</span></span>
+<span id="cb1-904"><a href="#cb1-904"></a><span class="in">    aes(x=pct,y=stance,fill=impact)</span></span>
+<span id="cb1-905"><a href="#cb1-905"></a><span class="in">      ) +</span></span>
+<span id="cb1-906"><a href="#cb1-906"></a><span class="in">    geom_col() +</span></span>
+<span id="cb1-907"><a href="#cb1-907"></a><span class="in">    scale_fill_manual(</span></span>
+<span id="cb1-908"><a href="#cb1-908"></a><span class="in">        values = c(</span></span>
+<span id="cb1-909"><a href="#cb1-909"></a><span class="in">            "Candidate must share views" = "#254445",</span></span>
+<span id="cb1-910"><a href="#cb1-910"></a><span class="in">            "One of many important factors" = "#06874B",</span></span>
+<span id="cb1-911"><a href="#cb1-911"></a><span class="in">            "Not a major issue" = "#6A8C89"</span></span>
+<span id="cb1-912"><a href="#cb1-912"></a><span class="in">            )) +</span></span>
+<span id="cb1-913"><a href="#cb1-913"></a><span class="in">    labs(</span></span>
+<span id="cb1-914"><a href="#cb1-914"></a><span class="in">        title="How A Candidate's Immigration Stance Impacts Vote?",</span></span>
+<span id="cb1-915"><a href="#cb1-915"></a><span class="in">        y="",x="Percentage",</span></span>
+<span id="cb1-916"><a href="#cb1-916"></a><span class="in">        caption="Source: https://news.gallup.com/poll/647123/sharply-americans-curb-immigration.aspx",</span></span>
+<span id="cb1-917"><a href="#cb1-917"></a><span class="in">        fill="Impact"</span></span>
+<span id="cb1-918"><a href="#cb1-918"></a><span class="in">    ) +</span></span>
+<span id="cb1-919"><a href="#cb1-919"></a><span class="in">   theme(</span></span>
+<span id="cb1-920"><a href="#cb1-920"></a><span class="in">        axis.text.y = element_text(angle = 360)</span></span>
+<span id="cb1-921"><a href="#cb1-921"></a><span class="in">    )</span></span>
+<span id="cb1-922"><a href="#cb1-922"></a><span class="in">```</span></span>
+<span id="cb1-923"><a href="#cb1-923"></a></span>
+<span id="cb1-924"><a href="#cb1-924"></a>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+<span id="cb1-925"><a href="#cb1-925"></a></span>
+<span id="cb1-926"><a href="#cb1-926"></a><span class="in">```{r, results='hide'}</span></span>
+<span id="cb1-927"><a href="#cb1-927"></a><span class="in">#| label: immigration_impact_party_data</span></span>
+<span id="cb1-928"><a href="#cb1-928"></a><span class="in">immigration_impact_party &lt;- read_csv('polling/immigration_impact_party.csv') |&gt; pivot_longer(</span></span>
+<span id="cb1-929"><a href="#cb1-929"></a><span class="in">        `Candidate must share views`:`Not a major issue`,</span></span>
+<span id="cb1-930"><a href="#cb1-930"></a><span class="in">        names_to = "impact",</span></span>
+<span id="cb1-931"><a href="#cb1-931"></a><span class="in">        values_to = "pct"</span></span>
+<span id="cb1-932"><a href="#cb1-932"></a><span class="in">    ) </span></span>
+<span id="cb1-933"><a href="#cb1-933"></a><span class="in">```</span></span>
+<span id="cb1-934"><a href="#cb1-934"></a></span>
+<span id="cb1-935"><a href="#cb1-935"></a><span class="in">```{r, results='hide'}</span></span>
+<span id="cb1-936"><a href="#cb1-936"></a><span class="in">#| label: immigration_impact_party_chart</span></span>
+<span id="cb1-937"><a href="#cb1-937"></a><span class="in">ggplot(</span></span>
+<span id="cb1-938"><a href="#cb1-938"></a><span class="in">    immigration_impact_party,</span></span>
+<span id="cb1-939"><a href="#cb1-939"></a><span class="in">    aes(x=pct,y=identification,fill=impact)</span></span>
+<span id="cb1-940"><a href="#cb1-940"></a><span class="in">      ) +</span></span>
+<span id="cb1-941"><a href="#cb1-941"></a><span class="in">    geom_col() +</span></span>
+<span id="cb1-942"><a href="#cb1-942"></a><span class="in">    scale_fill_manual(</span></span>
+<span id="cb1-943"><a href="#cb1-943"></a><span class="in">        values = c(</span></span>
+<span id="cb1-944"><a href="#cb1-944"></a><span class="in">            "Candidate must share views" = "#254445",</span></span>
+<span id="cb1-945"><a href="#cb1-945"></a><span class="in">            "One of many important factors" = "#06874B",</span></span>
+<span id="cb1-946"><a href="#cb1-946"></a><span class="in">            "Not a major issue" = "#6A8C89"</span></span>
+<span id="cb1-947"><a href="#cb1-947"></a><span class="in">            )) +</span></span>
+<span id="cb1-948"><a href="#cb1-948"></a><span class="in">    labs(</span></span>
+<span id="cb1-949"><a href="#cb1-949"></a><span class="in">        title="How A Candidate's Immigration Stance Impacts Vote?",</span></span>
+<span id="cb1-950"><a href="#cb1-950"></a><span class="in">        subtitle="By Party/Political Affiliation",</span></span>
+<span id="cb1-951"><a href="#cb1-951"></a><span class="in">        y="",x="Percentage",</span></span>
+<span id="cb1-952"><a href="#cb1-952"></a><span class="in">        caption="Source: https://news.gallup.com/poll/647123/sharply-americans-curb-immigration.aspx",</span></span>
+<span id="cb1-953"><a href="#cb1-953"></a><span class="in">        fill="Impact"</span></span>
+<span id="cb1-954"><a href="#cb1-954"></a><span class="in">    ) +</span></span>
+<span id="cb1-955"><a href="#cb1-955"></a><span class="in">   theme(</span></span>
+<span id="cb1-956"><a href="#cb1-956"></a><span class="in">        axis.text.y = element_text(angle = 360)</span></span>
+<span id="cb1-957"><a href="#cb1-957"></a><span class="in">    )</span></span>
+<span id="cb1-958"><a href="#cb1-958"></a><span class="in">```</span></span>
+<span id="cb1-959"><a href="#cb1-959"></a></span>
+<span id="cb1-960"><a href="#cb1-960"></a>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</span>
+<span id="cb1-961"><a href="#cb1-961"></a></span>
+<span id="cb1-962"><a href="#cb1-962"></a><span class="fu">## Climate Change</span></span>
+<span id="cb1-963"><a href="#cb1-963"></a></span>
+<span id="cb1-964"><a href="#cb1-964"></a>W.I.P</span>
+<span id="cb1-965"><a href="#cb1-965"></a></span>
+<span id="cb1-966"><a href="#cb1-966"></a><span class="fu">## Democracy</span></span>
+<span id="cb1-967"><a href="#cb1-967"></a></span>
+<span id="cb1-968"><a href="#cb1-968"></a>W.I.P</span>
+<span id="cb1-969"><a href="#cb1-969"></a></span>
+<span id="cb1-970"><a href="#cb1-970"></a><span class="fu">## Economy</span></span>
+<span id="cb1-971"><a href="#cb1-971"></a></span>
+<span id="cb1-972"><a href="#cb1-972"></a>W.I.P</span>
+<span id="cb1-973"><a href="#cb1-973"></a></span>
+<span id="cb1-974"><a href="#cb1-974"></a><span class="fu">## Education</span></span>
+<span id="cb1-975"><a href="#cb1-975"></a></span>
+<span id="cb1-976"><a href="#cb1-976"></a>W.I.P</span>
+<span id="cb1-977"><a href="#cb1-977"></a></span>
+<span id="cb1-978"><a href="#cb1-978"></a><span class="fu">## Foreign Policy</span></span>
+<span id="cb1-979"><a href="#cb1-979"></a></span>
+<span id="cb1-980"><a href="#cb1-980"></a>W.I.P</span>
+<span id="cb1-981"><a href="#cb1-981"></a></span>
+<span id="cb1-982"><a href="#cb1-982"></a><span class="fu">## Healthcare</span></span>
+<span id="cb1-983"><a href="#cb1-983"></a></span>
+<span id="cb1-984"><a href="#cb1-984"></a>W.I.P</span>
+<span id="cb1-985"><a href="#cb1-985"></a></span>
+<span id="cb1-986"><a href="#cb1-986"></a><span class="fu">## LGBTQ+ Rights</span></span>
+<span id="cb1-987"><a href="#cb1-987"></a></span>
+<span id="cb1-988"><a href="#cb1-988"></a>W.I.P</span>
+<span id="cb1-989"><a href="#cb1-989"></a></span>
+<span id="cb1-990"><a href="#cb1-990"></a><span class="fu"># Prediction</span></span>
+<span id="cb1-991"><a href="#cb1-991"></a></span>
+<span id="cb1-992"><a href="#cb1-992"></a><span class="fu">## My Prediction</span></span>
+<span id="cb1-993"><a href="#cb1-993"></a></span>
+<span id="cb1-994"><a href="#cb1-994"></a>W.I.P</span>
+<span id="cb1-995"><a href="#cb1-995"></a></span>
+<span id="cb1-996"><a href="#cb1-996"></a><span class="fu">## Likely Scenarios</span></span>
+<span id="cb1-997"><a href="#cb1-997"></a></span>
+<span id="cb1-998"><a href="#cb1-998"></a>W.I.P</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

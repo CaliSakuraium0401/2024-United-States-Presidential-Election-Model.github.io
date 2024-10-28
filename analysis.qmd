@@ -773,7 +773,7 @@ ggplot(
     scale_y_continuous(breaks = seq(0, 100, 10)) +
     labs(
         title="How Positively Do Americans View Immigration?",
-        subtitle="How Americans View Immigration By Party/Political Affiliation",
+        subtitle="By Party/Political Affiliation",
         x="Year",y="Percentage",
         caption="Source: https://news.gallup.com/poll/647123/sharply-americans-curb-immigration.aspx",
         color="Political Affiliation"
@@ -825,7 +825,7 @@ ggplot(
             "Decrease" = "#7F3F3F"
             )) +
     labs(
-        title="What Are Americans Stances on Immigration Levels?",
+        title="How Americans View Immigration Levels?",
         x="Year",y="Percentage",
         caption="Source: https://news.gallup.com/poll/647123/sharply-americans-curb-immigration.aspx",
         color="Stance"
@@ -874,10 +874,83 @@ ggplot(
             "Maintain" = "#6A8C89"
             )) +
     labs(
-        title="How Americans View Immigration Levels By Party/Political Affiliation?",
+        title="How Americans View Immigration Levels?",
+        subtitle="By Party/Political Affiliation",
         y="",x="Percentage",
         caption="Source: https://news.gallup.com/poll/647123/sharply-americans-curb-immigration.aspx",
         fill="Stance"
+    ) +
+   theme(
+        axis.text.y = element_text(angle = 360)
+    )
+```
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+
+```{r, results='hide'}
+#| label: immigration_impact_data
+immigration_impact <- read_csv('polling/immigration_impact.csv') |>
+    pivot_longer(
+        `Candidate must share views`:`Not a major issue`,
+        names_to = "impact",
+        values_to = "pct"
+    ) 
+```
+
+```{r, results='hide'}
+#| label: immigration_impact_chart
+ggplot(
+    immigration_impact,
+    aes(x=pct,y=stance,fill=impact)
+      ) +
+    geom_col() +
+    scale_fill_manual(
+        values = c(
+            "Candidate must share views" = "#254445",
+            "One of many important factors" = "#06874B",
+            "Not a major issue" = "#6A8C89"
+            )) +
+    labs(
+        title="How A Candidate's Immigration Stance Impacts Vote?",
+        y="",x="Percentage",
+        caption="Source: https://news.gallup.com/poll/647123/sharply-americans-curb-immigration.aspx",
+        fill="Impact"
+    ) +
+   theme(
+        axis.text.y = element_text(angle = 360)
+    )
+```
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+```{r, results='hide'}
+#| label: immigration_impact_party_data
+immigration_impact_party <- read_csv('polling/immigration_impact_party.csv') |> pivot_longer(
+        `Candidate must share views`:`Not a major issue`,
+        names_to = "impact",
+        values_to = "pct"
+    ) 
+```
+
+```{r, results='hide'}
+#| label: immigration_impact_party_chart
+ggplot(
+    immigration_impact_party,
+    aes(x=pct,y=identification,fill=impact)
+      ) +
+    geom_col() +
+    scale_fill_manual(
+        values = c(
+            "Candidate must share views" = "#254445",
+            "One of many important factors" = "#06874B",
+            "Not a major issue" = "#6A8C89"
+            )) +
+    labs(
+        title="How A Candidate's Immigration Stance Impacts Vote?",
+        subtitle="By Party/Political Affiliation",
+        y="",x="Percentage",
+        caption="Source: https://news.gallup.com/poll/647123/sharply-americans-curb-immigration.aspx",
+        fill="Impact"
     ) +
    theme(
         axis.text.y = element_text(angle = 360)
