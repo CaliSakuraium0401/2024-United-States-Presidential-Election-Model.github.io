@@ -2,7 +2,7 @@
 title: "2024 United States Presidential Election Model"
 subtitle: "Analysis of Polls and Trends"
 author: "CaliSakuraium"
-date: "October 27 2024"
+date: "October 29 2024"
 format:
   html:
     code-fold: true
@@ -25,6 +25,7 @@ library(ggplot2)
 library(ggthemes)
 library(tidyverse)
 library(tidyr)
+library("readxl")
 ```
 
 # Election Overview
@@ -961,7 +962,335 @@ Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolor
 
 ## Climate Change
 
-W.I.P
+```{r, results='hide'}
+#| label: enviornment_global_warming_data
+environment_global_warming <- read_csv('polling/environment_global_warming.csv') |>
+    pivot_longer(
+        exaggerated:underestimated,
+        names_to="view",
+        values_to="pct"
+    ) |>
+    arrange(desc(date))
+```
+
+```{r, results='hide'}
+#| label: enviornment_global_warming_graph
+ggplot(
+    environment_global_warming,
+    aes(x=date,y=pct,group=view,color=view)
+) + 
+    geom_line(size=0.6) + 
+    geom_point(size=0.8) +
+    scale_color_manual(
+        values = c(
+            "exaggerated" = "#527F3F",
+            "correct" = "#3F7F7F",
+            "underestimated" = "#7F3F3F"
+            )) +
+    labs(
+        title="How Americans View The Seriousness of Global Warming?",
+        x="Date",y="Percentage",
+        caption="Source: https://news.gallup.com/poll/1615/environment.aspx",
+        color="View"
+    ) +
+    theme(
+        axis.text.x = element_text(angle = 90, hjust = 0.5)
+    ) 
+    #+
+    #scale_x_continuous(breaks=seq(1965, 2025, 5)) +
+    #scale_y_continuous(breaks = seq(0, 100, 10))
+```
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+```{r, results='hide'}
+#| label: environment_quality_rating_data
+environment_quality_rating <- read_csv('polling/environment_quality_rating.csv') |>
+    separate(date, into=c("year", "monthday"), sep=4) |>
+    separate(monthday, into=c("month", "day"), sep=4) |>
+    mutate(
+        month = trimws(month),
+        year = as.numeric(trimws(year))
+    ) |>
+    select(-day,-`no opinion`) |>
+    pivot_longer(
+        excellent:poor,
+        names_to="rating",
+        values_to="pct"
+    )
+```
+
+```{r, results='hide'}
+#| label: environment_quality_rating_graph
+ggplot(
+    environment_quality_rating,
+    aes(x=year,y=pct,color=rating,group=rating)
+      ) +
+    geom_line(size=0.6) + 
+    geom_point(size=0.8) +
+    scale_color_manual(
+        values = c(
+            "excellent" = "#6D7F3F",
+            "good" = "#3F7F7F",
+            "fair" = "#503F7F",
+            "poor" = "#7F3F3F"
+            )) +
+    labs(
+        title="How Americans Rate the Quality of the Environment?",
+        x="Date",y="Percentage",
+        caption="Source: https://news.gallup.com/poll/1615/environment.aspx",
+        color="Rating"
+    ) +
+    theme(
+        axis.text.x = element_text(angle = 90, hjust = 0.5)
+    ) 
+```
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+
+```{r, results='hide'}
+#| label: enviornment_direction_rating_data
+enviornment_direction_rating <- read_csv('polling/enviornment_direction_rating.csv') |>
+    separate(date, into=c("year", "monthday"), sep=4) |>
+    separate(monthday, into=c("month", "day"), sep=4) |>
+    mutate(
+        month = trimws(month),
+        year = as.numeric(trimws(year))
+    ) |>
+    select(-day,-`no opinion`) |>
+    pivot_longer(
+        better:same,
+        names_to="rating",
+        values_to="pct"
+    )
+```
+
+```{r, results='hide'}
+#| label: enviornment_direction_rating_graph
+ggplot(
+    enviornment_direction_rating,
+    aes(x=year,y=pct,color=rating,group=rating)
+      ) +
+    geom_line(size=0.6) + 
+    geom_point(size=0.8) +
+    scale_color_manual(
+        values = c(
+            "better" = "#6D7F3F",
+            "worse" = "#3F7F7F",
+            "same" = "#503F7F"
+            )) +
+    labs(
+        title="How Americans View Where The Enviornment Is Going?",
+        x="Date",y="Percentage",
+        caption="Source: https://news.gallup.com/poll/1615/environment.aspx",
+        color="Rating"
+    ) +
+    theme(
+        axis.text.x = element_text(angle = 90, hjust = 0.5)
+    ) 
+```
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+```{r, results='hide'}
+#| label: enviornment_universal_data
+environment_universal <- read_excel("polling/enviornment_universal.xlsx",sheet = 3) |>
+    select(
+        geoname,
+        # Estimated percentage who think Congress should be doing more/much more to address global warming.
+        congress, 
+        # Estimated percentage who think Congress should be doing less/much less to address global warming.
+        congressOppose,  
+        # Estimated percentage who believe that most scientists think global warming is happening
+        consensus,
+        # Estimated percentage who believe there is a lot of disagreement among scientists about whether or not 
+        # global warming is happening
+        consensusOppose,
+        # Estimated percentage who say global warming should be a high priority for the next president and 
+        # Congress
+        priority,
+        # Estimated percentage who do not say global warming should be a high priority for the next 
+        # president and Congress
+        priorityOppose,
+        # Estimated percentage who say a candidate's views on GW are important to their vote
+        gwvoteimp,
+        # stimated percentage who do not say a candidate's views on GW are important to their vote
+        gwvoteimpOppose,
+        # Estimated percentage who think that global warming is happening
+        happening,
+        # Estimated percentage who do not think that global warming is happening
+        happeningOppose,
+        # Estimated percentage who think that global warming is caused mostly by human activities
+        human,
+        # Estimated percentage who think that global warming is caused mostly by natural changes in the 
+        # environment
+        humanOppose,
+        # Estimated percentage who somewhat/strongly agree that global warming is affecting the 
+        # weather in the United States
+        affectweather,
+        # Estimated percentage who somewhat/strongly disagree that global warming is affecting 
+        # the weather in the United States
+        affectweatherOppose,
+        # Estimated percentage who think the President themselves should be doing more/much more to 
+        # address global warming
+        president,
+        # Estimated percentage who think the President themselves should be doing less/much less to 
+        # address global warming
+        presidentOppose
+    ) |>
+    slice(1:51)
+```
+
+```{r, results='hide'}
+#| label: enviornment_belief_data
+environment_belief <- environment_universal |>
+    select(geoname, consensus, consensusOppose, happening, happeningOppose, human, humanOppose, 
+           affectweather, affectweatherOppose) |>
+    pivot_longer(
+        consensus:affectweatherOppose,
+        names_to = "view",
+        values_to = "pct"
+    ) |>
+    mutate(
+        topic = case_when(
+             view %in% c("consensus","consensusOppose") ~ "Scientists Think Global Warming Is Happening",
+             view %in% c("happening", "happeningOppose") ~ "Global Warming Is Happening",
+             view %in% c("human", "humanOppose") ~ "Global Warming Is Caused By Human Activity",
+             view %in% c("affectweather", "affectweatherOppose") ~ "Global Warming Affects The Weather",
+        ),
+        view = case_when(
+            view %in% c("consensus","happening","human","affectweather") ~ "Agree",
+            view %in% c("consensusOppose","happeningOppose","humanOppose","affectweatherOppose") ~ "Disagree"
+        )
+    ) |>
+    relocate(topic,.before=view) |>
+    rename(state=geoname)
+```
+
+```{r, results='hide'}
+#| label: enviornment_belief_graph
+ggplot(
+    environment_belief |> 
+        slice(9:408) |>
+        group_by(topic,view) |>
+        summarize(
+            pct = mean(pct)
+        ),
+    aes(y=view,x=pct,fill=view)
+) + geom_col() +
+    facet_wrap(~topic,ncol=1) +
+    scale_fill_manual(
+        values = c(
+            "Agree" = "#6D7F3F",
+            "Disagree" = "#503F7F"
+            )) +
+    labs(
+        title="What Are Americans Beliefs On Global Warming?",
+        caption="Source: https://climatecommunication.yale.edu/visualizations-data/ycom-us/",
+        fill="View",
+        x="Percentage",
+        y=""
+        )
+```
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+
+```{r, results='hide'}
+#| label: enviornment_impact_data
+environment_impact <- environment_universal |>
+    select(geoname,gwvoteimp,gwvoteimpOppose) |>
+    rename(
+        state = geoname,
+        `Impacts Vote` = gwvoteimp,
+        `Does Not Impact Vote` = gwvoteimpOppose 
+    ) |>
+    pivot_longer(
+        `Impacts Vote`:`Does Not Impact Vote`,
+        names_to="impact",
+        values_to="pct"
+    )
+```
+
+```{r, results='hide'}
+#| label: enviornment_impact_graph
+ggplot(
+    environment_impact |> filter(state %in% c("Pennsylvania", "Michigan", "Wisconsin", "North Carolina", 
+                          "Georgia", "Arizona", "Nevada")),
+    aes(x=pct,y=state,fill=impact)
+) +
+    geom_col(position="dodge") +
+    scale_fill_manual(
+        values = c(
+            "Impacts Vote" = "#254445",
+            "Does Not Impact Vote" = "#06874B"
+            )) +
+    labs(
+        title="Does a Candidate's View On Global Warming Impact Votes?",
+        subtitle="Among Battleground States",
+        y="",x="Percentage",
+        caption="Source: https://climatecommunication.yale.edu/visualizations-data/ycom-us/",
+        fill="View"
+    ) 
+```
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+```{r, results='hide'}
+#| label: enviornment_government_battleground_states_data
+environment_government <- environment_universal |>
+    select(geoname,congress,congressOppose,president,presidentOppose) |>
+    pivot_longer(
+        congress:presidentOppose,
+        names_to="view",
+        values_to="pct"
+    ) |> 
+    rename(
+        state = geoname
+    ) |>
+    mutate(
+        government = case_when(
+            view %in% c("congress", "congressOppose") ~ "Congress",
+            view %in% c("president", "presidentOppose") ~ "President"),
+        view = case_when(
+            view == "congressOppose" ~ "Oppose",
+            view == "congress" ~ "Support",
+            view == "president" ~ "Support",
+            view == "presidentOppose" ~ "Oppose"
+        )
+    ) |>
+    relocate(
+        government,
+        .before = view
+    )
+```
+
+```{r, results='hide'}
+#| label: enviornment_government_battleground_states_graph
+ggplot(
+    environment_government |> filter(state %in% c("Pennsylvania", "Michigan", "Wisconsin", "North Carolina", "Georgia", "Arizona", "Nevada")),
+    aes(y=state,x=pct,fill=view)
+) +
+    geom_col(position="dodge") +
+    facet_wrap(~government,ncol=1) +
+    scale_fill_manual(
+        values = c(
+            "Support" = "#254445",
+            "Oppose" = "#06874B"
+            )) +
+    labs(
+        title="Do Americans Think The Government Should Priortize Climate Change?",
+        subtitle="Among Battleground States",
+        y="",x="Percentage",
+        caption="Source: https://climatecommunication.yale.edu/visualizations-data/ycom-us/",
+        fill="View"
+    ) 
+    #+
+   #theme(
+    #    axis.text.x = element_text(angle = 90, hjust = 0.5)
+    #)
+```
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
 
 ## Democracy
 
