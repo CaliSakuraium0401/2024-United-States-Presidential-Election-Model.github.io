@@ -10,8 +10,8 @@
     - ☑️ Favorability Polling (Needs Analysis)
 - ☑️ Issues Analysis
     - ✅ Abortion
-    - ☑️ Border/Immigration (Finish Plots/Needs Analysis)
-    - ❌ Climate Change (Not Started)
+    - ☑️ Border/Immigration (Needs Analysis)
+    - ☑️ Climate Change (Needs Analysis)
     - ❌ Democracy (Not Started)
     - ❌ Economy (Not Started)
     - ❌ Education (Not Started)
