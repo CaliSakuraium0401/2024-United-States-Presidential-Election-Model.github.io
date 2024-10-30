@@ -2,7 +2,7 @@
 title: "2024 United States Presidential Election Model"
 subtitle: "Analysis of Polls and Trends"
 author: "CaliSakuraium"
-date: "October 29 2024"
+date: "October 30 2024"
 format:
   html:
     code-fold: true
@@ -213,7 +213,7 @@ az_trump <- swing_state_summary |>
     )
     ) +
     coord_cartesian(ylim=c(40, 50)) +
-    theme(axis.text.x = element_text(angle=90, hjust=0.5)) + 
+    theme(axis.text.x = element_text(angle=90)) + 
     labs(
         title="Who Leads In The Battleground States?",
         caption="Source: https://projects.fivethirtyeight.com/polls/president-general/2024/national/",
@@ -226,7 +226,7 @@ az_trump <- swing_state_summary |>
 |   | State | EV | Kamala Harris | Donald Trump |
 |---------------|:--------------|---------------|:--------------|:--------------|
 | ![](images/Flag_Pennsylvania.png){width="40%"} | Pennsylvania | 19 | `r pa_harris` % | `r pa_trump` % |
-| ![](images/Flag_Michigan.png){width="40%"} | Michigan | 5 | `r mi_harris` % | `r mi_trump` % |
+| ![](images/Flag_Michigan.png){width="40%"} | Michigan | 15 | `r mi_harris` % | `r mi_trump` % |
 | ![](images/Flag_Wisconsin.png){width="40%"} | Wisconsin | 10 | `r wi_harris` % | `r wi_trump` % |
 | ![](images/Flag_NorthCarolina.png){width="40%"} | North Carolina | 16 | `r nc_harris` % | `r nc_trump` % |
 | ![](images/Flag_Georgia.png){width="40%"} | Georgia | 16 | `r ga_harris` % | `r ga_trump` % |
@@ -881,9 +881,7 @@ ggplot(
         caption="Source: https://news.gallup.com/poll/647123/sharply-americans-curb-immigration.aspx",
         fill="Stance"
     ) +
-   theme(
-        axis.text.y = element_text(angle = 360)
-    )
+   scale_x_continuous(expand = c(0, 0), limits = c(0, 100))
 ```
 
 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
@@ -917,9 +915,7 @@ ggplot(
         caption="Source: https://news.gallup.com/poll/647123/sharply-americans-curb-immigration.aspx",
         fill="Impact"
     ) +
-   theme(
-        axis.text.y = element_text(angle = 360)
-    )
+   scale_x_continuous(expand = c(0, 0), limits = c(0, 100))
 ```
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -953,9 +949,7 @@ ggplot(
         caption="Source: https://news.gallup.com/poll/647123/sharply-americans-curb-immigration.aspx",
         fill="Impact"
     ) +
-   theme(
-        axis.text.y = element_text(angle = 360)
-    )
+   scale_x_continuous(expand = c(0, 0), limits = c(0, 100))
 ```
 
 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
@@ -995,10 +989,7 @@ ggplot(
     ) +
     theme(
         axis.text.x = element_text(angle = 90, hjust = 0.5)
-    ) 
-    #+
-    #scale_x_continuous(breaks=seq(1965, 2025, 5)) +
-    #scale_y_continuous(breaks = seq(0, 100, 10))
+    )
 ```
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -1190,7 +1181,9 @@ ggplot(
         fill="View",
         x="Percentage",
         y=""
-        )
+        ) +
+    scale_x_continuous(expand = c(0, 0), limits = c(0, 80)) +
+    guides(fill = "none")
 ```
 
 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
@@ -1230,7 +1223,8 @@ ggplot(
         y="",x="Percentage",
         caption="Source: https://climatecommunication.yale.edu/visualizations-data/ycom-us/",
         fill="View"
-    ) 
+    ) +
+    scale_x_continuous(expand = c(0, 0), limits = c(0, 100))
 ```
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -1283,11 +1277,8 @@ ggplot(
         y="",x="Percentage",
         caption="Source: https://climatecommunication.yale.edu/visualizations-data/ycom-us/",
         fill="View"
-    ) 
-    #+
-   #theme(
-    #    axis.text.x = element_text(angle = 90, hjust = 0.5)
-    #)
+    ) +
+    scale_x_continuous(expand = c(0, 0), limits = c(0, 100))
 ```
 
 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
