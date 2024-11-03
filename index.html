@@ -497,7 +497,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="democracy" class="level2">
 <h2 class="anchored" data-anchor-id="democracy">Democracy</h2>
-<p>W.I.P</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/democracy_satisfaction_graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/democracy_satisfaction_party_graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
 </section>
 <section id="economy" class="level2">
 <h2 class="anchored" data-anchor-id="economy">Economy</h2>
@@ -2294,37 +2313,95 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-1285"><a href="#cb1-1285"></a></span>
 <span id="cb1-1286"><a href="#cb1-1286"></a><span class="fu">## Democracy</span></span>
 <span id="cb1-1287"><a href="#cb1-1287"></a></span>
-<span id="cb1-1288"><a href="#cb1-1288"></a>W.I.P</span>
-<span id="cb1-1289"><a href="#cb1-1289"></a></span>
-<span id="cb1-1290"><a href="#cb1-1290"></a><span class="fu">## Economy</span></span>
-<span id="cb1-1291"><a href="#cb1-1291"></a></span>
-<span id="cb1-1292"><a href="#cb1-1292"></a>W.I.P</span>
-<span id="cb1-1293"><a href="#cb1-1293"></a></span>
-<span id="cb1-1294"><a href="#cb1-1294"></a><span class="fu">## Education</span></span>
+<span id="cb1-1288"><a href="#cb1-1288"></a><span class="in">```{r, results='hide'}</span></span>
+<span id="cb1-1289"><a href="#cb1-1289"></a><span class="in">#| label: democracy_satisfaction_data</span></span>
+<span id="cb1-1290"><a href="#cb1-1290"></a><span class="in">democracy_satisfaction &lt;- read_csv('polling/democracy_satisfaction.csv') |&gt;</span></span>
+<span id="cb1-1291"><a href="#cb1-1291"></a><span class="in">     rename(</span></span>
+<span id="cb1-1292"><a href="#cb1-1292"></a><span class="in">         pct = `Are you satisfied or dissatisfied with the way democracy is working in this country?`) |&gt;</span></span>
+<span id="cb1-1293"><a href="#cb1-1293"></a><span class="in">     mutate(date = as.Date(date, format="%m/%d/%Y"))</span></span>
+<span id="cb1-1294"><a href="#cb1-1294"></a><span class="in">```</span></span>
 <span id="cb1-1295"><a href="#cb1-1295"></a></span>
-<span id="cb1-1296"><a href="#cb1-1296"></a>W.I.P</span>
-<span id="cb1-1297"><a href="#cb1-1297"></a></span>
-<span id="cb1-1298"><a href="#cb1-1298"></a><span class="fu">## Foreign Policy</span></span>
-<span id="cb1-1299"><a href="#cb1-1299"></a></span>
-<span id="cb1-1300"><a href="#cb1-1300"></a>W.I.P</span>
-<span id="cb1-1301"><a href="#cb1-1301"></a></span>
-<span id="cb1-1302"><a href="#cb1-1302"></a><span class="fu">## Healthcare</span></span>
-<span id="cb1-1303"><a href="#cb1-1303"></a></span>
-<span id="cb1-1304"><a href="#cb1-1304"></a>W.I.P</span>
-<span id="cb1-1305"><a href="#cb1-1305"></a></span>
-<span id="cb1-1306"><a href="#cb1-1306"></a><span class="fu">## LGBTQ+ Rights</span></span>
-<span id="cb1-1307"><a href="#cb1-1307"></a></span>
-<span id="cb1-1308"><a href="#cb1-1308"></a>W.I.P</span>
-<span id="cb1-1309"><a href="#cb1-1309"></a></span>
-<span id="cb1-1310"><a href="#cb1-1310"></a><span class="fu"># Prediction</span></span>
-<span id="cb1-1311"><a href="#cb1-1311"></a></span>
-<span id="cb1-1312"><a href="#cb1-1312"></a><span class="fu">## My Prediction</span></span>
-<span id="cb1-1313"><a href="#cb1-1313"></a></span>
-<span id="cb1-1314"><a href="#cb1-1314"></a>W.I.P</span>
-<span id="cb1-1315"><a href="#cb1-1315"></a></span>
-<span id="cb1-1316"><a href="#cb1-1316"></a><span class="fu">## Likely Scenarios</span></span>
-<span id="cb1-1317"><a href="#cb1-1317"></a></span>
-<span id="cb1-1318"><a href="#cb1-1318"></a>W.I.P</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-1296"><a href="#cb1-1296"></a><span class="in">```{r, results='hide'}</span></span>
+<span id="cb1-1297"><a href="#cb1-1297"></a><span class="in">#| label: democracy_satisfaction_graph</span></span>
+<span id="cb1-1298"><a href="#cb1-1298"></a><span class="in">ggplot(</span></span>
+<span id="cb1-1299"><a href="#cb1-1299"></a><span class="in">    democracy_satisfaction,</span></span>
+<span id="cb1-1300"><a href="#cb1-1300"></a><span class="in">    aes(x=date,y=pct) </span></span>
+<span id="cb1-1301"><a href="#cb1-1301"></a><span class="in">) +</span></span>
+<span id="cb1-1302"><a href="#cb1-1302"></a><span class="in">    geom_line(color="#06874B") +</span></span>
+<span id="cb1-1303"><a href="#cb1-1303"></a><span class="in">    geom_point(color="#06874B") +</span></span>
+<span id="cb1-1304"><a href="#cb1-1304"></a><span class="in">    labs(</span></span>
+<span id="cb1-1305"><a href="#cb1-1305"></a><span class="in">        title="How Satisfied Are Americans With How Democracy Is Working?",</span></span>
+<span id="cb1-1306"><a href="#cb1-1306"></a><span class="in">        caption="Source: https://news.gallup.com/poll/548120/record-low-satisfied-democracy-working.aspx",</span></span>
+<span id="cb1-1307"><a href="#cb1-1307"></a><span class="in">        y="Percentage",x="Date"</span></span>
+<span id="cb1-1308"><a href="#cb1-1308"></a><span class="in">    )</span></span>
+<span id="cb1-1309"><a href="#cb1-1309"></a><span class="in">```</span></span>
+<span id="cb1-1310"><a href="#cb1-1310"></a></span>
+<span id="cb1-1311"><a href="#cb1-1311"></a>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+<span id="cb1-1312"><a href="#cb1-1312"></a></span>
+<span id="cb1-1313"><a href="#cb1-1313"></a><span class="in">```{r, results='hide'}</span></span>
+<span id="cb1-1314"><a href="#cb1-1314"></a><span class="in">#| label: democracy_satisfaction_party_data</span></span>
+<span id="cb1-1315"><a href="#cb1-1315"></a><span class="in">democracy_satisfaction_party &lt;- read_csv('polling/democracy_satisfaction_party.csv') |&gt;</span></span>
+<span id="cb1-1316"><a href="#cb1-1316"></a><span class="in">    pivot_longer(</span></span>
+<span id="cb1-1317"><a href="#cb1-1317"></a><span class="in">        Republican:Democrat,</span></span>
+<span id="cb1-1318"><a href="#cb1-1318"></a><span class="in">        names_to="affiliation",</span></span>
+<span id="cb1-1319"><a href="#cb1-1319"></a><span class="in">        values_to="pct"</span></span>
+<span id="cb1-1320"><a href="#cb1-1320"></a><span class="in">                ) |&gt;</span></span>
+<span id="cb1-1321"><a href="#cb1-1321"></a><span class="in">     mutate(date = as.Date(date, format="%m/%d/%Y"))</span></span>
+<span id="cb1-1322"><a href="#cb1-1322"></a><span class="in">```</span></span>
+<span id="cb1-1323"><a href="#cb1-1323"></a></span>
+<span id="cb1-1324"><a href="#cb1-1324"></a><span class="in">```{r, results='hide'}</span></span>
+<span id="cb1-1325"><a href="#cb1-1325"></a><span class="in">#| label: democracy_satisfaction_party_graph</span></span>
+<span id="cb1-1326"><a href="#cb1-1326"></a><span class="in">ggplot(</span></span>
+<span id="cb1-1327"><a href="#cb1-1327"></a><span class="in">    democracy_satisfaction_party,</span></span>
+<span id="cb1-1328"><a href="#cb1-1328"></a><span class="in">    aes(x=date,y=pct,color=affiliation,group=affiliation) </span></span>
+<span id="cb1-1329"><a href="#cb1-1329"></a><span class="in">) +</span></span>
+<span id="cb1-1330"><a href="#cb1-1330"></a><span class="in">    geom_line(size=0.6) + </span></span>
+<span id="cb1-1331"><a href="#cb1-1331"></a><span class="in">    geom_point(size=0.8) +</span></span>
+<span id="cb1-1332"><a href="#cb1-1332"></a><span class="in">    scale_color_manual(values=c(</span></span>
+<span id="cb1-1333"><a href="#cb1-1333"></a><span class="in">        "Republican" = "#D6090B",</span></span>
+<span id="cb1-1334"><a href="#cb1-1334"></a><span class="in">        "Independent" = "#6A8C89",</span></span>
+<span id="cb1-1335"><a href="#cb1-1335"></a><span class="in">        "Democrat" = "#031BBB"</span></span>
+<span id="cb1-1336"><a href="#cb1-1336"></a><span class="in">            )</span></span>
+<span id="cb1-1337"><a href="#cb1-1337"></a><span class="in">        ) +</span></span>
+<span id="cb1-1338"><a href="#cb1-1338"></a><span class="in">    labs(</span></span>
+<span id="cb1-1339"><a href="#cb1-1339"></a><span class="in">        title="How Satisfied Are Americans With How Democracy Is Working?",</span></span>
+<span id="cb1-1340"><a href="#cb1-1340"></a><span class="in">        subtitle="By Political Affiliation",</span></span>
+<span id="cb1-1341"><a href="#cb1-1341"></a><span class="in">        caption="Source: https://news.gallup.com/poll/548120/record-low-satisfied-democracy-working.aspx",</span></span>
+<span id="cb1-1342"><a href="#cb1-1342"></a><span class="in">        y="Percentage",x="Date"</span></span>
+<span id="cb1-1343"><a href="#cb1-1343"></a><span class="in">    )</span></span>
+<span id="cb1-1344"><a href="#cb1-1344"></a><span class="in">```</span></span>
+<span id="cb1-1345"><a href="#cb1-1345"></a></span>
+<span id="cb1-1346"><a href="#cb1-1346"></a>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</span>
+<span id="cb1-1347"><a href="#cb1-1347"></a></span>
+<span id="cb1-1348"><a href="#cb1-1348"></a><span class="fu">## Economy</span></span>
+<span id="cb1-1349"><a href="#cb1-1349"></a></span>
+<span id="cb1-1350"><a href="#cb1-1350"></a>W.I.P</span>
+<span id="cb1-1351"><a href="#cb1-1351"></a></span>
+<span id="cb1-1352"><a href="#cb1-1352"></a><span class="fu">## Education</span></span>
+<span id="cb1-1353"><a href="#cb1-1353"></a></span>
+<span id="cb1-1354"><a href="#cb1-1354"></a>W.I.P</span>
+<span id="cb1-1355"><a href="#cb1-1355"></a></span>
+<span id="cb1-1356"><a href="#cb1-1356"></a><span class="fu">## Foreign Policy</span></span>
+<span id="cb1-1357"><a href="#cb1-1357"></a></span>
+<span id="cb1-1358"><a href="#cb1-1358"></a>W.I.P</span>
+<span id="cb1-1359"><a href="#cb1-1359"></a></span>
+<span id="cb1-1360"><a href="#cb1-1360"></a><span class="fu">## Healthcare</span></span>
+<span id="cb1-1361"><a href="#cb1-1361"></a></span>
+<span id="cb1-1362"><a href="#cb1-1362"></a>W.I.P</span>
+<span id="cb1-1363"><a href="#cb1-1363"></a></span>
+<span id="cb1-1364"><a href="#cb1-1364"></a><span class="fu">## LGBTQ+ Rights</span></span>
+<span id="cb1-1365"><a href="#cb1-1365"></a></span>
+<span id="cb1-1366"><a href="#cb1-1366"></a>W.I.P</span>
+<span id="cb1-1367"><a href="#cb1-1367"></a></span>
+<span id="cb1-1368"><a href="#cb1-1368"></a><span class="fu"># Prediction</span></span>
+<span id="cb1-1369"><a href="#cb1-1369"></a></span>
+<span id="cb1-1370"><a href="#cb1-1370"></a><span class="fu">## My Prediction</span></span>
+<span id="cb1-1371"><a href="#cb1-1371"></a></span>
+<span id="cb1-1372"><a href="#cb1-1372"></a>W.I.P</span>
+<span id="cb1-1373"><a href="#cb1-1373"></a></span>
+<span id="cb1-1374"><a href="#cb1-1374"></a><span class="fu">## Likely Scenarios</span></span>
+<span id="cb1-1375"><a href="#cb1-1375"></a></span>
+<span id="cb1-1376"><a href="#cb1-1376"></a>W.I.P</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
