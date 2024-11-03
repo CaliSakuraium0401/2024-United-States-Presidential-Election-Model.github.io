@@ -12,7 +12,7 @@
     - ✅ Abortion
     - ☑️ Border/Immigration (Needs Analysis)
     - ☑️ Climate Change (Needs Analysis)
-    - ❌ Democracy (Not Started)
+    - ☑️ Democracy (Needs Analysis)
     - ❌ Economy (Not Started)
     - ❌ Education (Not Started)
     - ❌ Foreign Policy (Not Started)
