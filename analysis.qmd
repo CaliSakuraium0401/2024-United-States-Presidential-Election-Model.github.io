@@ -2,7 +2,7 @@
 title: "2024 United States Presidential Election Model"
 subtitle: "Analysis of Polls and Trends"
 author: "CaliSakuraium"
-date: "October 30 2024"
+date: "November 3 2024"
 format:
   html:
     code-fold: true
@@ -1076,9 +1076,7 @@ ggplot(
         caption="Source: https://news.gallup.com/poll/1615/environment.aspx",
         color="Rating"
     ) +
-    theme(
-        axis.text.x = element_text(angle = 90, hjust = 0.5)
-    ) 
+    theme(axis.text.x = element_text(angle = 90, hjust = 0.5)) 
 ```
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -1305,7 +1303,8 @@ ggplot(
         title="How Satisfied Are Americans With How Democracy Is Working?",
         caption="Source: https://news.gallup.com/poll/548120/record-low-satisfied-democracy-working.aspx",
         y="Percentage",x="Date"
-    )
+    ) +
+    theme(axis.text.x = element_text(angle = 90, hjust = 0.5)) 
 ```
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -1341,14 +1340,183 @@ ggplot(
         color="Affiliation",
         caption="Source: https://news.gallup.com/poll/548120/record-low-satisfied-democracy-working.aspx",
         y="Percentage",x="Date"
-    )
+    ) +
+    theme(axis.text.x = element_text(angle = 90, hjust = 0.5)) 
 ```
 
 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
 
 ## Economy
 
-W.I.P
+```{r, results='hide'}
+#| label: economy_confidence_index_data
+economy_confidence_index <- read_csv('polling/economy_confidence_index.csv') |>
+    mutate(
+        date = as.Date(date, format = "%b %d %Y")
+          ) |>
+    arrange(desc(date))
+```
+
+```{r, results='hide'}
+#| label: economy_confidence_index_graph
+ggplot(
+    economy_confidence_index,
+    aes(x=date,y=`Confidence Index`)
+      ) +
+    geom_line(color="#06874B") +
+    geom_point(color="#06874B") +
+    labs(
+        title="How Confident Are Americans In The Economy?",
+        caption="Source: https://news.gallup.com/poll/1609/consumer-views-economy.aspx",
+        y="Percentage",x="Date"
+    ) +
+    theme(axis.text.x = element_text(angle = 90, hjust = 0.5)) +
+    scale_x_date(
+        limits = c(as.Date("1996-01-01"), as.Date("2024-10-01")),
+        date_breaks = "3 years",
+        date_labels = "%Y",
+        expand = c(0, 0)
+    )
+```
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+```{r, results='hide'}
+#| label: economy_problem_data
+economy_problem <- read_csv('polling/economy_problem.csv') |>
+    mutate(
+        date = as.Date(date, format = "%b %d %Y")
+          ) |>
+    arrange(desc(date)) |>
+    rename(
+        pct = `Percentage of Americans Mentioning Economic Issues as the Nation's Most Important Problem`
+          )
+```
+
+```{r, results='hide'}
+#| label: economy_problem_graph
+ggplot(
+    economy_problem,
+    aes(x=date,y=pct)
+      ) +
+    geom_line(color="#06874B") +
+    geom_point(color="#06874B") +
+    labs(
+        title="Americans Mentioning Economic Issues as the Nation's Most Important Problem",
+        caption="Source: https://news.gallup.com/poll/1609/consumer-views-economy.aspx",
+        y="Percentage",x="Date"
+    ) +
+    theme(axis.text.x = element_text(angle = 90, hjust = 0.5)) +
+    scale_x_date(
+        limits = c(as.Date("2001-01-01"), as.Date("2025-01-01")),
+        date_breaks = "2 years",
+        date_labels = "%Y",
+        expand = c(0, 0)
+    )
+```
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+
+```{r, results='hide'}
+#| label: economy_jobs_data
+economy_jobs <- read_csv('polling/economy_jobs.csv') |>
+    separate(date, into=c("year", "monthday"), sep=4) |>
+    separate(monthday, into=c("month", "day"), sep=4) |>
+    mutate(
+        year = as.numeric(year),
+        month = trimws(month)
+        ) |>
+    select(-`No Opinion`,-day) |>
+    pivot_longer(
+        `Good Time`:`Bad Time`,
+        names_to="view",
+        values_to="pct"
+        ) |>
+    arrange(desc(year)) 
+```
+
+```{r, results='hide'}
+#| label: economy_jobs_graph
+ggplot(
+    economy_jobs |>
+    summarize(pct = mean(pct),.by=c(year,view)),
+    aes(x=year,y=pct,color=view,group=view)
+      ) +
+    geom_line(size=0.6) + 
+    geom_point(size=0.8) +
+    scale_color_manual(
+        values = c(
+            "Good Time" = "#6D7F3F",
+            "Bad Time" = "#3F7F7F"
+            )) +
+    labs(
+        title="Do Americans Think It's A Good/Bad Time To Find A Job?",
+        x="Date",y="Percentage",
+        caption="Source: https://news.gallup.com/poll/1609/consumer-views-economy.aspx",
+        color="View"
+    ) +
+    theme(axis.text.x = element_text(angle = 90, hjust = 0.5)) 
+```
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+```{r, results='hide'}
+#| label: economy_expenses_data
+economy_expenses <- read_csv('polling/economy_expenses.csv') |>
+    pivot_longer(
+        `2024`:`2019`,
+        names_to="year",
+        values_to="pct"
+    ) |>
+    
+    mutate(
+        year = as.numeric(year),
+        pct = as.numeric(pct),
+        pct = replace_na(pct, 0)
+    ) |>
+    filter(year == 2024)
+```
+
+```{r, results='hide'}
+#| label: economy_expenses_graph
+ggplot(economy_expenses, aes(x=pct,y=fct_reorder(expense, pct),fill=expense)) +
+  geom_col() +
+  scale_fill_manual(
+    values = c(
+      "High cost of living/inflation" = "#6D7F3F",
+      "Cost of owning/renting a home" = "#6D7F3F",
+      "Energy costs/oil and gas prices" = "#6D7F3F",
+      "Transportation/commuting costs" = "#6D7F3F",
+      "Insurance/Life insurance" = "#6D7F3F",
+      "Health care costs" = "#6D7F3F",
+      "Childcare/Daycare costs" = "#6D7F3F",
+      "Social Security" = "#6D7F3F",
+      "Credit card debt" = "#3F7F7F",
+      "Taxes" = "#3F7F7F",
+      "College expenses/Student loans/Student loan debt" = "#3F7F7F",
+      "Too much debt/Not enough money to pay debts" = "#3F7F7F",
+      "Supporting parents/children/grandchildren" = "#3F7F7F",
+      "Lack of money/Low wages" = "#3F7F7F",
+      "Unemployment/Loss of job" = "#3F7F7F",
+      "Effects of coronavirus situation" = "#3F7F7F",
+      "Stock market/investments" = "#503F7F",
+      "Lack of savings" = "#503F7F",
+      "Interest rates" = "#503F7F",
+      "Controlling spending" = "#503F7F",
+      "Retirement savings" = "#503F7F",
+      "State of the economy" = "#503F7F"
+    )
+  ) + 
+  labs(
+        title="Americans Most Important Financial Problem",
+        x="Percentage",y="",
+        caption="Source: https://news.gallup.com/poll/1609/consumer-views-economy.aspx",
+    ) +
+  guides(fill = "none") +
+  scale_x_continuous(expand = c(0, 0), limits = c(0, 45))
+```
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
 
 ## Education
 
