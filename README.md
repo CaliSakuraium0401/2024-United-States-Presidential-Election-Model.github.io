@@ -13,7 +13,7 @@
     - ☑️ Border/Immigration (Needs Analysis)
     - ☑️ Climate Change (Needs Analysis)
     - ☑️ Democracy (Needs Analysis)
-    - ☑️ Economy (Not Started)
+    - ☑️ Economy (Needs Analysis)
     - ❌ Education (Not Started)
     - ❌ Foreign Policy (Not Started)
     - ❌ Healthcare (Not Started)
