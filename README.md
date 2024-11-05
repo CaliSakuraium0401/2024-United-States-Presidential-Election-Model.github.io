@@ -19,5 +19,5 @@
         -   ☑️ Russo-Ukrainian War (Needs Analysis)
         -   ☑️ Israel–Hamas War (Needs Analysis)
     -   ☑️ Healthcare (Needs Analysis)
-    -   ❌ LGBTQ+ Rights (Not Started)
+    -   ☑️ LGBTQ+ Rights (Needs Analysis)
 -   ✅ Prediction
