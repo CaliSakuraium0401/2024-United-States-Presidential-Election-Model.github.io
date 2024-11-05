@@ -14,8 +14,10 @@
     -   ☑️ Climate Change (Needs Analysis)
     -   ☑️ Democracy (Needs Analysis)
     -   ☑️ Economy (Needs Analysis)
-    -   ☑️ Education (Not Started)
-    -   ❌ Foreign Policy (Not Started)
+    -   ☑️ Education (Needs Analysis)
+    -   ☑️ Foreign Policy
+        -   ☑️ Russo-Ukrainian War (Needs Analysis)
+        -   ☑️ Israel–Hamas War (Needs Analysis)
     -   ❌ Healthcare (Not Started)
     -   ❌ LGBTQ+ Rights (Not Started)
 -   ✅ Prediction
