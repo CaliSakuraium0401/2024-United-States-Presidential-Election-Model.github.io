@@ -2,7 +2,7 @@
 title: "2024 United States Presidential Election Model"
 subtitle: "Analysis of Polls and Trends"
 author: "CaliSakuraium"
-date: "November 3 2024"
+date: "November 4 2024"
 format:
   html:
     code-fold: true
@@ -730,7 +730,7 @@ ggplot(
     )
 ```
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+Americans overall tend to view immigration positively, with public support reaching a peak in 2020 when approximately 68-69% of people viewed it as beneficial for the country. However, since then, this favorable perception has seen a slight decline, dropping to around 62-63% as of recent years. While this decrease marks a noticeable shift, the overall perspective remains strongly supportive of immigration, indicating that a majority still sees it as a positive factor for the United States.
 
 ```{r, results='hide'}
 #| label: immigration_view_party_data
@@ -784,7 +784,7 @@ ggplot(
     )
 ```
 
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+Both Democrats and Independents generally maintain a positive outlook, with a high percentage in each group viewing immigration favorably. However, among Republicans, there has been a significant decline in positive perception, with only around 39% expressing support for immigration by 2024. This shift underscores a growing divide in how immigration is perceived across party lines, with Republicans showing considerably less enthusiasm compared to other groups.
 
 ```{r, results='hide'}
 #| label: immigration_level_data
@@ -838,7 +838,7 @@ ggplot(
     scale_y_continuous(breaks = seq(0, 100, 10))
 ```
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Although a majority of Americans view immigration positively, many still believe it should be more tightly controlled or even reduced. Approximately 55% of Americans feel that immigration levels should be decreased, while support for maintaining current levels stands at around 25%. Meanwhile, only about 16% of Americans favor an increase in immigration.
 
 ```{r, results='hide'}
 #| label: immigration_level_party_data
@@ -884,41 +884,39 @@ ggplot(
    scale_x_continuous(expand = c(0, 0), limits = c(0, 100))
 ```
 
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+When we break down these views by political parties we see a big divide. A majority of Republicans favor decreasing immigration, with minimal support for an increase. Independents are seemingly evenly split between decrease immigration and increasing/maintaining. Meanwhile Democrats show more favorability to immigration, more than Independents and Republicans combined.
 
 ```{r, results='hide'}
 #| label: immigration_impact_data
-immigration_impact <- read_csv('polling/immigration_impact.csv') |>
-    pivot_longer(
-        `Candidate must share views`:`Not a major issue`,
-        names_to = "impact",
-        values_to = "pct"
-    ) 
+#immigration_impact <- read_csv('polling/immigration_impact.csv') |>
+#    pivot_longer(
+#        `Candidate must share views`:`Not a major issue`,
+#        names_to = "impact",
+#        values_to = "pct"
+#    ) 
 ```
 
 ```{r, results='hide'}
 #| label: immigration_impact_chart
-ggplot(
-    immigration_impact,
-    aes(x=pct,y=stance,fill=impact)
-      ) +
-    geom_col() +
-    scale_fill_manual(
-        values = c(
-            "Candidate must share views" = "#254445",
-            "One of many important factors" = "#06874B",
-            "Not a major issue" = "#6A8C89"
-            )) +
-    labs(
-        title="How A Candidate's Immigration Stance Impacts Vote?",
-        y="",x="Percentage",
-        caption="Source: https://news.gallup.com/poll/647123/sharply-americans-curb-immigration.aspx",
-        fill="Impact"
-    ) +
-   scale_x_continuous(expand = c(0, 0), limits = c(0, 100))
+#ggplot(
+#    immigration_impact,
+#    aes(x=pct,y=stance,fill=impact)
+#      ) +
+#    geom_col() +
+#    scale_fill_manual(
+#        values = c(
+#            "Candidate must share views" = "#254445",
+#            "One of many important factors" = "#06874B",
+#            "Not a major issue" = "#6A8C89"
+#            )) +
+#    labs(
+#        title="How A Candidate's Immigration Stance Impacts Vote?",
+#        y="",x="Percentage",
+#        caption="Source: https://news.gallup.com/poll/647123/sharply-americans-curb-immigration.aspx",
+#        fill="Impact"
+#    ) +
+#   scale_x_continuous(expand = c(0, 0), limits = c(0, 100))
 ```
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 ```{r, results='hide'}
 #| label: immigration_impact_party_data
@@ -952,7 +950,7 @@ ggplot(
    scale_x_continuous(expand = c(0, 0), limits = c(0, 100))
 ```
 
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+With all that being said, while the Republican Party does hold a slight edge on immigration, which has inadvertently forced the Democratic Party to moderate on some immigration stances. This moderation could appeal to a broader audience that sees immigration as beneficial but manageable, contrasting with the Republicans’ stronger push for reduction, or this moderation can also turn off reliable Democratic voters, young voters, or minority voters. Whether this will be beneficial to Democratic Party or not in the long run, only time will tell.
 
 ## Climate Change
 
@@ -1536,10 +1534,26 @@ W.I.P
 
 # Prediction
 
-## My Prediction
+## Prediction#1: 2020 Repeat
 
-W.I.P
+![](images/Prediction.png)
 
-## Likely Scenarios
+My personal prediction for the 2024 United States Election with all polling data, issue polling, historical trends, and "vibes." I believe the map will remain the same as it was in the 2020 Presidential Election. This has never happened before in United States history, and while this is not an argument, I think it would also be a fitting conclusion to this election that has had many other first.
 
-W.I.P
+## Prediction#2: Kamala Harris Seven-Swing-State-Sweep
+
+![](images/Prediction2.png)
+
+This is my second, more "optimistic" version of my main prediction. While I do believe polling is vastly underestimating Kamala Harris, Republicans still hold an advantage against the current unpopular administration which could prevent a Demoratic sweep of the swing states.
+
+## Prediction#3: Georgia and North Carolina Swap
+
+![](images/Prediction4.png)
+
+An unlikely outcome, mainly because North Carolina has not flipped to a Democrat on a presidential level since 2008. If North Carolina were to flip, then there is no reason to doubt that Harris would win Georgia as well, a state that has been trending Democratic.
+
+## Prediction#4: Welcome Back 2010s
+
+![](images/Prediction3.png)
+
+This is the most unlikely outcome, mainly because North Carolina has not flipped to a Democrat on a presidential level since 2008. If North Carolina were to flip, then there is no reason to doubt that Harris would win Arizona and Georgia as well, states that have been trending Democratic.
