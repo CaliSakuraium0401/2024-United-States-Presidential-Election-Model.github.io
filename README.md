@@ -18,6 +18,6 @@
     -   ☑️ Foreign Policy
         -   ☑️ Russo-Ukrainian War (Needs Analysis)
         -   ☑️ Israel–Hamas War (Needs Analysis)
-    -   ❌ Healthcare (Not Started)
+    -   ☑️ Healthcare (Needs Analysis)
     -   ❌ LGBTQ+ Rights (Not Started)
 -   ✅ Prediction
