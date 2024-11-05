@@ -2,7 +2,7 @@
 title: "2024 United States Presidential Election Model"
 subtitle: "Analysis of Polls and Trends"
 author: "CaliSakuraium"
-date: "November 4 2024"
+date: "November 5 2024"
 format:
   html:
     code-fold: true
