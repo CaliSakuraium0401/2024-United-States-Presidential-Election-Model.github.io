@@ -1809,7 +1809,128 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ## LGBTQ+ Rights
 
-W.I.P
+```{r, results='hide'}
+#| label: lgbtq+_marriage_data
+lgbtq_marriage <- read_csv('polling/lgbtq+_marriage.csv') |>
+    pivot_longer(
+        `Should Be Valid`:`Should Not Be Valid`,
+        names_to="view",
+        values_to="pct"
+    ) |>
+    separate(date, into=c("year", "month"), sep=4) |>
+    mutate(
+        year = as.numeric(year),
+        month = trimws(month)
+    )
+```
+
+```{r, results='hide'}
+#| label: lgbtq+_marriage_graph
+ggplot(
+    lgbtq_marriage |>
+    summarize(
+        pct = mean(pct),
+        .by = c(year,view)
+    ),
+    aes(x=year,y=pct,color=view,group=view)
+      ) +
+    geom_line(size=0.6) + 
+    geom_point(size=0.8) +
+    scale_color_manual(
+        values = c(
+            "Should Be Valid" = "#6D7F3F",
+            "Should Not Be Valid" = "#3F7F7F"
+            )) +
+    labs(
+        title="Do Americans Think Same Sex Marriage Should Be Valid Under Law/Have Same Rights As Traditional Marriage?",
+        x="Date",y="Percentage",
+        caption="Source: https://news.gallup.com/poll/1651/gay-lesbian-rights.aspx",
+        color="View"
+    ) +
+    theme(axis.text.x = element_text(angle = 90, hjust = 0.5)) 
+```
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+
+```{r, results='hide'}
+#| label: lgbtq+_transgender_data
+lgbtq_transgender <-read_csv('polling/lgbtq+_transgender.csv') |>
+    pivot_longer(
+        `Very Satisfied`:`No Opinion`,
+        names_to="view",
+        values_to="pct"
+    )
+    # Use this if I want to make a chart to make a satisifed/dissatisfied
+    # bars divided by somewhat/very.
+
+    #view = case_when(
+    #        view == "congressOppose" ~ "Oppose",
+    #        view == "congress" ~ "Support",
+    #        view == "president" ~ "Support",
+    #        view == "presidentOppose" ~ "Oppose"
+    #    )
+```
+
+```{r, results='hide'}
+#| label: lgbtq+_transgender_graph
+ggplot(
+    lgbtq_transgender,
+    aes(x=pct,y=view,fill=view)
+    ) +
+    geom_col() +
+    scale_fill_manual(
+        values = c(
+            "Very Satisfied" = "#6D7F3F",
+            "Somewhat Satisfied" = "#3F7F7F",
+            "Somewhat Dissatisfied" = "#503F7F",
+            "Very Dissatisfied" = "#7F3F3F",
+            "No Opinion" = "#717A63"
+            )) +
+    labs(
+        title="How Satisfied Are Americans With Transgender Acceptance?",
+        y="",x="Percentage",
+        caption="Source: https://news.gallup.com/poll/1651/gay-lesbian-rights.aspx",
+        fill="View"
+    ) +
+   scale_x_continuous(expand = c(0, 0), limits = c(0, 40))
+```
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+```{r, results='hide'}
+#| label: lgbtq+_party_data
+lgbtq_party <-read_csv('polling/lgbtq+_party.csv') |>
+    pivot_longer(
+        `Republican`:`No Opinion`,
+        names_to="affiliation",
+        values_to="pct"
+    )
+```
+
+```{r, results='hide'}
+#| label: lgbtq+_party_data_graph
+ggplot(
+    lgbtq_party,
+    aes(x=pct,y=affiliation,fill=affiliation)
+    ) +
+    geom_col() +
+    scale_fill_manual(
+        values = c(
+            "Democratic" = "#031BBB",
+            "Republican" = "#D6090B",
+            "No Difference" = "#6A8C89",
+            "No Opinion" = "#717A63"
+            )) +
+    labs(
+        title="Which Party BEST Serves The Interests Of The LGBTQ+ Community?",
+        y="",x="Percentage",
+        caption="Source: https://news.gallup.com/poll/1651/gay-lesbian-rights.aspx",
+        fill="Stance"
+    ) +
+   scale_x_continuous(expand = c(0, 0), limits = c(0, 90))
+```
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
 
 # Prediction
 
@@ -1819,7 +1940,7 @@ W.I.P
 
 My personal prediction for the 2024 United States election incorporates polling data, issue-based polling, historical trends, and just "vibes". I believe the electoral map will remain unchanged from the 2020 Presidential Election, which would be unprecedented in U.S. history. While this is not a conclusive argument, I think it would fittingly cap off an election marked by so many other firsts.
 
-## Prediction#2: Kamala Harris Seven-Swing-State-Sweep
+## Prediction#2: Very DissatisfiedHarris Seven-Swing-State-Sweep
 
 ![](images/Prediction2.png)
 
