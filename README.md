@@ -18,4 +18,4 @@
     - ❌ Foreign Policy (Not Started)
     - ❌ Healthcare (Not Started)
     - ❌ LGBTQ+ Rights (Not Started)
-- ✅ Predictions
+- ✅ Prediction
