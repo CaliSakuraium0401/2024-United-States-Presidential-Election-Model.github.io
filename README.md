@@ -10,7 +10,7 @@
     - ☑️ Favorability Polling (Needs Analysis)
 - ☑️ Issues Analysis
     - ✅ Abortion
-    - ☑️ Border/Immigration (Needs Analysis)
+    - ✅ Border/Immigration
     - ☑️ Climate Change (Needs Analysis)
     - ☑️ Democracy (Needs Analysis)
     - ☑️ Economy (Needs Analysis)
@@ -18,6 +18,4 @@
     - ❌ Foreign Policy (Not Started)
     - ❌ Healthcare (Not Started)
     - ❌ LGBTQ+ Rights (Not Started)
-- ❌ Prediction (Not Started)
-    - ❌ My Prediction
-    - ❌ Likely Scenarios (Not Started)
+- ✅ Predictions
