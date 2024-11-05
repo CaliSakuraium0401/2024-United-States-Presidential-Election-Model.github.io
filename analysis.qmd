@@ -25,7 +25,7 @@ library(ggplot2)
 library(ggthemes)
 library(tidyverse)
 library(tidyr)
-library("readxl")
+library(readxl)
 ```
 
 # Election Overview
@@ -1518,7 +1518,50 @@ Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolor
 
 ## Education
 
-W.I.P
+```{r, results='hide'}
+#| label: education_quality_data
+education_quality <- read_csv('polling/education_quality.csv') |>
+    pivot_longer(
+        `Completely Satisfied`:`Completely Dissatisfied`,
+        names_to="rating",
+        values_to="pct"
+    ) |>
+    separate(date, into=c("year", "monthday"), sep=4) |>
+    separate(monthday, into=c("month", "day"), sep=4) |>
+    mutate(
+        year = as.numeric(year),
+        month = trimws(month),
+    ) |>
+    select(-`No Opinion`, -day)
+```
+
+```{r, results='hide'}
+#| label: education_quality_graph
+ggplot(
+    education_quality,
+    aes(x=year,y=pct,color=rating,group=rating)
+) +
+    geom_line(size=0.6) + 
+    geom_point(size=0.8) +
+    scale_color_manual(
+        values = c(
+            "Completely Satisfied" = "#6D7F3F",
+            "Somewhat Satisfied" = "#3F7F7F",
+            "Somewhat Dissatisfied" = "#503F7F",
+            "Completely Dissatisfied" = "#7F3F3F"
+            )) +
+    labs(
+        title="How Satisfied Are Americans With Education Quality (K-12)?",
+        x="Date",y="Percentage",
+        caption="Source: https://news.gallup.com/poll/1612/education.aspx",
+        color="Rating"
+    ) +
+    theme(
+        axis.text.x = element_text(angle = 90, hjust = 0.5)
+    ) 
+```
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 ## Foreign Policy
 
