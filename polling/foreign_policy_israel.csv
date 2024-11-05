@@ -1,4 +1,4 @@
-﻿date,Approve,Disapprove
-Nov-23,50,45
-Mar-24,36,55
-Jun-24,42,48
+﻿year,month,Approve,Disapprove
+2023,Nov,50,45
+2024,Mar,36,55
+2024,Jun,42,48
