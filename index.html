@@ -621,7 +621,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="healthcare" class="level2">
 <h2 class="anchored" data-anchor-id="healthcare">Healthcare</h2>
-<p>W.I.P</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/healthcare_party_graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/healthcare_candidate_graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 </section>
 <section id="lgbtq-rights" class="level2">
 <h2 class="anchored" data-anchor-id="lgbtq-rights">LGBTQ+ Rights</h2>
@@ -2865,37 +2884,106 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-1736"><a href="#cb1-1736"></a></span>
 <span id="cb1-1737"><a href="#cb1-1737"></a><span class="fu">## Healthcare</span></span>
 <span id="cb1-1738"><a href="#cb1-1738"></a></span>
-<span id="cb1-1739"><a href="#cb1-1739"></a>W.I.P</span>
-<span id="cb1-1740"><a href="#cb1-1740"></a></span>
-<span id="cb1-1741"><a href="#cb1-1741"></a><span class="fu">## LGBTQ+ Rights</span></span>
-<span id="cb1-1742"><a href="#cb1-1742"></a></span>
-<span id="cb1-1743"><a href="#cb1-1743"></a>W.I.P</span>
-<span id="cb1-1744"><a href="#cb1-1744"></a></span>
-<span id="cb1-1745"><a href="#cb1-1745"></a><span class="fu"># Prediction</span></span>
-<span id="cb1-1746"><a href="#cb1-1746"></a></span>
-<span id="cb1-1747"><a href="#cb1-1747"></a><span class="fu">## Prediction#1: 2020 Repeat</span></span>
+<span id="cb1-1739"><a href="#cb1-1739"></a><span class="in">```{r, results='hide'}</span></span>
+<span id="cb1-1740"><a href="#cb1-1740"></a><span class="in">#| label: healthcare_party_data</span></span>
+<span id="cb1-1741"><a href="#cb1-1741"></a><span class="in">healthcare_party &lt;- read_csv('polling/healthcare_party.csv') |&gt;</span></span>
+<span id="cb1-1742"><a href="#cb1-1742"></a><span class="in">    pivot_longer(</span></span>
+<span id="cb1-1743"><a href="#cb1-1743"></a><span class="in">        `Extremely Important`:`Not Important`,</span></span>
+<span id="cb1-1744"><a href="#cb1-1744"></a><span class="in">        names_to="view",</span></span>
+<span id="cb1-1745"><a href="#cb1-1745"></a><span class="in">        values_to="pct"</span></span>
+<span id="cb1-1746"><a href="#cb1-1746"></a><span class="in">    )</span></span>
+<span id="cb1-1747"><a href="#cb1-1747"></a><span class="in">```</span></span>
 <span id="cb1-1748"><a href="#cb1-1748"></a></span>
-<span id="cb1-1749"><a href="#cb1-1749"></a><span class="al">![](images/Prediction.png)</span></span>
-<span id="cb1-1750"><a href="#cb1-1750"></a></span>
-<span id="cb1-1751"><a href="#cb1-1751"></a>My personal prediction for the 2024 United States Election with all polling data, issue polling, historical trends, and "vibes." I believe the map will remain the same as it was in the 2020 Presidential Election. This has never happened before in United States history, and while this is not an argument, I think it would also be a fitting conclusion to this election that has had many other first.</span>
-<span id="cb1-1752"><a href="#cb1-1752"></a></span>
-<span id="cb1-1753"><a href="#cb1-1753"></a><span class="fu">## Prediction#2: Kamala Harris Seven-Swing-State-Sweep</span></span>
-<span id="cb1-1754"><a href="#cb1-1754"></a></span>
-<span id="cb1-1755"><a href="#cb1-1755"></a><span class="al">![](images/Prediction2.png)</span></span>
-<span id="cb1-1756"><a href="#cb1-1756"></a></span>
-<span id="cb1-1757"><a href="#cb1-1757"></a>This is my second, more "optimistic" version of my main prediction. While I do believe polling is vastly underestimating Kamala Harris, Republicans still hold an advantage against the current unpopular administration which could prevent a Demoratic sweep of the swing states.</span>
-<span id="cb1-1758"><a href="#cb1-1758"></a></span>
-<span id="cb1-1759"><a href="#cb1-1759"></a><span class="fu">## Prediction#3: Georgia and North Carolina Swap</span></span>
-<span id="cb1-1760"><a href="#cb1-1760"></a></span>
-<span id="cb1-1761"><a href="#cb1-1761"></a><span class="al">![](images/Prediction4.png)</span></span>
-<span id="cb1-1762"><a href="#cb1-1762"></a></span>
-<span id="cb1-1763"><a href="#cb1-1763"></a>An unlikely outcome, mainly because North Carolina has not flipped to a Democrat on a presidential level since 2008. If North Carolina were to flip, then there is no reason to doubt that Harris would win Georgia as well, a state that has been trending Democratic.</span>
-<span id="cb1-1764"><a href="#cb1-1764"></a></span>
-<span id="cb1-1765"><a href="#cb1-1765"></a><span class="fu">## Prediction#4: Welcome Back 2010s</span></span>
-<span id="cb1-1766"><a href="#cb1-1766"></a></span>
-<span id="cb1-1767"><a href="#cb1-1767"></a><span class="al">![](images/Prediction3.png)</span></span>
-<span id="cb1-1768"><a href="#cb1-1768"></a></span>
-<span id="cb1-1769"><a href="#cb1-1769"></a>This is the most unlikely outcome, mainly because North Carolina has not flipped to a Democrat on a presidential level since 2008. If North Carolina were to flip, then there is no reason to doubt that Harris would win Arizona and Georgia as well, states that have been trending Democratic.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-1749"><a href="#cb1-1749"></a><span class="in">```{r, results='hide'}</span></span>
+<span id="cb1-1750"><a href="#cb1-1750"></a><span class="in">#| label: healthcare_party_graph</span></span>
+<span id="cb1-1751"><a href="#cb1-1751"></a><span class="in">ggplot(</span></span>
+<span id="cb1-1752"><a href="#cb1-1752"></a><span class="in">    healthcare_party,</span></span>
+<span id="cb1-1753"><a href="#cb1-1753"></a><span class="in">    aes(x=pct,y=affiliation,fill=view)</span></span>
+<span id="cb1-1754"><a href="#cb1-1754"></a><span class="in">    ) +</span></span>
+<span id="cb1-1755"><a href="#cb1-1755"></a><span class="in">    geom_col() +</span></span>
+<span id="cb1-1756"><a href="#cb1-1756"></a><span class="in">    scale_fill_manual(</span></span>
+<span id="cb1-1757"><a href="#cb1-1757"></a><span class="in">        values = c(</span></span>
+<span id="cb1-1758"><a href="#cb1-1758"></a><span class="in">            "Extremely Important" = "#6D7F3F",</span></span>
+<span id="cb1-1759"><a href="#cb1-1759"></a><span class="in">            "Very Important" = "#3F7F7F",</span></span>
+<span id="cb1-1760"><a href="#cb1-1760"></a><span class="in">            "Somewhat Important" = "#503F7F",</span></span>
+<span id="cb1-1761"><a href="#cb1-1761"></a><span class="in">            "Not Important" = "#7F3F3F"</span></span>
+<span id="cb1-1762"><a href="#cb1-1762"></a><span class="in">            )) +</span></span>
+<span id="cb1-1763"><a href="#cb1-1763"></a><span class="in">    labs(</span></span>
+<span id="cb1-1764"><a href="#cb1-1764"></a><span class="in">        title="How Important Do Americans View Healthcare?",</span></span>
+<span id="cb1-1765"><a href="#cb1-1765"></a><span class="in">        subtitle="By Party/Political Affiliation",</span></span>
+<span id="cb1-1766"><a href="#cb1-1766"></a><span class="in">        y="",x="Percentage",</span></span>
+<span id="cb1-1767"><a href="#cb1-1767"></a><span class="in">        caption="Source: https://news.gallup.com/poll/651755/healthcare-remains-important-voting-issue.aspx",</span></span>
+<span id="cb1-1768"><a href="#cb1-1768"></a><span class="in">        fill="Stance"</span></span>
+<span id="cb1-1769"><a href="#cb1-1769"></a><span class="in">    ) +</span></span>
+<span id="cb1-1770"><a href="#cb1-1770"></a><span class="in">   scale_x_continuous(expand = c(0, 0), limits = c(0, 100))</span></span>
+<span id="cb1-1771"><a href="#cb1-1771"></a><span class="in">```</span></span>
+<span id="cb1-1772"><a href="#cb1-1772"></a></span>
+<span id="cb1-1773"><a href="#cb1-1773"></a>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</span>
+<span id="cb1-1774"><a href="#cb1-1774"></a></span>
+<span id="cb1-1775"><a href="#cb1-1775"></a><span class="in">```{r, results='hide'}</span></span>
+<span id="cb1-1776"><a href="#cb1-1776"></a><span class="in">#| label: healthcare_candidate_data</span></span>
+<span id="cb1-1777"><a href="#cb1-1777"></a><span class="in">healthcare_candidate &lt;- read_csv('polling/healthcare_candidate.csv') |&gt;</span></span>
+<span id="cb1-1778"><a href="#cb1-1778"></a><span class="in">    pivot_longer(</span></span>
+<span id="cb1-1779"><a href="#cb1-1779"></a><span class="in">        `Kamala Harris`:`Same/No Opinion`,</span></span>
+<span id="cb1-1780"><a href="#cb1-1780"></a><span class="in">        names_to="candidate",</span></span>
+<span id="cb1-1781"><a href="#cb1-1781"></a><span class="in">        values_to="pct"</span></span>
+<span id="cb1-1782"><a href="#cb1-1782"></a><span class="in">    )</span></span>
+<span id="cb1-1783"><a href="#cb1-1783"></a><span class="in">```</span></span>
+<span id="cb1-1784"><a href="#cb1-1784"></a></span>
+<span id="cb1-1785"><a href="#cb1-1785"></a><span class="in">```{r, results='hide'}</span></span>
+<span id="cb1-1786"><a href="#cb1-1786"></a><span class="in">#| label: healthcare_candidate_graph</span></span>
+<span id="cb1-1787"><a href="#cb1-1787"></a><span class="in">ggplot(</span></span>
+<span id="cb1-1788"><a href="#cb1-1788"></a><span class="in">    healthcare_candidate,</span></span>
+<span id="cb1-1789"><a href="#cb1-1789"></a><span class="in">    aes(x=pct,y=affiliation,fill=candidate)</span></span>
+<span id="cb1-1790"><a href="#cb1-1790"></a><span class="in">    ) +</span></span>
+<span id="cb1-1791"><a href="#cb1-1791"></a><span class="in">    geom_col() +</span></span>
+<span id="cb1-1792"><a href="#cb1-1792"></a><span class="in">    scale_fill_manual(</span></span>
+<span id="cb1-1793"><a href="#cb1-1793"></a><span class="in">        values = c(</span></span>
+<span id="cb1-1794"><a href="#cb1-1794"></a><span class="in">            "Donald Trump" = "#D6090B",</span></span>
+<span id="cb1-1795"><a href="#cb1-1795"></a><span class="in">            "Same/No Opinion" = "#6A8C89",</span></span>
+<span id="cb1-1796"><a href="#cb1-1796"></a><span class="in">            "Kamala Harris" = "#031BBB"</span></span>
+<span id="cb1-1797"><a href="#cb1-1797"></a><span class="in">            )) +</span></span>
+<span id="cb1-1798"><a href="#cb1-1798"></a><span class="in">    labs(</span></span>
+<span id="cb1-1799"><a href="#cb1-1799"></a><span class="in">        title="Which Candidate Do Americans Think Would Better Handle Healthcare",</span></span>
+<span id="cb1-1800"><a href="#cb1-1800"></a><span class="in">        subtitle="By Party/Political Affiliation",</span></span>
+<span id="cb1-1801"><a href="#cb1-1801"></a><span class="in">        y="",x="Percentage",</span></span>
+<span id="cb1-1802"><a href="#cb1-1802"></a><span class="in">        caption="Source: https://news.gallup.com/poll/651755/healthcare-remains-important-voting-issue.aspx",</span></span>
+<span id="cb1-1803"><a href="#cb1-1803"></a><span class="in">        fill="Stance"</span></span>
+<span id="cb1-1804"><a href="#cb1-1804"></a><span class="in">    ) +</span></span>
+<span id="cb1-1805"><a href="#cb1-1805"></a><span class="in">   scale_x_continuous(expand = c(0, 0), limits = c(0, 100))</span></span>
+<span id="cb1-1806"><a href="#cb1-1806"></a><span class="in">```</span></span>
+<span id="cb1-1807"><a href="#cb1-1807"></a></span>
+<span id="cb1-1808"><a href="#cb1-1808"></a>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+<span id="cb1-1809"><a href="#cb1-1809"></a></span>
+<span id="cb1-1810"><a href="#cb1-1810"></a><span class="fu">## LGBTQ+ Rights</span></span>
+<span id="cb1-1811"><a href="#cb1-1811"></a></span>
+<span id="cb1-1812"><a href="#cb1-1812"></a>W.I.P</span>
+<span id="cb1-1813"><a href="#cb1-1813"></a></span>
+<span id="cb1-1814"><a href="#cb1-1814"></a><span class="fu"># Prediction</span></span>
+<span id="cb1-1815"><a href="#cb1-1815"></a></span>
+<span id="cb1-1816"><a href="#cb1-1816"></a><span class="fu">## Prediction#1: 2020 Repeat</span></span>
+<span id="cb1-1817"><a href="#cb1-1817"></a></span>
+<span id="cb1-1818"><a href="#cb1-1818"></a><span class="al">![](images/Prediction.png)</span></span>
+<span id="cb1-1819"><a href="#cb1-1819"></a></span>
+<span id="cb1-1820"><a href="#cb1-1820"></a>My personal prediction for the 2024 United States Election with all polling data, issue polling, historical trends, and "vibes." I believe the map will remain the same as it was in the 2020 Presidential Election. This has never happened before in United States history, and while this is not an argument, I think it would also be a fitting conclusion to this election that has had many other first.</span>
+<span id="cb1-1821"><a href="#cb1-1821"></a></span>
+<span id="cb1-1822"><a href="#cb1-1822"></a><span class="fu">## Prediction#2: Kamala Harris Seven-Swing-State-Sweep</span></span>
+<span id="cb1-1823"><a href="#cb1-1823"></a></span>
+<span id="cb1-1824"><a href="#cb1-1824"></a><span class="al">![](images/Prediction2.png)</span></span>
+<span id="cb1-1825"><a href="#cb1-1825"></a></span>
+<span id="cb1-1826"><a href="#cb1-1826"></a>This is my second, more "optimistic" version of my main prediction. While I do believe polling is vastly underestimating Kamala Harris, Republicans still hold an advantage against the current unpopular administration which could prevent a Demoratic sweep of the swing states.</span>
+<span id="cb1-1827"><a href="#cb1-1827"></a></span>
+<span id="cb1-1828"><a href="#cb1-1828"></a><span class="fu">## Prediction#3: Georgia and North Carolina Swap</span></span>
+<span id="cb1-1829"><a href="#cb1-1829"></a></span>
+<span id="cb1-1830"><a href="#cb1-1830"></a><span class="al">![](images/Prediction4.png)</span></span>
+<span id="cb1-1831"><a href="#cb1-1831"></a></span>
+<span id="cb1-1832"><a href="#cb1-1832"></a>An unlikely outcome, mainly because North Carolina has not flipped to a Democrat on a presidential level since 2008. If North Carolina were to flip, then there is no reason to doubt that Harris would win Georgia as well, a state that has been trending Democratic.</span>
+<span id="cb1-1833"><a href="#cb1-1833"></a></span>
+<span id="cb1-1834"><a href="#cb1-1834"></a><span class="fu">## Prediction#4: Welcome Back 2010s</span></span>
+<span id="cb1-1835"><a href="#cb1-1835"></a></span>
+<span id="cb1-1836"><a href="#cb1-1836"></a><span class="al">![](images/Prediction3.png)</span></span>
+<span id="cb1-1837"><a href="#cb1-1837"></a></span>
+<span id="cb1-1838"><a href="#cb1-1838"></a>This is the most unlikely outcome, mainly because North Carolina has not flipped to a Democrat on a presidential level since 2008. If North Carolina were to flip, then there is no reason to doubt that Harris would win Arizona and Georgia as well, states that have been trending Democratic.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
