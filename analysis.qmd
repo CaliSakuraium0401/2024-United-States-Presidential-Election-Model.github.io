@@ -990,7 +990,7 @@ ggplot(
     )
 ```
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Climate change and global warming may not be a central focus in this election, yet they remain important issues for a significant portion of voters. Over the years, an increasing number of Americans have come to view climate change as an underestimated problem—one that hasn’t been adequately addressed or taken seriously by policymakers. This group of Americans feels that the long-term impacts of climate change, such as extreme weather events, rising sea levels, and disruptions to ecosystems, are pressing concerns that require urgent action. However, many others see climate change and global warming as overblown or exaggerated issues.
 
 ```{r, results='hide'}
 #| label: environment_quality_rating_data
@@ -1035,8 +1035,6 @@ ggplot(
     ) 
 ```
 
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
-
 ```{r, results='hide'}
 #| label: enviornment_direction_rating_data
 enviornment_direction_rating <- read_csv('polling/enviornment_direction_rating.csv') |>
@@ -1077,7 +1075,7 @@ ggplot(
     theme(axis.text.x = element_text(angle = 90, hjust = 0.5)) 
 ```
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Though most Americans still view the overall quality of the environment as good or fair, a growing number sense that it’s beginning to worsen. Concerns have deepened as many have noticed an increase in severe weather patterns, including the rising frequency and intensity of hurricanes, wildfires, and floods. These extreme events are often seen as signs that environmental quality is on a downward trajectory.
 
 ```{r, results='hide'}
 #| label: enviornment_universal_data
@@ -1182,7 +1180,7 @@ ggplot(
     guides(fill = "none")
 ```
 
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+With that being said, it does appear that a large majority of Americans believe in the reality of global warming and its impact on the weather. Many also agree that human activities—like deforestation, burning fossil fuels, transportation, waste management, and energy use—contribute to global warming. However, compared to the belief that global warming affects the environment, a notable portion disagrees with the idea that human actions play a role. While there’s overwhelming agreement that global warming is happening, a strong majority also aligns with the scientific consensus that climate change is real.
 
 ```{r, results='hide'}
 #| label: enviornment_impact_data
@@ -1202,28 +1200,26 @@ environment_impact <- environment_universal |>
 
 ```{r, results='hide'}
 #| label: enviornment_impact_graph
-ggplot(
-    environment_impact |> filter(state %in% c("Pennsylvania", "Michigan", "Wisconsin", "North Carolina", 
-                          "Georgia", "Arizona", "Nevada")),
-    aes(x=pct,y=state,fill=impact)
-) +
-    geom_col(position="dodge") +
-    scale_fill_manual(
-        values = c(
-            "Impacts Vote" = "#254445",
-            "Does Not Impact Vote" = "#06874B"
-            )) +
-    labs(
-        title="Does a Candidate's View On Global Warming Impact Votes?",
-        subtitle="Among Battleground States",
-        y="",x="Percentage",
-        caption="Source: https://climatecommunication.yale.edu/visualizations-data/ycom-us/",
-        fill="View"
-    ) +
-    scale_x_continuous(expand = c(0, 0), limits = c(0, 100))
+#ggplot(
+#    environment_impact |> filter(state %in% c("Pennsylvania", "Michigan", "Wisconsin", "North Carolina", 
+#                          "Georgia", "Arizona", "Nevada")),
+#    aes(x=pct,y=state,fill=impact)
+#) +
+#    geom_col(position="dodge") +
+#    scale_fill_manual(
+#        values = c(
+#            "Impacts Vote" = "#254445",
+#            "Does Not Impact Vote" = "#06874B"
+#            )) +
+#    labs(
+#        title="Does a Candidate's View On Global Warming Impact Votes?",
+#        subtitle="Among Battleground States",
+#        y="",x="Percentage",
+#        caption="Source: https://climatecommunication.yale.edu/visualizations-data/ycom-us/",
+#        fill="View"
+#    ) +
+#    scale_x_continuous(expand = c(0, 0), limits = c(0, 100))
 ```
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 ```{r, results='hide'}
 #| label: enviornment_government_battleground_states_data
@@ -1277,7 +1273,7 @@ ggplot(
     scale_x_continuous(expand = c(0, 0), limits = c(0, 100))
 ```
 
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+Across all seven swing states, a majority support prioritizing climate change for both Congress and the President, however, there is also a significant portion of opposition. Support is relatively consistent across these states, generally surpassing a majority of support indicating climate change is an important issue among voters, especially in states like Georgia and North Carolina who often experience hurricanes.
 
 ## Democracy
 
