@@ -1,9 +1,6 @@
 # 2024 United States Presidential Election Model
-
--   <https://calisakuraium0401.github.io/2024-United-States-Presidential-Election-Model.github.io/>
-
 ## What To Expect
-
+### Note: I will likely continue this project into an analysis of the 2024 Election rather a prediction model.
 -   ☑️ Polling Analysis
     -   ☑️ National Polling (Improve Analysis)
     -   ☑️ Battleground State Polling (Improve Analysis)
