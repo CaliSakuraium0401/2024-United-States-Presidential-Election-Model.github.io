@@ -1,5 +1,4 @@
 # 2024 United States Presidential Election Model
-## What To Expect
 ### Note: I will likely continue this project into an analysis of the 2024 Election rather a prediction model.
 -   ☑️ Polling Analysis
     -   ☑️ National Polling (Improve Analysis)

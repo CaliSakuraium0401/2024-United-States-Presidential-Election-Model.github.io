@@ -2,7 +2,7 @@
 title: "2024 United States Presidential Election Model"
 subtitle: "Analysis of Polls and Trends"
 author: "CaliSakuraium"
-date: "November 5 2024"
+date: "November 14 2024"
 format:
   html:
     code-fold: true
@@ -30,7 +30,9 @@ library(readxl)
 
 # Election Overview
 
-The 2024 United States presidential election will be the 60th quadrennial presidential election, set to be held on Tuesday, November 5, 2024. The current President, Joe Biden, initially ran for re-election but dropped out after health concerns following his performance in a [*debate that took place in June*](https://en.wikipedia.org/wiki/2024_United_States_presidential_debates#June_27:_First_presidential_debate_(CNN,_Atlanta)). The election will be between current Democratic Vice President, Kamala Devi Harris and former Republican President Donald John Trump.
+The 2024 United States presidential election was held on Tuesday, November 5, 2024. The Republican Party's ticket—Donald Trump, who was the 45th president of the United States from 2017 to 2021, and JD Vance, the junior U.S. senator from Ohio—defeated the Democratic Party's ticket—Kamala Harris, the incumbent U.S. vice president, and Tim Walz, the governor of Minnesota.
+
+![](images/Result.png)
 
 # Polling
 
