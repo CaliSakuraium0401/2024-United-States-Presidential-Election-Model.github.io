@@ -11,7 +11,7 @@
 -   ☑️ Issues Analysis
     -   ✅ Abortion
     -   ✅ Border/Immigration
-    -   ☑️ Climate Change (Needs Analysis)
+    -   ✅ Climate Change
     -   ☑️ Democracy (Needs Analysis)
     -   ☑️ Economy (Needs Analysis)
     -   ☑️ Education (Needs Analysis)
