@@ -1931,23 +1931,3 @@ ggplot(
 ```
 
 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
-
-# Prediction
-
-## Prediction#1: 2020 Repeat
-
-![](images/Prediction.png)
-
-My personal prediction for the 2024 United States election incorporates polling data, issue-based polling, historical trends, and just "vibes". I believe the electoral map will remain unchanged from the 2020 Presidential Election, which would be unprecedented in U.S. history. While this is not a conclusive argument, I think it would fittingly cap off an election marked by so many other firsts.
-
-## Prediction#2: Very DissatisfiedHarris Seven-Swing-State-Sweep
-
-![](images/Prediction2.png)
-
-This is my second, more optimistic version of my primary prediction. While I believe polling significantly underestimates Kamala Harris, Republicans still maintain an advantage against the current administration's unpopularity, which could hinder a Democratic sweep of swing states.
-
-## Prediction#3: Only Georgia Flips
-
-![](images/Prediction3.png)
-
-This is my third prediction where Kamala Harris loses only the state of Georgia to Donald Trump. However, I consider this scenario unlikely, given that the Atlanta metropolitan area has grown significantly over the past four years and continues to lean increasingly Democratic.
