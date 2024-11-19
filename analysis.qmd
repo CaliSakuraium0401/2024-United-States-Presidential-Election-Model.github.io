@@ -2,7 +2,7 @@
 title: "2024 United States Presidential Election Model"
 subtitle: "Analysis of Polls and Trends"
 author: "CaliSakuraium"
-date: "November 14 2024"
+date: "November 18 2024"
 format:
   html:
     code-fold: true
@@ -139,7 +139,7 @@ ggplot(
   )
 ```
 
-Previously before Joe Biden had dropped out of the 2024 Election, Donald John Trump lead many of the polls. When Kamala Devi Harris became the new presidential nominee for the Democratic Party, polls have seen a massive shift toward their favor.
+Before Joe Biden dropped out of the 2024 election, Donald Trump was leading in many polls. After Kamala Harris became the Democratic Party's presidential nominee, there was a significant shift in the polls toward her favor, likely driven by a mix of renewed energy among Democratic voters and a desire for a fresh candidate. However, as Election Day approached, the gap narrowed. Ultimately, despite the momentum, historic fundraising, and ground breaking campaign efforts, Kamala Harris lost to Donald Trump.
 
 ## Battleground States
 
@@ -235,11 +235,22 @@ az_trump <- swing_state_summary |>
 | ![](images/Flag_Arizona.png){width="40%"} | Arizona | 11 | `r az_harris` % | `r az_trump` % |
 | ![](images/Flag_Nevada.png){width="40%"} | Nevada | 6 | `r nv_harris` % | `r nv_trump` % |
 
-Currently, Kamala Harris holds the lead in most battleground states. It is important to note that she *only* needs Pennsylvania, Michigan, and Wisconsin to achieve the exact threshold of 270 Elecotral Votes needed to be elected President. On the other hand, Donald Trump would only need the states of Pennsylvania, North Carolina, and Georgia to also achieve that threshold.
+In this particular polling aggregation, Kamala Harris held the lead in many of the key swing states needed for her to achieve victory. Kamala Harris lead in the states of Pennsylvania, Michigan, Wisconsin, and Nevada. Ultimately these results ended up being wrong.
 
-|       Harris Path To Victory        |       Trump Path To Victory        |
-|:-----------------------------------:|:----------------------------------:|
-| ![](images/HarrisPathToVictory.png) | ![](images/TrumpPathToVictory.png) |
+| State | Polling | Result | Error |
+|------------------|------------------|------------------|-------------------|
+| Pennsylvania | Harris +`r pa_harris - pa_trump` % | Trump +1.7% | `r abs(abs((pa_harris - pa_trump)) - 1.7)`% |
+| Michigan | Harris +`r mi_harris - mi_trump`% | Trump +1.6% | `r abs(abs((mi_harris - mi_trump)) - 1.8)`% |
+| Wisconsin | Harris +`r wi_harris - wi_trump`% | Trump +0.87% | `r abs(abs((wi_harris - wi_trump)) - 0.87)`% |
+| Nevada | Harris +`r nv_harris - nv_trump`% | Trump +3.1% | `r abs(abs((nv_harris - nv_trump)) - 3.1)`% |
+
+While Trump did win the states of North Carolina, Georgia, and Arizona as predicted by the model, these were also off from the actual result.
+
+| State | Polling | Result | Error |
+|------------------|------------------|------------------|------------------|
+| North Carolina | Trump +`r nc_trump - nc_harris`% | Trump +3.22% | `r abs(abs((nc_trump - nc_harris)) - 3.22)`% |
+| Georgia | Trump +`r ga_trump - ga_harris`% | Trump +2.2% | `r abs(abs((ga_trump - ga_harris)) - 2.2)`% |
+| Arizona | Trump +`r az_trump - az_harris`% | Trump +5.51% | `r abs(abs((az_trump - az_harris)) - 5.51)`% |
 
 ## Favorability
 
