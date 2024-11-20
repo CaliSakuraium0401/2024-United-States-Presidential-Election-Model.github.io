@@ -2,11 +2,11 @@
 title: "2024 United States Presidential Election Model"
 subtitle: "Analysis of Polls and Trends"
 author: "CaliSakuraium"
-date: "November 18 2024"
+date: "`r Sys.Date()`"
 format:
   html:
-    code-fold: true
-    code-tools: true
+    #code-fold: true
+    #code-tools: true
     df-print: paged
     code-line-numbers: true
     toc: true
@@ -235,7 +235,7 @@ az_trump <- swing_state_summary |>
 | ![](images/Flag_Arizona.png){width="40%"} | Arizona | 11 | `r az_harris` % | `r az_trump` % |
 | ![](images/Flag_Nevada.png){width="40%"} | Nevada | 6 | `r nv_harris` % | `r nv_trump` % |
 
-In this particular polling aggregation, Kamala Harris held the lead in many of the key swing states needed for her to achieve victory. Kamala Harris lead in the states of Pennsylvania, Michigan, Wisconsin, and Nevada. Ultimately these results ended up being wrong.
+In this polling aggregation, Kamala Harris was shown leading in key swing states like Pennsylvania, Michigan, Wisconsin, and Nevada—states crucial for her potential victory. However, these predictions ultimately proved incorrect. While the model accurately suggested Trump winning North Carolina, Georgia, and Arizona, even those results deviated from the actual outcome.
 
 | State | Polling | Result | Error |
 |------------------|------------------|------------------|-------------------|
@@ -243,11 +243,6 @@ In this particular polling aggregation, Kamala Harris held the lead in many of t
 | Michigan | Harris +`r mi_harris - mi_trump`% | Trump +1.6% | `r abs(abs((mi_harris - mi_trump)) - 1.8)`% |
 | Wisconsin | Harris +`r wi_harris - wi_trump`% | Trump +0.87% | `r abs(abs((wi_harris - wi_trump)) - 0.87)`% |
 | Nevada | Harris +`r nv_harris - nv_trump`% | Trump +3.1% | `r abs(abs((nv_harris - nv_trump)) - 3.1)`% |
-
-While Trump did win the states of North Carolina, Georgia, and Arizona as predicted by the model, these were also off from the actual result.
-
-| State | Polling | Result | Error |
-|------------------|------------------|------------------|------------------|
 | North Carolina | Trump +`r nc_trump - nc_harris`% | Trump +3.22% | `r abs(abs((nc_trump - nc_harris)) - 3.22)`% |
 | Georgia | Trump +`r ga_trump - ga_harris`% | Trump +2.2% | `r abs(abs((ga_trump - ga_harris)) - 2.2)`% |
 | Arizona | Trump +`r az_trump - az_harris`% | Trump +5.51% | `r abs(abs((az_trump - az_harris)) - 5.51)`% |
@@ -689,9 +684,14 @@ ggplot(
     scale_y_continuous(breaks = seq(0, 70, 10))
 ```
 
-So it is obvious to also say that abortion will be a major factor in this election as well. Around 45% of Americans say a candidate's stance on abortion is a major factor, with around 31% also saying that the candidate ***has*** to have the same stance as them. Meanwhile 19% say abortion is not a major issue to them, and finally with around 4% saying that they "have no opinion."
+Abortion was a major factor in this election. Around 45% of Americans said a candidate's stance on abortion was significant, with about 31% stating the candidate needed to share their stance. Meanwhile, 19% indicated abortion was not a major issue for them, and around 4% stated they had "no opinion."
 
-Kamala Harris has made promises to restore Roe v Wade into federal law if elected with a democratic trifecta. Donald Trump meanwhile has said that he would leave it up for the individual states to decide their laws on abortion. Though Donald Trump has also never answered if he would veto a federal abortion ban or not should one reach his desk as President, to which, Kamala Harris has argued he would sign. Abortion referendums in battleground states like Nevada and Arizona would legalize abortion as a constitutional right in those states. Such referendums are likely to drive out the voters that Kamala Harris needs to win those states and the election as a result.
+Kamala Harris had promised to restore Roe v. Wade into federal law if elected with a Democratic trifecta. Donald Trump, on the other hand, stated he would leave abortion laws up to individual states. However, Trump never clarified whether he would veto a federal abortion ban if it reached his desk, a point Kamala Harris argued suggested he would sign it. Abortion referendums in battleground states like Nevada and Arizona aimed to legalize abortion as a constitutional right. While these referendums passed, they did not lead to Harris victories in those states as many pundits or conventional wisdom had suggested. This outcome implies that abortion may not have been as decisive an issue in this election as it was in 2022 and 2023.
+
+| State | Abortion Referendum | Presidential Election | Difference |
+|------------------|------------------|------------------|------------------|
+| Arizona | Legalize +23.26% | Trump +3.1% | `r abs(abs((23.26)) - 3.1)`% |
+| Nevada | Legalize +28.72% | Trump +5.51% | `r abs(abs((28.72)) - 5.51)`% |
 
 ## Border/Immigration
 
@@ -1851,7 +1851,7 @@ ggplot(
             "Should Not Be Valid" = "#3F7F7F"
             )) +
     labs(
-        title="Do Americans Think Same Sex Marriage Should Be Valid Under Law/Have Same Rights As Traditional Marriage?",
+        title="Americans Views On Same Sex Marriage",
         x="Date",y="Percentage",
         caption="Source: https://news.gallup.com/poll/1651/gay-lesbian-rights.aspx",
         color="View"
