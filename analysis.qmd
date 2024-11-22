@@ -709,12 +709,7 @@ ggplot(
     ) +
     geom_line(size=0.6) + 
     geom_point(size=0.8) +
-    scale_color_manual(
-        values = c(
-            "Immigration is a good thing" = "#6D7F3F",
-            "Immigration is a bad thing" = "#3F7F7F"
-            )
-        ) +
+    scale_color_brewer(palette = "Set1") +
     labs(
         title="What Are Americans Views on Immigration?",
         x="Year",y="Percentage",
@@ -815,12 +810,7 @@ ggplot(
     ) +
     geom_line(size=0.6) + 
     geom_point(size=0.8) +
-    scale_color_manual(
-        values = c(
-            "Increase" = "#527F3F",
-            "Maintain" = "#3F7F7F",
-            "Decrease" = "#7F3F3F"
-            )) +
+    scale_fill_brewer(palette = "Set1") +
     labs(
         title="How Americans View Immigration Levels?",
         x="Year",y="Percentage",
@@ -864,12 +854,7 @@ ggplot(
     aes(x=pct,y=affiliation,fill=immigration_level_stance)
     ) +
     geom_col() +
-    scale_fill_manual(
-        values = c(
-            "Decrease" = "#254445",
-            "Increase" = "#06874B",
-            "Maintain" = "#6A8C89"
-            )) +
+    scale_fill_brewer(palette = "Set1") +
     labs(
         title="How Americans View Immigration Levels?",
         subtitle="By Party/Political Affiliation",
@@ -930,12 +915,7 @@ ggplot(
     aes(x=pct,y=identification,fill=impact)
       ) +
     geom_col() +
-    scale_fill_manual(
-        values = c(
-            "Candidate must share views" = "#254445",
-            "One of many important factors" = "#06874B",
-            "Not a major issue" = "#6A8C89"
-            )) +
+    scale_fill_brewer(palette = "Set1") +
     labs(
         title="How A Candidate's Immigration Stance Impacts Vote?",
         subtitle="By Party/Political Affiliation",
