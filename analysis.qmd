@@ -522,13 +522,7 @@ ggplot(
 ) +
     geom_line(size=0.6) +
     geom_point(size=0.8) +
-    scale_color_manual(
-        values = c(
-            "Legal Under Any Circumstances" = "#527F3F",
-            "Legal Under Certain Circumstances" = "#3F7F7F",
-            "Illegal Under Any Circumstances" = "#7F3F3F"
-        )
-    ) +
+    scale_color_brewer(palette = "Set2") +
     theme(
         axis.text.x = element_text(angle = 90, hjust = 0.5)
     ) +
@@ -594,12 +588,7 @@ ggplot(
     aes(x=year,y=pct,color=stance,group=stance)
 ) + geom_line(size=0.6) + 
     geom_point(size=0.8) +
-    scale_color_manual(
-        values = c(
-            "Pro-Choice" = "#6D7F3F",
-            "Pro-Life" = "#3F7F7F",
-            "Mixed/Neither" = "#503F7F"
-            )) +
+    scale_color_brewer(palette = "Set2") +
     labs(
     title="What Are Americans Stances on Abortion?",
     x="Year",y="Percentage",
@@ -664,13 +653,7 @@ ggplot(
     aes(x=year,y=pct,group=impact,color=impact)
 ) + geom_line(size=0.6) + 
     geom_point(size=0.8) +
-    scale_color_manual(
-        values = c(
-            "Must Share Views" = "#6D7F3F",
-            "Important Factor" = "#3F7F7F",
-            "Not A Major Issue" = "#503F7F",
-            "No Opinion" = "#7F3F3F"
-            )) +
+    scale_color_brewer(palette = "Set2") +
     labs(
         title="Does Candidates Position On Abortion Impact Vote?",
         x="Year",y="Percentage",
