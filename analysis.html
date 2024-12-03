@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="CaliSakuraium">
+<meta name="dcterms.date" content="2024-12-02">
+
+<title>2024 United States Presidential Election Model</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="analysis_files/libs/clipboard/clipboard.min.js"></script>
+<script src="analysis_files/libs/quarto-html/quarto.js"></script>
+<script src="analysis_files/libs/quarto-html/popper.min.js"></script>
+<script src="analysis_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="analysis_files/libs/quarto-html/anchor.min.js"></script>
+<link href="analysis_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="analysis_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="analysis_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="analysis_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="analysis_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="analysis_files/libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+
+<script src="analysis_files/libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#election-overview" id="toc-election-overview" class="nav-link active" data-scroll-target="#election-overview">Election Overview</a></li>
+  <li><a href="#polling" id="toc-polling" class="nav-link" data-scroll-target="#polling">Polling</a>
+  <ul class="collapse">
+  <li><a href="#national" id="toc-national" class="nav-link" data-scroll-target="#national">National</a></li>
+  <li><a href="#battleground-states" id="toc-battleground-states" class="nav-link" data-scroll-target="#battleground-states">Battleground States</a></li>
+  <li><a href="#favorability" id="toc-favorability" class="nav-link" data-scroll-target="#favorability">Favorability</a>
+  <ul class="collapse">
+  <li><a href="#kamala-harris" id="toc-kamala-harris" class="nav-link" data-scroll-target="#kamala-harris">Kamala Harris</a></li>
+  <li><a href="#tim-walz" id="toc-tim-walz" class="nav-link" data-scroll-target="#tim-walz">Tim Walz</a></li>
+  <li><a href="#donald-trump" id="toc-donald-trump" class="nav-link" data-scroll-target="#donald-trump">Donald Trump</a></li>
+  <li><a href="#j.d.-vance" id="toc-j.d.-vance" class="nav-link" data-scroll-target="#j.d.-vance">J.D. Vance</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#issues" id="toc-issues" class="nav-link" data-scroll-target="#issues">Issues</a>
+  <ul class="collapse">
+  <li><a href="#abortion" id="toc-abortion" class="nav-link" data-scroll-target="#abortion">Abortion</a></li>
+  <li><a href="#borderimmigration" id="toc-borderimmigration" class="nav-link" data-scroll-target="#borderimmigration">Border/Immigration</a></li>
+  <li><a href="#climate-change" id="toc-climate-change" class="nav-link" data-scroll-target="#climate-change">Climate Change</a></li>
+  <li><a href="#democracy" id="toc-democracy" class="nav-link" data-scroll-target="#democracy">Democracy</a></li>
+  <li><a href="#economy" id="toc-economy" class="nav-link" data-scroll-target="#economy">Economy</a></li>
+  <li><a href="#education" id="toc-education" class="nav-link" data-scroll-target="#education">Education</a></li>
+  <li><a href="#foreign-policy" id="toc-foreign-policy" class="nav-link" data-scroll-target="#foreign-policy">Foreign Policy</a>
+  <ul class="collapse">
+  <li><a href="#russo-ukrainian-war" id="toc-russo-ukrainian-war" class="nav-link" data-scroll-target="#russo-ukrainian-war">Russo-Ukrainian War</a></li>
+  <li><a href="#israelhamas-war" id="toc-israelhamas-war" class="nav-link" data-scroll-target="#israelhamas-war">Israel–Hamas War</a></li>
+  </ul></li>
+  <li><a href="#healthcare" id="toc-healthcare" class="nav-link" data-scroll-target="#healthcare">Healthcare</a></li>
+  <li><a href="#lgbtq-rights" id="toc-lgbtq-rights" class="nav-link" data-scroll-target="#lgbtq-rights">LGBTQ+ Rights</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">2024 United States Presidential Election Model</h1>
+<p class="subtitle lead">Analysis of Polls and Trends</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>CaliSakuraium </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 2, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="election-overview" class="level1">
+<h1>Election Overview</h1>
+<p>The 2024 United States presidential election was held on Tuesday, November 5, 2024. The Republican Party’s ticket—Donald Trump, who was the 45th president of the United States from 2017 to 2021, and JD Vance, the junior U.S. senator from Ohio—defeated the Democratic Party’s ticket—Kamala Harris, the incumbent U.S. vice president, and Tim Walz, the governor of Minnesota.</p>
+<p><img src="images/Result.png" class="img-fluid"></p>
+</section>
+<section id="polling" class="level1">
+<h1>Polling</h1>
+<section id="national" class="level2">
+<h2 class="anchored" data-anchor-id="national">National</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/national_polling_chart-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Before Joe Biden dropped out of the 2024 election, Donald Trump was leading in many polls. After Kamala Harris became the Democratic Party’s presidential nominee, there was a significant shift in the polls toward her favor, likely driven by a mix of renewed energy among Democratic voters and a desire for a fresh candidate. However, as Election Day approached, the gap narrowed. Ultimately, despite the momentum, historic fundraising, and ground breaking campaign efforts, Kamala Harris lost to Donald Trump.</p>
+</section>
+<section id="battleground-states" class="level2">
+<h2 class="anchored" data-anchor-id="battleground-states">Battleground States</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/battleground_summary_chart-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">State</th>
+<th>EV</th>
+<th style="text-align: left;">Kamala Harris</th>
+<th style="text-align: left;">Donald Trump</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img src="images/Flag_Pennsylvania.png" class="img-fluid" style="width:40.0%"></td>
+<td style="text-align: left;">Pennsylvania</td>
+<td>19</td>
+<td style="text-align: left;">48.2 %</td>
+<td style="text-align: left;">47.4 %</td>
+</tr>
+<tr class="even">
+<td><img src="images/Flag_Michigan.png" class="img-fluid" style="width:40.0%"></td>
+<td style="text-align: left;">Michigan</td>
+<td>15</td>
+<td style="text-align: left;">48.2 %</td>
+<td style="text-align: left;">46.6 %</td>
+</tr>
+<tr class="odd">
+<td><img src="images/Flag_Wisconsin.png" class="img-fluid" style="width:40.0%"></td>
+<td style="text-align: left;">Wisconsin</td>
+<td>10</td>
+<td style="text-align: left;">48.8 %</td>
+<td style="text-align: left;">46.8 %</td>
+</tr>
+<tr class="even">
+<td><img src="images/Flag_NorthCarolina.png" class="img-fluid" style="width:40.0%"></td>
+<td style="text-align: left;">North Carolina</td>
+<td>16</td>
+<td style="text-align: left;">47.7 %</td>
+<td style="text-align: left;">48.1 %</td>
+</tr>
+<tr class="odd">
+<td><img src="images/Flag_Georgia.png" class="img-fluid" style="width:40.0%"></td>
+<td style="text-align: left;">Georgia</td>
+<td>16</td>
+<td style="text-align: left;">47.4 %</td>
+<td style="text-align: left;">48.2 %</td>
+</tr>
+<tr class="even">
+<td><img src="images/Flag_Arizona.png" class="img-fluid" style="width:40.0%"></td>
+<td style="text-align: left;">Arizona</td>
+<td>11</td>
+<td style="text-align: left;">47 %</td>
+<td style="text-align: left;">48.3 %</td>
+</tr>
+<tr class="odd">
+<td><img src="images/Flag_Nevada.png" class="img-fluid" style="width:40.0%"></td>
+<td style="text-align: left;">Nevada</td>
+<td>6</td>
+<td style="text-align: left;">47.9 %</td>
+<td style="text-align: left;">47 %</td>
+</tr>
+</tbody>
+</table>
+<p>In this polling aggregation, Kamala Harris was shown leading in key swing states like Pennsylvania, Michigan, Wisconsin, and Nevada—states crucial for her potential victory. However, these predictions ultimately proved incorrect. While the model accurately suggested Trump winning North Carolina, Georgia, and Arizona, even those results deviated from the actual outcome.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>State</th>
+<th>Polling</th>
+<th>Result</th>
+<th>Error</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Pennsylvania</td>
+<td>Harris +0.8 %</td>
+<td>Trump +1.7%</td>
+<td>0.9%</td>
+</tr>
+<tr class="even">
+<td>Michigan</td>
+<td>Harris +1.6%</td>
+<td>Trump +1.6%</td>
+<td>0.2%</td>
+</tr>
+<tr class="odd">
+<td>Wisconsin</td>
+<td>Harris +2%</td>
+<td>Trump +0.87%</td>
+<td>1.13%</td>
+</tr>
+<tr class="even">
+<td>Nevada</td>
+<td>Harris +0.9%</td>
+<td>Trump +3.1%</td>
+<td>2.2%</td>
+</tr>
+<tr class="odd">
+<td>North Carolina</td>
+<td>Trump +0.4%</td>
+<td>Trump +3.22%</td>
+<td>2.82%</td>
+</tr>
+<tr class="even">
+<td>Georgia</td>
+<td>Trump +0.8%</td>
+<td>Trump +2.2%</td>
+<td>1.4%</td>
+</tr>
+<tr class="odd">
+<td>Arizona</td>
+<td>Trump +1.3%</td>
+<td>Trump +5.51%</td>
+<td>4.21%</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="favorability" class="level2">
+<h2 class="anchored" data-anchor-id="favorability">Favorability</h2>
+<section id="kamala-harris" class="level3">
+<h3 class="anchored" data-anchor-id="kamala-harris">Kamala Harris</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/kamala-harris-favorability-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="tim-walz" class="level3">
+<h3 class="anchored" data-anchor-id="tim-walz">Tim Walz</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/tim-walz-favorability-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="donald-trump" class="level3">
+<h3 class="anchored" data-anchor-id="donald-trump">Donald Trump</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/donald-trump-favorability-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="j.d.-vance" class="level3">
+<h3 class="anchored" data-anchor-id="j.d.-vance">J.D. Vance</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/jd-vance-favorability-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="issues" class="level1">
+<h1>Issues</h1>
+<section id="abortion" class="level2">
+<h2 class="anchored" data-anchor-id="abortion">Abortion</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/abortion_view_chart-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The majority of Americans consistently favor abortion being legal under certain circumstances, fluctuating between 50% and 60% over the years. Though support for legal under any circumstances has seen much more support in recent years, increasing from 20% in the 1970s to roughly 35% in 2023. Meanwhile, those who believe abortion should be illegal under any circumstances has declined rapidly in recent years, dropping from 21% in 2019 to around 12% in 2023. The dynamics of abortion legality views has seen massive shifts mostly due to the overturning of Roe V Wade in 2022.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/abortion_stance_chart-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Most Americans also view themselves as Pro-Choice, the stance that people have the right to control their own bodies, with support increasing ever since Roe v Wade was overturned, this aligns with most people in the Democratic Party. On the other hand, most people in the Republican Party align with the Pro-Life stance, who want abortion to be illegal or inaccessible. With that being said, as result of this, abortion has been one of the biggest strengths that the Democratic Party has. Ever since Roe v Wade was overturned, they have over-performed in various races, especially when either the overturning of Roe v Wade was recent or if abortion had a huge part to play in the election.</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/2022_Alaska%27s_at-large_congressional_district_special_election">2022 Alaska’s at-large congressional district special election</a></li>
+<li><a href="https://en.wikipedia.org/wiki/2022_New_York%27s_19th_congressional_district_special_election">2022 New York’s 19th congressional district special election</a></li>
+<li><a href="https://en.wikipedia.org/wiki/2022_United_States_elections">2022 United States Midterms</a></li>
+<li><a href="https://en.wikipedia.org/wiki/2023_Wisconsin_Supreme_Court_election">2023 Wisconsin Supreme Court election</a></li>
+<li><a href="https://en.wikipedia.org/wiki/2023_Pennsylvania_elections#Justice_of_the_Supreme_Court">2023 Pennsylvania Supreme Court elections</a></li>
+<li><a href="https://en.wikipedia.org/wiki/2023_Kentucky_gubernatorial_election">2023 Kentucky gubernatorial election</a></li>
+<li><a href="https://en.wikipedia.org/wiki/2023_Virginia_House_of_Delegates_election">2023 Virginia House of Delegates election</a></li>
+<li><a href="https://en.wikipedia.org/wiki/2023_Virginia_Senate_election">2023 Virginia Senate election</a></li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/abortion_impact_chart-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Abortion was a major factor in this election. Around 45% of Americans said a candidate’s stance on abortion was significant, with about 31% stating the candidate needed to share their stance. Meanwhile, 19% indicated abortion was not a major issue for them, and around 4% stated they had “no opinion.”</p>
+<p>Kamala Harris had promised to restore Roe v. Wade into federal law if elected with a Democratic trifecta. Donald Trump, on the other hand, stated he would leave abortion laws up to individual states. However, Trump never clarified whether he would veto a federal abortion ban if it reached his desk, a point Kamala Harris argued suggested he would sign it. Abortion referendums in battleground states like Nevada and Arizona aimed to legalize abortion as a constitutional right. While these referendums passed, they did not lead to Harris victories in those states as many pundits or conventional wisdom had suggested. This outcome implies that abortion may not have been as decisive an issue in this election as it was in 2022 and 2023.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>State</th>
+<th>Abortion Referendum</th>
+<th>Presidential Election</th>
+<th>Difference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Arizona</td>
+<td>Legalize +23.26%</td>
+<td>Trump +3.1%</td>
+<td>20.16%</td>
+</tr>
+<tr class="even">
+<td>Nevada</td>
+<td>Legalize +28.72%</td>
+<td>Trump +5.51%</td>
+<td>23.21%</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="borderimmigration" class="level2">
+<h2 class="anchored" data-anchor-id="borderimmigration">Border/Immigration</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/immigration_view_chart-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Americans overall tend to view immigration positively, with public support reaching a peak in 2020 when approximately 68-69% of people viewed it as beneficial for the country. However, since then, this favorable perception has seen a slight decline, dropping to around 62-63% as of recent years. While this decrease marks a noticeable shift, the overall perspective remains strongly supportive of immigration, indicating that a majority still sees it as a positive factor for the United States.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/immigration_view_party_graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Both Democrats and Independents generally maintain a positive outlook, with a high percentage in each group viewing immigration favorably. However, among Republicans, there has been a significant decline in positive perception, with only around 39% expressing support for immigration by 2024. This shift underscores a growing divide in how immigration is perceived across party lines, with Republicans showing considerably less enthusiasm compared to other groups.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/immigration_level_graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Although a majority of Americans view immigration positively, many still believe it should be more tightly controlled or even reduced. Approximately 55% of Americans feel that immigration levels should be decreased, while support for maintaining current levels stands at around 25%. Meanwhile, only about 16% of Americans favor an increase in immigration.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/immigration_level_party_graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>When we break down these views by political parties we see a big divide. A majority of Republicans favor decreasing immigration, with minimal support for an increase. Independents are seemingly evenly split between decrease immigration and increasing/maintaining. Meanwhile Democrats show more favorability to immigration, more than Independents and Republicans combined.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/immigration_impact_party_chart-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>With all that being said, while the Republican Party does hold a slight edge on immigration, which has inadvertently forced the Democratic Party to moderate on some immigration stances. This moderation could appeal to a broader audience that sees immigration as beneficial but manageable, contrasting with the Republicans’ stronger push for reduction, or this moderation can also turn off reliable Democratic voters, young voters, or minority voters. Whether this will be beneficial to Democratic Party or not in the long run, only time will tell.</p>
+</section>
+<section id="climate-change" class="level2">
+<h2 class="anchored" data-anchor-id="climate-change">Climate Change</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/enviornment_global_warming_graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Climate change and global warming may not be a central focus in this election, yet they remain important issues for a significant portion of voters. Over the years, an increasing number of Americans have come to view climate change as an underestimated problem—one that hasn’t been adequately addressed or taken seriously by policymakers. This group of Americans feels that the long-term impacts of climate change, such as extreme weather events, rising sea levels, and disruptions to ecosystems, are pressing concerns that require urgent action. However, many others see climate change and global warming as overblown or exaggerated issues.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/environment_quality_rating_graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/enviornment_direction_rating_graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Though most Americans still view the overall quality of the environment as good or fair, a growing number sense that it’s beginning to worsen. Concerns have deepened as many have noticed an increase in severe weather patterns, including the rising frequency and intensity of hurricanes, wildfires, and floods. These extreme events are often seen as signs that environmental quality is on a downward trajectory.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/enviornment_belief_graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>With that being said, it does appear that a large majority of Americans believe in the reality of global warming and its impact on the weather. Many also agree that human activities—like deforestation, burning fossil fuels, transportation, waste management, and energy use—contribute to global warming. However, compared to the belief that global warming affects the environment, a notable portion disagrees with the idea that human actions play a role. While there’s overwhelming agreement that global warming is happening, a strong majority also aligns with the scientific consensus that climate change is real.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/enviornment_government_battleground_states_graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Across all seven swing states, a majority support prioritizing climate change for both Congress and the President, however, there is also a significant portion of opposition. Support is relatively consistent across these states, generally surpassing a majority of support indicating climate change is an important issue among voters, especially in states like Georgia and North Carolina who often experience hurricanes.</p>
+</section>
+<section id="democracy" class="level2">
+<h2 class="anchored" data-anchor-id="democracy">Democracy</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/democracy_satisfaction_graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/democracy_satisfaction_party_graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+</section>
+<section id="economy" class="level2">
+<h2 class="anchored" data-anchor-id="economy">Economy</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/economy_confidence_index_graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/economy_problem_graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/economy_jobs_graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/economy_expenses_graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+</section>
+<section id="education" class="level2">
+<h2 class="anchored" data-anchor-id="education">Education</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/education_quality_graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</section>
+<section id="foreign-policy" class="level2">
+<h2 class="anchored" data-anchor-id="foreign-policy">Foreign Policy</h2>
+<section id="russo-ukrainian-war" class="level3">
+<h3 class="anchored" data-anchor-id="russo-ukrainian-war">Russo-Ukrainian War</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/foreign_policy_ukraine_graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+</section>
+<section id="israelhamas-war" class="level3">
+<h3 class="anchored" data-anchor-id="israelhamas-war">Israel–Hamas War</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/foreign_policy_israel_graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/foreign_policy_middle_east_graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/foreign_policy_palestine_graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</section>
+</section>
+<section id="healthcare" class="level2">
+<h2 class="anchored" data-anchor-id="healthcare">Healthcare</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/healthcare_party_graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/healthcare_candidate_graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</section>
+<section id="lgbtq-rights" class="level2">
+<h2 class="anchored" data-anchor-id="lgbtq-rights">LGBTQ+ Rights</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/lgbtq+_marriage_graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/lgbtq+_transgender_graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/lgbtq+_party_data_graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
