@@ -126,7 +126,7 @@ ggplot(
     scale_fill_manual(values=c("Donald Trump" = "#D6090B","Kamala Harris" = "#031BBB")) +
     labs(
         title="Who Leads Nationally?",
-        caption="Source: https://projects.fivethirtyeight.com/polls/president-general/2024/national/",
+        caption="Source: FiveThirtyEight",
         x="Date",
         y="Percentage",
         color="Candidate",
@@ -218,7 +218,7 @@ az_trump <- swing_state_summary |>
     coord_cartesian(ylim=c(40, 50)) +
     labs(
         title="Who Leads In The Battleground States?",
-        caption="Source: https://projects.fivethirtyeight.com/polls/president-general/2024/national/",
+        caption="Source: FiveThirtyEight",
         x="State",
         y="Percentage",
         fill="Candidate"
@@ -354,7 +354,7 @@ ggplot(
     labs(
         title="What Are Americans View On Kamala Harris?",
         subtitle="2024 Presidential Democratic Nominee",
-        caption="Source: https://projects.fivethirtyeight.com/polls/favorability/",
+        caption="Source: FiveThirtyEight",
         x="Date",
         y="Percentage",
         color="View"
@@ -391,7 +391,7 @@ ggplot(
     labs(
         title="What Are Americans View On Tim Walz?",
         subtitle="2024 Vice-Presidential Democratic Nominee",
-        caption="Source: https://projects.fivethirtyeight.com/polls/favorability/",
+        caption="Source: FiveThirtyEight",
         x="Date",
         y="Percentage",
         color="View"
@@ -428,7 +428,7 @@ ggplot(
     labs(
         title="What Are Americans View On Donald Trump?",
         subtitle="2024 Presidential Republican Nominee",
-        caption="Source: https://projects.fivethirtyeight.com/polls/favorability/",
+        caption="Source: FiveThirtyEight",
         x="Date",
         y="Percentage",
         color="View"
@@ -465,7 +465,7 @@ ggplot(
     labs(
         title="What Are Americans View On J.D. Vance?",
         subtitle="2024 Vice-Presidential Republican Nominee",
-        caption="Source: https://projects.fivethirtyeight.com/polls/favorability/",
+        caption="Source: FiveThirtyEight",
         x="Date",
         y="Percentage",
         color="View"
@@ -531,7 +531,7 @@ ggplot(
     scale_color_brewer(palette = "Set2") +
     labs(
         title = "What Are Americans View On Abortion Legality?",
-        caption="Source: https://news.gallup.com/poll/1576/abortion.aspx",
+        caption="Source: Gallup",
         x = "Year",
         y = "Percentage",
         color = "View"
@@ -597,7 +597,7 @@ ggplot(
     labs(
     title="What Are Americans Stances on Abortion?",
     x="Year",y="Percentage",
-    caption="Source: https://news.gallup.com/poll/1576/abortion.aspx",
+    caption="Source: Gallup",
     color="Stance"
     ) +
     scale_x_continuous(breaks = seq(1995, 2024, 3)) +
@@ -661,7 +661,7 @@ ggplot(
     labs(
         title="Does Candidates Position On Abortion Impact Vote?",
         x="Year",y="Percentage",
-        caption="Source: https://news.gallup.com/poll/1576/abortion.aspx",
+        caption="Source: Gallup",
         color="Stance"
     ) +
     scale_x_continuous(breaks = seq(1992, 2024, 2)) +
@@ -716,7 +716,7 @@ ggplot(
     labs(
         title="What Are Americans Views on Immigration?",
         x="Year",y="Percentage",
-        caption="Source: https://news.gallup.com/poll/647123/sharply-americans-curb-immigration.aspx",
+        caption="Source: Gallup",
         color="View"
     ) +
     theme_bw() +
@@ -769,7 +769,7 @@ ggplot(
         title="How Positively Do Americans View Immigration?",
         subtitle="By Party/Political Affiliation",
         x="Year",y="Percentage",
-        caption="Source: https://news.gallup.com/poll/647123/sharply-americans-curb-immigration.aspx",
+        caption="Source: Gallup",
         color="Political Affiliation"
     ) +
     theme_bw() +
@@ -815,7 +815,7 @@ ggplot(
     labs(
         title="How Americans View Immigration Levels?",
         x="Year",y="Percentage",
-        caption="Source: https://news.gallup.com/poll/647123/sharply-americans-curb-immigration.aspx",
+        caption="Source: Gallup",
         color="Stance"
     ) +
     scale_x_continuous(breaks=seq(1965, 2025, 5)) +
@@ -859,7 +859,7 @@ ggplot(
         title="How Americans View Immigration Levels?",
         subtitle="By Party/Political Affiliation",
         y="",x="Percentage",
-        caption="Source: https://news.gallup.com/poll/647123/sharply-americans-curb-immigration.aspx",
+        caption="Source: Gallup",
         fill="Stance"
     ) +
    scale_x_continuous(expand = c(0, 0), limits = c(0, 100)) +
@@ -868,38 +868,6 @@ ggplot(
 ```
 
 When we break down these views by political parties we see a big divide. A majority of Republicans favor decreasing immigration, with minimal support for an increase. Independents are seemingly evenly split between decrease immigration and increasing/maintaining. Meanwhile Democrats show more favorability to immigration, more than Independents and Republicans combined.
-
-```{r, results='hide'}
-#| label: immigration_impact_data
-#immigration_impact <- read_csv('polling/immigration_impact.csv') |>
-#    pivot_longer(
-#        `Candidate must share views`:`Not a major issue`,
-#        names_to = "impact",
-#        values_to = "pct"
-#    ) 
-```
-
-```{r, results='hide'}
-#| label: immigration_impact_chart
-#ggplot(
-#    immigration_impact,
-#    aes(x=pct,y=stance,fill=impact)
-#      ) +
-#    geom_col() +
-#    scale_fill_manual(
-#        values = c(
-#            "Candidate must share views" = "#254445",
-#            "One of many important factors" = "#06874B",
-#            "Not a major issue" = "#6A8C89"
-#            )) +
-#    labs(
-#        title="How A Candidate's Immigration Stance Impacts Vote?",
-#        y="",x="Percentage",
-#        caption="Source: https://news.gallup.com/poll/647123/sharply-americans-curb-immigration.aspx",
-#        fill="Impact"
-#    ) +
-#   scale_x_continuous(expand = c(0, 0), limits = c(0, 100))
-```
 
 ```{r, results='hide'}
 #| label: immigration_impact_party_data
@@ -922,7 +890,7 @@ ggplot(
         title="How A Candidate's Immigration Stance Impacts Vote?",
         subtitle="By Party/Political Affiliation",
         y="",x="Percentage",
-        caption="Source: https://news.gallup.com/poll/647123/sharply-americans-curb-immigration.aspx",
+        caption="Source: Gallup",
         fill="Impact"
     ) +
    scale_x_continuous(expand = c(0, 0), limits = c(0, 100)) +
@@ -957,7 +925,7 @@ ggplot(
     labs(
         title="How Americans View The Seriousness of Global Warming?",
         x="Date",y="Percentage",
-        caption="Source: https://news.gallup.com/poll/1615/environment.aspx",
+        caption="Source: Gallup",
         color="View"
     ) +
     theme_bw() +
@@ -995,7 +963,7 @@ ggplot(
     labs(
         title="How Americans Rate the Quality of the Environment?",
         x="Date",y="Percentage",
-        caption="Source: https://news.gallup.com/poll/1615/environment.aspx",
+        caption="Source: Gallup",
         color="Rating"
     ) +
     theme_bw() +
@@ -1031,7 +999,7 @@ ggplot(
     labs(
         title="How Americans View Where The Enviornment Is Going?",
         x="Date",y="Percentage",
-        caption="Source: https://news.gallup.com/poll/1615/environment.aspx",
+        caption="Source: Gallup",
         color="Rating"
     ) +
     theme_bw() +
@@ -1130,7 +1098,7 @@ ggplot(
     scale_fill_brewer(palette = "Set3") +
     labs(
         title="What Are Americans Beliefs On Global Warming?",
-        caption="Source: https://climatecommunication.yale.edu/visualizations-data/ycom-us/",
+        caption="Source: Yale Program on Climate Change Communication",
         fill="View",
         x="Percentage",
         y=""
@@ -1224,7 +1192,7 @@ ggplot(
         title="Do Americans Think The Government Should Priortize Climate Change?",
         subtitle="Among Battleground States",
         y="",x="Percentage",
-        caption="Source: https://climatecommunication.yale.edu/visualizations-data/ycom-us/",
+        caption="Source: Yale Program on Climate Change Communication",
         fill="View"
     ) +
     scale_x_continuous(expand = c(0, 0), limits = c(0, 100)) +
@@ -1250,11 +1218,12 @@ ggplot(
     democracy_satisfaction,
     aes(x=date,y=pct) 
 ) +
-    geom_line(color="#06874B") +
-    geom_point(color="#06874B") +
+    geom_line() +
+    geom_point() +
+    scale_fill_brewer(palette = "Set4") +
     labs(
         title="How Satisfied Are Americans With How Democracy Is Working?",
-        caption="Source: https://news.gallup.com/poll/548120/record-low-satisfied-democracy-working.aspx",
+        caption="Source: Gallup",
         y="Percentage",x="Date"
     ) +
     theme_bw() +
@@ -1292,7 +1261,7 @@ ggplot(
         title="How Satisfied Are Americans With How Democracy Is Working?",
         subtitle="By Political Affiliation",
         color="Affiliation",
-        caption="Source: https://news.gallup.com/poll/548120/record-low-satisfied-democracy-working.aspx",
+        caption="Source: Gallup",
         y="Percentage",x="Date"
     ) +
     theme_bw() +
@@ -1304,72 +1273,64 @@ Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolor
 ## Economy
 
 ```{r, results='hide'}
-#| label: economy_confidence_index_data
+#| label: economy_confidence_data
 economy_confidence_index <- read_csv('polling/economy_confidence_index.csv') |>
-    mutate(
-        date = as.Date(date, format = "%b %d %Y")
-          ) |>
-    arrange(desc(date))
+    mutate(date = as.Date(date, format = "%b %d %Y")) |>
+    separate(date, into = c("year", "month", "day"), sep = "-") |>
+    summarize(
+        `Confidence Index` = round(mean(`Confidence Index`),1),
+        .by = year
+             ) |>
+    arrange(desc(year)) 
 ```
 
 ```{r, results='hide'}
-#| label: economy_confidence_index_graph
-ggplot(
-    economy_confidence_index,
-    aes(x=date,y=`Confidence Index`)
-      ) +
-    geom_line(color="#06874B") +
-    geom_point(color="#06874B") +
-    labs(
-        title="How Confident Are Americans In The Economy?",
-        caption="Source: https://news.gallup.com/poll/1609/consumer-views-economy.aspx",
-        y="Percentage",x="Date"
-    ) +
-    scale_x_date(
-        limits = c(as.Date("1996-01-01"), as.Date("2024-10-01")),
-        date_breaks = "3 years",
-        date_labels = "%Y",
-        expand = c(0, 0)
-    ) +
-    theme_bw() +
-    theme(axis.text.x = element_text(angle = 90, hjust = 0.5))
-```
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-```{r, results='hide'}
-#| label: economy_problem_data
+#| label: economy_concern_data
 economy_problem <- read_csv('polling/economy_problem.csv') |>
-    mutate(
-        date = as.Date(date, format = "%b %d %Y")
-          ) |>
-    arrange(desc(date)) |>
-    rename(
-        pct = `Percentage of Americans Mentioning Economic Issues as the Nation's Most Important Problem`
-          )
+    mutate(date = as.Date(date, format = "%b %d %Y")) |>
+    separate(date, into = c("year", "month", "day"), sep = "-") |>
+    rename(problem_pct = `Percentage of Americans Mentioning Economic Issues as the Nation's Most Important Problem`) |>
+    summarize(
+        problem_pct = round(mean(problem_pct),1),
+        .by = year
+             ) |>
+    arrange(desc(year)) 
 ```
 
 ```{r, results='hide'}
-#| label: economy_problem_graph
+#| label: economy_confidence_vs_concern_data
+economy_confidence_vs_concern <- economy_confidence_index |>
+    left_join(economy_problem,join_by(year)) |>
+    rename(
+        `Confidence In Economy` = `Confidence Index`,
+        `Concern In Economy` = problem_pct
+    ) |>
+    pivot_longer(
+        cols = `Confidence In Economy`:`Concern In Economy`,
+        names_to = "metric",
+        values_to = "pct"
+    ) |>
+    filter(!is.na(pct))
+```
+
+```{r, results='hide'}
+#| label: economy_confidence_vs_concern_plot
 ggplot(
-    economy_problem,
-    aes(x=date,y=pct)
+    economy_confidence_vs_concern,
+    aes(x=as.numeric(year),y=pct,group=metric,color=metric)
       ) +
-    geom_line(color="#06874B") +
-    geom_point(color="#06874B") +
+    geom_line() +
+    geom_point() +
+    scale_fill_brewer(palette = "Set5") +
     labs(
-        title="Americans Mentioning Economic Issues as the Nation's Most Important Problem",
-        caption="Source: https://news.gallup.com/poll/1609/consumer-views-economy.aspx",
+        title="How Confident Are Americans In The Economy vs
+How Many Americans Viewing Economy As An Issue?",
+        caption="Source: Gallup",
         y="Percentage",x="Date"
     ) +
-    scale_x_date(
-        limits = c(as.Date("2001-01-01"), as.Date("2025-01-01")),
-        date_breaks = "2 years",
-        date_labels = "%Y",
-        expand = c(0, 0)
-    ) +
+    scale_x_continuous(breaks = seq(1996, 2024, 4)) +
     theme_bw() +
-    theme(axis.text.x = element_text(angle = 90, hjust = 0.5))
+    theme(axis.text.x = element_text(angle = 90, hjust = 0))
 ```
 
 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
@@ -1401,15 +1362,11 @@ ggplot(
       ) +
     geom_line(size=0.6) + 
     geom_point(size=0.8) +
-    scale_color_manual(
-        values = c(
-            "Good Time" = "#6D7F3F",
-            "Bad Time" = "#3F7F7F"
-            )) +
+    scale_fill_brewer(palette = "Set5") +
     labs(
         title="Do Americans Think It's A Good/Bad Time To Find A Job?",
         x="Date",y="Percentage",
-        caption="Source: https://news.gallup.com/poll/1609/consumer-views-economy.aspx",
+        caption="Source: Gallup",
         color="View"
     ) +
     theme_bw() +
@@ -1421,57 +1378,85 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 ```{r, results='hide'}
 #| label: economy_expenses_data
 economy_expenses <- read_csv('polling/economy_expenses.csv') |>
+    mutate(
+        `2019` = as.numeric(trimws(`2019`)),
+        `2020` = as.numeric(trimws(`2020`)),
+        `2021` = as.numeric(trimws(`2021`)),
+        `2022` = as.numeric(trimws(`2022`)),
+        `2023` = as.numeric(trimws(`2023`)),
+        `2024` = as.numeric(trimws(`2024`))
+    ) |>
+    filter(
+        !is.na(`2019`),
+        !is.na(`2020`),
+        !is.na(`2021`),
+        !is.na(`2022`),
+        !is.na(`2023`),
+        !is.na(`2024`)
+    ) |>
     pivot_longer(
         `2024`:`2019`,
-        names_to="year",
-        values_to="pct"
+        names_to = "year",
+        values_to = "pct"
     ) |>
-    
     mutate(
-        year = as.numeric(year),
-        pct = as.numeric(pct),
-        pct = replace_na(pct, 0)
+        category = case_when(
+            expense %in% c(
+                "High cost of living/inflation",
+                "Cost of owning/renting a home",
+                "Energy costs/oil and gas prices",
+                "Transportation/commuting costs",
+                "Health care costs",
+                "Childcare/Daycare costs"
+            ) ~ "Cost of Living and Basic Necessities",
+            
+            expense %in% c(
+                "Too much debt/Not enough money to pay debts",
+                "Credit card debt",
+                "Taxes",
+                "College expenses/Student loans/Student loan debt",
+                "Interest rates"
+            ) ~ "Debt and Financial Burden",
+            
+            expense %in% c(
+                "Unemployment/Loss of job",
+                "Lack of money/Low wages",
+                "Supporting parents/children/grandchildren"
+            ) ~ "Employment and Income",
+            
+            expense %in% c(
+                "Retirement savings",
+                "Lack of savings",
+                "Stock market/investments",
+                "State of the economy",
+                "Social Security"
+            ) ~ "Savings and Economic Stability",
+            
+            expense %in% c(
+                "Insurance/Life insurance",
+                "Effects of coronavirus situation",
+                "Controlling spending"
+            ) ~ "Miscellaneous/Other Concerns",
+        )
     ) |>
-    filter(year == 2024)
+    summarize(
+        pct = round(mean(pct), 1),
+        .by = c(expense, category)
+    )
 ```
 
 ```{r, results='hide'}
 #| label: economy_expenses_graph
-ggplot(economy_expenses, aes(x=pct,y=fct_reorder(expense, pct),fill=expense)) +
+ggplot(economy_expenses, aes(x=pct,y=fct_reorder(expense, pct),fill=category)) +
   geom_col() +
-  scale_fill_manual(
-    values = c(
-      "High cost of living/inflation" = "#6D7F3F",
-      "Cost of owning/renting a home" = "#6D7F3F",
-      "Energy costs/oil and gas prices" = "#6D7F3F",
-      "Transportation/commuting costs" = "#6D7F3F",
-      "Insurance/Life insurance" = "#6D7F3F",
-      "Health care costs" = "#6D7F3F",
-      "Childcare/Daycare costs" = "#6D7F3F",
-      "Social Security" = "#6D7F3F",
-      "Credit card debt" = "#3F7F7F",
-      "Taxes" = "#3F7F7F",
-      "College expenses/Student loans/Student loan debt" = "#3F7F7F",
-      "Too much debt/Not enough money to pay debts" = "#3F7F7F",
-      "Supporting parents/children/grandchildren" = "#3F7F7F",
-      "Lack of money/Low wages" = "#3F7F7F",
-      "Unemployment/Loss of job" = "#3F7F7F",
-      "Effects of coronavirus situation" = "#3F7F7F",
-      "Stock market/investments" = "#503F7F",
-      "Lack of savings" = "#503F7F",
-      "Interest rates" = "#503F7F",
-      "Controlling spending" = "#503F7F",
-      "Retirement savings" = "#503F7F",
-      "State of the economy" = "#503F7F"
-    )
-  ) + 
+  scale_fill_brewer(palette = "Set5") +
   labs(
         title="Americans Most Important Financial Problem",
         x="Percentage",y="",
-        caption="Source: https://news.gallup.com/poll/1609/consumer-views-economy.aspx",
+        caption="Source: Gallup",
     ) +
   guides(fill = "none") +
-  scale_x_continuous(expand = c(0, 0), limits = c(0, 45)) +
+  scale_x_continuous(expand = c(0, 0), limits = c(0, 25)) +
   theme_bw() +
   theme(axis.text.x = element_text(angle = 90, hjust = 0.5))
 ```
