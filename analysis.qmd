@@ -953,12 +953,7 @@ ggplot(
 ) + 
     geom_line(size=0.6) + 
     geom_point(size=0.8) +
-    scale_color_manual(
-        values = c(
-            "exaggerated" = "#527F3F",
-            "correct" = "#3F7F7F",
-            "underestimated" = "#7F3F3F"
-            )) +
+    scale_fill_brewer(palette = "Set3") +
     labs(
         title="How Americans View The Seriousness of Global Warming?",
         x="Date",y="Percentage",
@@ -996,13 +991,7 @@ ggplot(
       ) +
     geom_line(size=0.6) + 
     geom_point(size=0.8) +
-    scale_color_manual(
-        values = c(
-            "excellent" = "#6D7F3F",
-            "good" = "#3F7F7F",
-            "fair" = "#503F7F",
-            "poor" = "#7F3F3F"
-            )) +
+    scale_fill_brewer(palette = "Set3") +
     labs(
         title="How Americans Rate the Quality of the Environment?",
         x="Date",y="Percentage",
@@ -1038,12 +1027,7 @@ ggplot(
       ) +
     geom_line(size=0.6) + 
     geom_point(size=0.8) +
-    scale_color_manual(
-        values = c(
-            "better" = "#6D7F3F",
-            "worse" = "#3F7F7F",
-            "same" = "#503F7F"
-            )) +
+    scale_fill_brewer(palette = "Set3") +
     labs(
         title="How Americans View Where The Enviornment Is Going?",
         x="Date",y="Percentage",
@@ -1143,11 +1127,7 @@ ggplot(
     aes(y=view,x=pct,fill=view)
 ) + geom_col() +
     facet_wrap(~topic,ncol=1) +
-    scale_fill_manual(
-        values = c(
-            "Agree" = "#6D7F3F",
-            "Disagree" = "#503F7F"
-            )) +
+    scale_fill_brewer(palette = "Set3") +
     labs(
         title="What Are Americans Beliefs On Global Warming?",
         caption="Source: https://climatecommunication.yale.edu/visualizations-data/ycom-us/",
@@ -1239,11 +1219,7 @@ ggplot(
 ) +
     geom_col(position="dodge") +
     facet_wrap(~government,ncol=1) +
-    scale_fill_manual(
-        values = c(
-            "Support" = "#254445",
-            "Oppose" = "#06874B"
-            )) +
+    scale_fill_brewer(palette = "Set3") +
     labs(
         title="Do Americans Think The Government Should Priortize Climate Change?",
         subtitle="Among Battleground States",
