@@ -124,7 +124,6 @@ ggplot(
     geom_point(data=xnational_presidential_polling,mapping=aes(x=date,y=pct),alpha=0.1) +
     scale_color_manual(values=c("Donald Trump" = "#D6090B","Kamala Harris" = "#031BBB")) +
     scale_fill_manual(values=c("Donald Trump" = "#D6090B","Kamala Harris" = "#031BBB")) +
-    theme(axis.text.x = element_text(angle=90, hjust=0.5)) +
     labs(
         title="Who Leads Nationally?",
         caption="Source: https://projects.fivethirtyeight.com/polls/president-general/2024/national/",
@@ -137,7 +136,8 @@ ggplot(
         fill="none",
         alpha="none",
     ) +
-    theme_bw()
+    theme_bw() +
+    theme(axis.text.x = element_text(angle=90, hjust=0.5))
 ```
 
 Before Joe Biden dropped out of the 2024 election, Donald Trump was leading in many polls. After Kamala Harris became the Democratic Party's presidential nominee, there was a significant shift in the polls toward her favor, likely driven by a mix of renewed energy among Democratic voters and a desire for a fresh candidate. However, as Election Day approached, the gap narrowed. Ultimately, despite the momentum, historic fundraising, and ground breaking campaign efforts, Kamala Harris lost to Donald Trump.
@@ -216,7 +216,6 @@ az_trump <- swing_state_summary |>
     )
     ) +
     coord_cartesian(ylim=c(40, 50)) +
-    theme(axis.text.x = element_text(angle=90)) + 
     labs(
         title="Who Leads In The Battleground States?",
         caption="Source: https://projects.fivethirtyeight.com/polls/president-general/2024/national/",
@@ -224,7 +223,8 @@ az_trump <- swing_state_summary |>
         y="Percentage",
         fill="Candidate"
     ) +
-    theme_bw()
+    theme_bw() +
+    theme(axis.text.x = element_text(angle=90, hjust=0.5))
 ```
 
 |   | State | EV | Kamala Harris | Donald Trump |
@@ -370,8 +370,8 @@ ggplot(
             "Unfavorable" = "#7F3F3F")
         ) +
     guides(fill = "none") +
-    theme(axis.text.x = element_text(angle=90, hjust=0.5)) +
-    theme_bw()
+    theme_bw() +
+    theme(axis.text.x = element_text(angle=90, hjust=0.5))
 ```
 
 ### Tim Walz
@@ -407,8 +407,8 @@ ggplot(
             "Unfavorable" = "#7F3F3F")
         ) +
     guides(fill = "none") +
-    theme(axis.text.x = element_text(angle=90, hjust=0.5)) +
-    theme_bw()
+    theme_bw() +
+    theme(axis.text.x = element_text(angle=90, hjust=0.5))
 ```
 
 ### Donald Trump
@@ -444,8 +444,8 @@ ggplot(
             "Unfavorable" = "#7F3F3F")
         ) +
     guides(fill = "none") +
-    theme(axis.text.x = element_text(angle=90, hjust=0.5)) +
-    theme_bw()
+    theme_bw() +
+    theme(axis.text.x = element_text(angle=90, hjust=0.5))
 ```
 
 ### J.D. Vance
@@ -481,8 +481,8 @@ ggplot(
             "Unfavorable" = "#7F3F3F")
         ) +
     guides(fill = "none") +
-    theme(axis.text.x = element_text(angle=90, hjust=0.5)) +
-    theme_bw()
+    theme_bw() +
+    theme(axis.text.x = element_text(angle=90, hjust=0.5))
 ```
 
 # Issues
@@ -529,9 +529,6 @@ ggplot(
     geom_line(size=0.6) +
     geom_point(size=0.8) +
     scale_color_brewer(palette = "Set2") +
-    theme(
-        axis.text.x = element_text(angle = 90, hjust = 0.5)
-    ) +
     labs(
         title = "What Are Americans View On Abortion Legality?",
         caption="Source: https://news.gallup.com/poll/1576/abortion.aspx",
@@ -543,7 +540,8 @@ ggplot(
     ) +
     scale_x_continuous(breaks = seq(1975, 2024, 3)) +
     scale_y_continuous(breaks = seq(0, 60, 10)) +
-    theme_bw()
+    theme_bw() +
+    theme(axis.text.x = element_text(angle = 90, hjust = 0.5))
 ```
 
 The majority of Americans consistently favor abortion being legal under certain circumstances, fluctuating between 50% and 60% over the years. Though support for legal under any circumstances has seen much more support in recent years, increasing from 20% in the 1970s to roughly 35% in 2023. Meanwhile, those who believe abortion should be illegal under any circumstances has declined rapidly in recent years, dropping from 21% in 2019 to around 12% in 2023. The dynamics of abortion legality views has seen massive shifts mostly due to the overturning of Roe V Wade in 2022.
@@ -602,12 +600,10 @@ ggplot(
     caption="Source: https://news.gallup.com/poll/1576/abortion.aspx",
     color="Stance"
     ) +
-    theme(
-        axis.text.x = element_text(angle = 90, hjust = 0.5)
-    ) +
     scale_x_continuous(breaks = seq(1995, 2024, 3)) +
     scale_y_continuous(breaks = seq(0, 60, 10)) +
-    theme_bw()
+    theme_bw() +
+    theme(axis.text.x = element_text(angle = 90, hjust = 0.5))
 ```
 
 Most Americans also view themselves as Pro-Choice, the stance that people have the right to control their own bodies, with support increasing ever since Roe v Wade was overturned, this aligns with most people in the Democratic Party. On the other hand, most people in the Republican Party align with the Pro-Life stance, who want abortion to be illegal or inaccessible. With that being said, as result of this, abortion has been one of the biggest strengths that the Democratic Party has. Ever since Roe v Wade was overturned, they have over-performed in various races, especially when either the overturning of Roe v Wade was recent or if abortion had a huge part to play in the election.
@@ -668,12 +664,10 @@ ggplot(
         caption="Source: https://news.gallup.com/poll/1576/abortion.aspx",
         color="Stance"
     ) +
-    theme(
-        axis.text.x = element_text(angle = 90, hjust = 0.5)
-    ) +
     scale_x_continuous(breaks = seq(1992, 2024, 2)) +
     scale_y_continuous(breaks = seq(0, 70, 10)) +
-    theme_bw()
+    theme_bw() +
+    theme(axis.text.x = element_text(angle = 90, hjust = 0.5))
 ```
 
 Abortion was a major factor in this election. Around 45% of Americans said a candidate's stance on abortion was significant, with about 31% stating the candidate needed to share their stance. Meanwhile, 19% indicated abortion was not a major issue for them, and around 4% stated they had "no opinion."
@@ -725,10 +719,8 @@ ggplot(
         caption="Source: https://news.gallup.com/poll/647123/sharply-americans-curb-immigration.aspx",
         color="View"
     ) +
-    theme(
-        axis.text.x = element_text(angle = 90, hjust = 0.5)
-    ) +
-    theme_bw()
+    theme_bw() +
+    theme(axis.text.x = element_text(angle = 90, hjust = 0.5))
 ```
 
 Americans overall tend to view immigration positively, with public support reaching a peak in 2020 when approximately 68-69% of people viewed it as beneficial for the country. However, since then, this favorable perception has seen a slight decline, dropping to around 62-63% as of recent years. While this decrease marks a noticeable shift, the overall perspective remains strongly supportive of immigration, indicating that a majority still sees it as a positive factor for the United States.
@@ -780,10 +772,8 @@ ggplot(
         caption="Source: https://news.gallup.com/poll/647123/sharply-americans-curb-immigration.aspx",
         color="Political Affiliation"
     ) +
-    theme(
-        axis.text.x = element_text(angle = 90, hjust = 0.5)
-    ) +
-    theme_bw()
+    theme_bw() +
+    theme(axis.text.x = element_text(angle = 90, hjust = 0.5))
 ```
 
 Both Democrats and Independents generally maintain a positive outlook, with a high percentage in each group viewing immigration favorably. However, among Republicans, there has been a significant decline in positive perception, with only around 39% expressing support for immigration by 2024. This shift underscores a growing divide in how immigration is perceived across party lines, with Republicans showing considerably less enthusiasm compared to other groups.
@@ -828,12 +818,10 @@ ggplot(
         caption="Source: https://news.gallup.com/poll/647123/sharply-americans-curb-immigration.aspx",
         color="Stance"
     ) +
-    theme(
-        axis.text.x = element_text(angle = 90, hjust = 0.5)
-    ) +
     scale_x_continuous(breaks=seq(1965, 2025, 5)) +
     scale_y_continuous(breaks = seq(0, 100, 10)) +
-    theme_bw()
+    theme_bw() +
+    theme(axis.text.x = element_text(angle = 90, hjust = 0.5))
 ```
 
 Although a majority of Americans view immigration positively, many still believe it should be more tightly controlled or even reduced. Approximately 55% of Americans feel that immigration levels should be decreased, while support for maintaining current levels stands at around 25%. Meanwhile, only about 16% of Americans favor an increase in immigration.
@@ -875,7 +863,8 @@ ggplot(
         fill="Stance"
     ) +
    scale_x_continuous(expand = c(0, 0), limits = c(0, 100)) +
-   theme_bw()
+   theme_bw() +
+   theme(axis.text.x = element_text(angle = 90, hjust = 0.5))
 ```
 
 When we break down these views by political parties we see a big divide. A majority of Republicans favor decreasing immigration, with minimal support for an increase. Independents are seemingly evenly split between decrease immigration and increasing/maintaining. Meanwhile Democrats show more favorability to immigration, more than Independents and Republicans combined.
@@ -937,7 +926,8 @@ ggplot(
         fill="Impact"
     ) +
    scale_x_continuous(expand = c(0, 0), limits = c(0, 100)) +
-   theme_bw()
+   theme_bw() +
+   theme(axis.text.x = element_text(angle = 90, hjust = 0.5))
 ```
 
 With all that being said, while the Republican Party does hold a slight edge on immigration, which has inadvertently forced the Democratic Party to moderate on some immigration stances. This moderation could appeal to a broader audience that sees immigration as beneficial but manageable, contrasting with the Republicans’ stronger push for reduction, or this moderation can also turn off reliable Democratic voters, young voters, or minority voters. Whether this will be beneficial to Democratic Party or not in the long run, only time will tell.
@@ -975,10 +965,8 @@ ggplot(
         caption="Source: https://news.gallup.com/poll/1615/environment.aspx",
         color="View"
     ) +
-    theme(
-        axis.text.x = element_text(angle = 90, hjust = 0.5)
-    ) +
-    theme_bw()
+    theme_bw() +
+    theme(axis.text.x = element_text(angle = 90, hjust = 0.5))
 ```
 
 Climate change and global warming may not be a central focus in this election, yet they remain important issues for a significant portion of voters. Over the years, an increasing number of Americans have come to view climate change as an underestimated problem—one that hasn’t been adequately addressed or taken seriously by policymakers. This group of Americans feels that the long-term impacts of climate change, such as extreme weather events, rising sea levels, and disruptions to ecosystems, are pressing concerns that require urgent action. However, many others see climate change and global warming as overblown or exaggerated issues.
@@ -1021,10 +1009,8 @@ ggplot(
         caption="Source: https://news.gallup.com/poll/1615/environment.aspx",
         color="Rating"
     ) +
-    theme(
-        axis.text.x = element_text(angle = 90, hjust = 0.5)
-    ) +
-    theme_bw()
+    theme_bw() +
+    theme(axis.text.x = element_text(angle = 90, hjust = 0.5))
 ```
 
 ```{r, results='hide'}
@@ -1064,8 +1050,8 @@ ggplot(
         caption="Source: https://news.gallup.com/poll/1615/environment.aspx",
         color="Rating"
     ) +
-    theme(axis.text.x = element_text(angle = 90, hjust = 0.5)) +
-    theme_bw()
+    theme_bw() +
+    theme(axis.text.x = element_text(angle = 90, hjust = 0.5))
 ```
 
 Though most Americans still view the overall quality of the environment as good or fair, a growing number sense that it’s beginning to worsen. Concerns have deepened as many have noticed an increase in severe weather patterns, including the rising frequency and intensity of hurricanes, wildfires, and floods. These extreme events are often seen as signs that environmental quality is on a downward trajectory.
@@ -1171,7 +1157,8 @@ ggplot(
         ) +
     scale_x_continuous(expand = c(0, 0), limits = c(0, 80)) +
     guides(fill = "none") +
-    theme_bw()
+    theme_bw() +
+    theme(axis.text.x = element_text(angle = 90, hjust = 0.5))
 ```
 
 With that being said, it does appear that a large majority of Americans believe in the reality of global warming and its impact on the weather. Many also agree that human activities—like deforestation, burning fossil fuels, transportation, waste management, and energy use—contribute to global warming. However, compared to the belief that global warming affects the environment, a notable portion disagrees with the idea that human actions play a role. While there’s overwhelming agreement that global warming is happening, a strong majority also aligns with the scientific consensus that climate change is real.
@@ -1265,7 +1252,8 @@ ggplot(
         fill="View"
     ) +
     scale_x_continuous(expand = c(0, 0), limits = c(0, 100)) +
-    theme_bw()
+    theme_bw() +
+    theme(axis.text.x = element_text(angle = 90, hjust = 0.5))
 ```
 
 Across all seven swing states, a majority support prioritizing climate change for both Congress and the President, however, there is also a significant portion of opposition. Support is relatively consistent across these states, generally surpassing a majority of support indicating climate change is an important issue among voters, especially in states like Georgia and North Carolina who often experience hurricanes.
@@ -1293,8 +1281,8 @@ ggplot(
         caption="Source: https://news.gallup.com/poll/548120/record-low-satisfied-democracy-working.aspx",
         y="Percentage",x="Date"
     ) +
-    theme(axis.text.x = element_text(angle = 90, hjust = 0.5)) +
-    theme_bw()
+    theme_bw() +
+    theme(axis.text.x = element_text(angle = 90, hjust = 0.5))
 ```
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -1331,8 +1319,8 @@ ggplot(
         caption="Source: https://news.gallup.com/poll/548120/record-low-satisfied-democracy-working.aspx",
         y="Percentage",x="Date"
     ) +
-    theme(axis.text.x = element_text(angle = 90, hjust = 0.5)) +
-    theme_bw()
+    theme_bw() +
+    theme(axis.text.x = element_text(angle = 90, hjust = 0.5))
 ```
 
 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
@@ -1361,14 +1349,14 @@ ggplot(
         caption="Source: https://news.gallup.com/poll/1609/consumer-views-economy.aspx",
         y="Percentage",x="Date"
     ) +
-    theme(axis.text.x = element_text(angle = 90, hjust = 0.5)) +
     scale_x_date(
         limits = c(as.Date("1996-01-01"), as.Date("2024-10-01")),
         date_breaks = "3 years",
         date_labels = "%Y",
         expand = c(0, 0)
     ) +
-    theme_bw()
+    theme_bw() +
+    theme(axis.text.x = element_text(angle = 90, hjust = 0.5))
 ```
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -1398,14 +1386,14 @@ ggplot(
         caption="Source: https://news.gallup.com/poll/1609/consumer-views-economy.aspx",
         y="Percentage",x="Date"
     ) +
-    theme(axis.text.x = element_text(angle = 90, hjust = 0.5)) +
     scale_x_date(
         limits = c(as.Date("2001-01-01"), as.Date("2025-01-01")),
         date_breaks = "2 years",
         date_labels = "%Y",
         expand = c(0, 0)
     ) +
-    theme_bw()
+    theme_bw() +
+    theme(axis.text.x = element_text(angle = 90, hjust = 0.5))
 ```
 
 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
@@ -1448,8 +1436,8 @@ ggplot(
         caption="Source: https://news.gallup.com/poll/1609/consumer-views-economy.aspx",
         color="View"
     ) +
-    theme(axis.text.x = element_text(angle = 90, hjust = 0.5)) +
-    theme_bw()
+    theme_bw() +
+    theme(axis.text.x = element_text(angle = 90, hjust = 0.5))
 ```
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -1508,7 +1496,8 @@ ggplot(economy_expenses, aes(x=pct,y=fct_reorder(expense, pct),fill=expense)) +
     ) +
   guides(fill = "none") +
   scale_x_continuous(expand = c(0, 0), limits = c(0, 45)) +
-  theme_bw()
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 0.5))
 ```
 
 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
@@ -1553,10 +1542,8 @@ ggplot(
         caption="Source: https://news.gallup.com/poll/1612/education.aspx",
         color="Rating"
     ) +
-    theme(
-        axis.text.x = element_text(angle = 90, hjust = 0.5)
-    ) +
-    theme_bw()
+    theme_bw() +
+    theme(axis.text.x = element_text(angle = 90, hjust = 0.5))
 ```
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -1607,8 +1594,8 @@ ggplot(
         y="Percentage",x="Date"
     ) +
     scale_x_continuous(labels = scales::number_format(accuracy = 1)) +
-    theme(axis.text.x = element_text(angle = 90, hjust = 0.5)) +
-    theme_bw()
+    theme_bw() +
+    theme(axis.text.x = element_text(angle = 90, hjust = 0.5))
 ```
 
 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
@@ -1649,7 +1636,8 @@ ggplot(
         ) +
     scale_x_continuous(expand = c(0, 0), limits = c(0, 60)) +
     guides(fill = "none") +
-    theme_bw()
+    theme_bw() +
+    theme(axis.text.x = element_text(angle = 90, hjust = 0.5))
 ```
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -1692,7 +1680,8 @@ ggplot(
         ) +
     scale_x_continuous(expand = c(0, 0), limits = c(0, 55)) +
     guides(fill = "none") +
-    theme_bw()
+    theme_bw() +
+    theme(axis.text.x = element_text(angle = 90, hjust = 0.5))
 ```
 
 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
@@ -1730,8 +1719,8 @@ ggplot(
         labels = scales::number_format(accuracy = 1),
         breaks=seq(1994, 2024, 3)
     ) +
-    theme(axis.text.x = element_text(angle = 90, hjust = 0.5)) +
-    theme_bw()
+    theme_bw() +
+    theme(axis.text.x = element_text(angle = 90, hjust = 0.5))
 ```
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -1770,7 +1759,8 @@ ggplot(
         fill="Stance"
     ) +
    scale_x_continuous(expand = c(0, 0), limits = c(0, 100)) +
-   theme_bw()
+   theme_bw() +
+   theme(axis.text.x = element_text(angle = 90, hjust = 0.5))
 ```
 
 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
@@ -1806,7 +1796,8 @@ ggplot(
         fill="Stance"
     ) +
    scale_x_continuous(expand = c(0, 0), limits = c(0, 100)) +
-   theme_bw()
+   theme_bw() +
+   theme(axis.text.x = element_text(angle = 90, hjust = 0.5))
 ```
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -1851,8 +1842,8 @@ ggplot(
         caption="Source: https://news.gallup.com/poll/1651/gay-lesbian-rights.aspx",
         color="View"
     ) +
-    theme(axis.text.x = element_text(angle = 90, hjust = 0.5)) +
-    theme_bw()
+    theme_bw() +
+    theme(axis.text.x = element_text(angle = 90, hjust = 0.5))
 ```
 
 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
@@ -1898,7 +1889,8 @@ ggplot(
         fill="View"
     ) +
    scale_x_continuous(expand = c(0, 0), limits = c(0, 40)) +
-   theme_bw()
+   theme_bw() +
+   theme(axis.text.x = element_text(angle = 90, hjust = 0.5))
 ```
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -1934,7 +1926,8 @@ ggplot(
         fill="Stance"
     ) +
    scale_x_continuous(expand = c(0, 0), limits = c(0, 90)) +
-   theme_bw()
+   theme_bw() +
+   theme(axis.text.x = element_text(angle = 90, hjust = 0.5))
 ```
 
 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
