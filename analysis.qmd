@@ -38,19 +38,28 @@ The 2024 United States presidential election was held on Tuesday, November 5, 20
 ```{r, results='hide'}
 #| label: load-spacial_data
 us_states <- us_states()
-us_counties <- us_counties()
+us_counties <- us_counties() |>
+   select(-state_name) |>
+   mutate(
+       statecounty_fps = trimws(paste(statefp, countyfp, sep=""))
+   ) |>
+   relocate(statecounty_fps, .before=affgeoid)
 ```
 
 ```{r, results='hide'}
 #| label: load-election-results
 election2024_data <- read_csv("https://raw.githubusercontent.com/tonmcg/US_County_Level_Election_Results_08-24/master/2024_US_County_Level_Presidential_Results.csv") |>
-    separate(county_fips, into = c("statefp", "countyfp"), sep = 2)
+    separate(county_fips, into = c("statefp", "countyfp"), sep = 2) |>
+    mutate(
+       statecounty_fps = trimws(paste(statefp, countyfp, sep=""))
+   ) |>
+   relocate(statecounty_fps, .before=county_name)
 ```
 
 ```{r, results='hide'}
 #| label: combine-election-results-with-spacial
 election2024_county_results <- election2024_data |>
-    left_join(us_counties |> select(-state_name), join_by(statefp,countyfp)) |>
+    left_join(us_counties, join_by(statecounty_fps)) |>
     select(state_name, county_name, votes_gop:per_point_diff, geometry) |>
     mutate(
         per_gop = round(per_gop * 100,2),
