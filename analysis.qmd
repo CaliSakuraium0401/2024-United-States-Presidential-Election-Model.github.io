@@ -31,7 +31,7 @@ library(rmapshaper)
 library(USAboundaries)
 ```
 
-# Election Overview
+# Election Results
 
 The 2024 United States presidential election was held on Tuesday, November 5, 2024. The Republican Party's ticket—Donald Trump, who was the 45th president of the United States from 2017 to 2021, and JD Vance, the junior U.S. senator from Ohio—defeated the Democratic Party's ticket—Kamala Harris, the incumbent U.S. vice president, and Tim Walz, the governor of Minnesota.
 
@@ -89,6 +89,223 @@ ggplot() +
     ) +
     labs(
       title="2024 United States Presidential Election Results",
+      caption="Source : Github (tonmc)",
+      fill="DEM-REP"
+    ) +
+    guides(color = "none") +
+    theme_void() +
+    theme(legend.position = "left")
+```
+
+## Pennsylvania
+
+```{r, results='hide'}
+#| label: 2024_pennsylvania_results_by_county
+
+ggplot() +
+    geom_sf(
+        data = election2024_county_results |> filter(state_name == "Pennsylvania"),
+        aes(geometry = geometry, fill=per_dem_lead, color=per_dem_lead),
+        show.legend = TRUE,
+    ) +
+    scale_fill_gradient2(high = "#002B84", mid = '#D4C4DC', low = "#800000", midpoint = 0) +
+    scale_color_gradient2(high = "#002B84", mid = '#D4C4DC', low = "#800000", midpoint = 0) +
+    geom_sf(
+        data = us_states |> filter(state_name == "Pennsylvania"),
+        aes(geometry = geometry),
+        alpha = 0,
+        size = 1.2,
+        color="#000000",
+        show.legend = FALSE
+    ) +
+    labs(
+      title="2024 United States Presidential Election Results in Pennsylvania",
+      caption="Source : Github (tonmc)",
+      fill="DEM-REP"
+    ) +
+    guides(color = "none") +
+    theme_void() +
+    theme(legend.position = "left")
+```
+
+## Michigan
+
+```{r, results='hide'}
+#| label: 2024_michigan_results_by_county
+
+ggplot() +
+    geom_sf(
+        data = election2024_county_results |> filter(state_name == "Michigan"),
+        aes(geometry = geometry, fill=per_dem_lead, color=per_dem_lead),
+        show.legend = TRUE,
+    ) +
+    scale_fill_gradient2(high = "#002B84", mid = '#D4C4DC', low = "#800000", midpoint = 0) +
+    scale_color_gradient2(high = "#002B84", mid = '#D4C4DC', low = "#800000", midpoint = 0) +
+    geom_sf(
+        data = us_states |> filter(state_name == "Michigan"),
+        aes(geometry = geometry),
+        alpha = 0,
+        size = 1.2,
+        color="#000000",
+        show.legend = FALSE
+    ) +
+    labs(
+      title="2024 United States Presidential Election Results in Michigan",
+      caption="Source : Github (tonmc)",
+      fill="DEM-REP"
+    ) +
+    guides(color = "none") +
+    theme_void() +
+    theme(legend.position = "left")
+```
+
+## Wisconsin
+
+```{r, results='hide'}
+#| label: 2024_wisconsin_results_by_county
+
+ggplot() +
+    geom_sf(
+        data = election2024_county_results |> filter(state_name == "Wisconsin"),
+        aes(geometry = geometry, fill=per_dem_lead, color=per_dem_lead),
+        show.legend = TRUE,
+    ) +
+    scale_fill_gradient2(high = "#002B84", mid = '#D4C4DC', low = "#800000", midpoint = 0) +
+    scale_color_gradient2(high = "#002B84", mid = '#D4C4DC', low = "#800000", midpoint = 0) +
+    geom_sf(
+        data = us_states |> filter(state_name == "Wisconsin"),
+        aes(geometry = geometry),
+        alpha = 0,
+        size = 1.2,
+        color="#000000",
+        show.legend = FALSE
+    ) +
+    labs(
+      title="2024 United States Presidential Election Results in Wisconsin",
+      caption="Source : Github (tonmc)",
+      fill="DEM-REP"
+    ) + 
+    guides(color = "none") +
+    theme_void() +
+    theme(legend.position = "left")
+```
+
+## North Carolina
+
+```{r, results='hide'}
+#| label: 2024_north_carolina_results_by_county
+
+ggplot() +
+    geom_sf(
+        data = election2024_county_results |> filter(state_name == "North Carolina"),
+        aes(geometry = geometry, fill=per_dem_lead, color=per_dem_lead),
+        show.legend = TRUE,
+    ) +
+    scale_fill_gradient2(high = "#002B84", mid = '#D4C4DC', low = "#800000", midpoint = 0) +
+    scale_color_gradient2(high = "#002B84", mid = '#D4C4DC', low = "#800000", midpoint = 0) +
+    geom_sf(
+        data = us_states |> filter(state_name == "North Carolina"),
+        aes(geometry = geometry),
+        alpha = 0,
+        size = 1.2,
+        color="#000000",
+        show.legend = FALSE
+    ) +
+    labs(
+      title="2024 United States Presidential Election Results in North Carolina",
+      caption="Source : Github (tonmc)",
+      fill="DEM-REP"
+    ) + 
+    guides(color = "none") +
+    theme_void() +
+    theme(legend.position = "left")
+```
+
+## Georgia
+
+```{r, results='hide'}
+#| label: 2024_georgia_results_by_county
+
+ggplot() +
+    geom_sf(
+        data = election2024_county_results |> filter(state_name == "Georgia"),
+        aes(geometry = geometry, fill=per_dem_lead, color=per_dem_lead),
+        show.legend = TRUE,
+    ) +
+    scale_fill_gradient2(high = "#002B84", mid = '#D4C4DC', low = "#800000", midpoint = 0) +
+    scale_color_gradient2(high = "#002B84", mid = '#D4C4DC', low = "#800000", midpoint = 0) +
+    geom_sf(
+        data = us_states |> filter(state_name == "Georgia"),
+        aes(geometry = geometry),
+        alpha = 0,
+        size = 1.2,
+        color="#000000",
+        show.legend = FALSE
+    ) +
+    labs(
+      title="2024 United States Presidential Election Results in Georgia",
+      caption="Source : Github (tonmc)",
+      fill="DEM-REP"
+    ) +
+    guides(color = "none") +
+    theme_void() +
+    theme(legend.position = "left")
+```
+
+## Arizona
+
+```{r, results='hide'}
+#| label: 2024_arizona_results_by_county
+
+ggplot() +
+    geom_sf(
+        data = election2024_county_results |> filter(state_name == "Arizona"),
+        aes(geometry = geometry, fill=per_dem_lead, color=per_dem_lead),
+        show.legend = TRUE,
+    ) +
+    scale_fill_gradient2(high = "#002B84", mid = '#D4C4DC', low = "#800000", midpoint = 0) +
+    scale_color_gradient2(high = "#002B84", mid = '#D4C4DC', low = "#800000", midpoint = 0) +
+    geom_sf(
+        data = us_states |> filter(state_name == "Arizona"),
+        aes(geometry = geometry),
+        alpha = 0,
+        size = 1.2,
+        color="#000000",
+        show.legend = FALSE
+    ) +
+    labs(
+      title="2024 United States Presidential Election Results in Arizona",
+      caption="Source : Github (tonmc)",
+      fill="DEM-REP"
+    ) +
+    guides(color = "none") +
+    theme_void() +
+    theme(legend.position = "left")
+```
+
+## Nevada
+
+```{r, results='hide'}
+#| label: 2024_nevada_results_by_county
+
+ggplot() +
+    geom_sf(
+        data = election2024_county_results |> filter(state_name == "Nevada"),
+        aes(geometry = geometry, fill=per_dem_lead, color=per_dem_lead),
+        show.legend = TRUE,
+    ) +
+    scale_fill_gradient2(high = "#002B84", mid = '#D4C4DC', low = "#800000", midpoint = 0) +
+    scale_color_gradient2(high = "#002B84", mid = '#D4C4DC', low = "#800000", midpoint = 0) +
+    geom_sf(
+        data = us_states |> filter(state_name == "Nevada"),
+        aes(geometry = geometry),
+        alpha = 0,
+        size = 1.2,
+        color="#000000",
+        show.legend = FALSE
+    ) +
+    labs(
+      title="2024 United States Presidential Election Results in Nevada",
       caption="Source : Github (tonmc)",
       fill="DEM-REP"
     ) +
