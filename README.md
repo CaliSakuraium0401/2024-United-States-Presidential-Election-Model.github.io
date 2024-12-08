@@ -2,6 +2,9 @@
 
 The 2024 United States presidential election, held on November 5, 2024, resulted in a victory for the Republican ticket of Donald Trump and JD Vance over the Democratic ticket of Kamala Harris and Tim Walz. The model provides polling and analysis of factors that influenced this pivotal election.
 
+## Work In Progress / To Do List
+-   Turnout Change Mapchart
+
 #### Sources
 
 -   [FiveThirtyEight](https://projects.fivethirtyeight.com)
