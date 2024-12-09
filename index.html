@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="CaliSakuraium">
-<meta name="dcterms.date" content="2024-12-07">
+<meta name="dcterms.date" content="2024-12-08">
 
 <title>2024 United States Presidential Election Model</title>
 <style>
@@ -35,6 +35,26 @@ ul.task-list li input[type="checkbox"] {
 <script src="analysis_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="analysis_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="analysis_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="analysis_files/libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+
+<script src="analysis_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<link href="analysis_files/libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+
+<script src="analysis_files/libs/datatables-binding-0.33/datatables.js"></script>
+
+<script src="analysis_files/libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+
+<link href="analysis_files/libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+
+<link href="analysis_files/libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+
+<script src="analysis_files/libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+
+<link href="analysis_files/libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+
+<script src="analysis_files/libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+
 <link href="analysis_files/libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
 
 <script src="analysis_files/libs/pagedtable-1.1/js/pagedtable.js"></script>
@@ -53,6 +73,9 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#election-results" id="toc-election-results" class="nav-link active" data-scroll-target="#election-results">Election Results</a>
   <ul class="collapse">
+  <li><a href="#national-results" id="toc-national-results" class="nav-link" data-scroll-target="#national-results">National Results</a></li>
+  <li><a href="#battlegroundswing-state-results" id="toc-battlegroundswing-state-results" class="nav-link" data-scroll-target="#battlegroundswing-state-results">Battleground/Swing State Results</a>
+  <ul class="collapse">
   <li><a href="#pennsylvania" id="toc-pennsylvania" class="nav-link" data-scroll-target="#pennsylvania">Pennsylvania</a></li>
   <li><a href="#michigan" id="toc-michigan" class="nav-link" data-scroll-target="#michigan">Michigan</a></li>
   <li><a href="#wisconsin" id="toc-wisconsin" class="nav-link" data-scroll-target="#wisconsin">Wisconsin</a></li>
@@ -60,6 +83,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#georgia" id="toc-georgia" class="nav-link" data-scroll-target="#georgia">Georgia</a></li>
   <li><a href="#arizona" id="toc-arizona" class="nav-link" data-scroll-target="#arizona">Arizona</a></li>
   <li><a href="#nevada" id="toc-nevada" class="nav-link" data-scroll-target="#nevada">Nevada</a></li>
+  </ul></li>
+  <li><a href="#turnout" id="toc-turnout" class="nav-link" data-scroll-target="#turnout">Turnout</a></li>
   </ul></li>
   <li><a href="#polling" id="toc-polling" class="nav-link" data-scroll-target="#polling">Polling</a>
   <ul class="collapse">
@@ -114,7 +139,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 7, 2024</p>
+      <p class="date">December 8, 2024</p>
     </div>
   </div>
   
@@ -129,6 +154,8 @@ ul.task-list li input[type="checkbox"] {
 <section id="election-results" class="level1">
 <h1>Election Results</h1>
 <p>The 2024 United States presidential election was held on Tuesday, November 5, 2024. The Republican Party’s ticket—Donald Trump, who was the 45th president of the United States from 2017 to 2021, and JD Vance, the junior U.S. senator from Ohio—defeated the Democratic Party’s ticket—Kamala Harris, the incumbent U.S. vice president, and Tim Walz, the governor of Minnesota.</p>
+<section id="national-results" class="level2">
+<h2 class="anchored" data-anchor-id="national-results">National Results</h2>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -138,8 +165,11 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<section id="pennsylvania" class="level2">
-<h2 class="anchored" data-anchor-id="pennsylvania">Pennsylvania</h2>
+</section>
+<section id="battlegroundswing-state-results" class="level2">
+<h2 class="anchored" data-anchor-id="battlegroundswing-state-results">Battleground/Swing State Results</h2>
+<section id="pennsylvania" class="level3">
+<h3 class="anchored" data-anchor-id="pennsylvania">Pennsylvania</h3>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -150,8 +180,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="michigan" class="level2">
-<h2 class="anchored" data-anchor-id="michigan">Michigan</h2>
+<section id="michigan" class="level3">
+<h3 class="anchored" data-anchor-id="michigan">Michigan</h3>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -162,8 +192,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="wisconsin" class="level2">
-<h2 class="anchored" data-anchor-id="wisconsin">Wisconsin</h2>
+<section id="wisconsin" class="level3">
+<h3 class="anchored" data-anchor-id="wisconsin">Wisconsin</h3>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -174,8 +204,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="north-carolina" class="level2">
-<h2 class="anchored" data-anchor-id="north-carolina">North Carolina</h2>
+<section id="north-carolina" class="level3">
+<h3 class="anchored" data-anchor-id="north-carolina">North Carolina</h3>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -186,8 +216,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="georgia" class="level2">
-<h2 class="anchored" data-anchor-id="georgia">Georgia</h2>
+<section id="georgia" class="level3">
+<h3 class="anchored" data-anchor-id="georgia">Georgia</h3>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -198,8 +228,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="arizona" class="level2">
-<h2 class="anchored" data-anchor-id="arizona">Arizona</h2>
+<section id="arizona" class="level3">
+<h3 class="anchored" data-anchor-id="arizona">Arizona</h3>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -210,8 +240,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="nevada" class="level2">
-<h2 class="anchored" data-anchor-id="nevada">Nevada</h2>
+<section id="nevada" class="level3">
+<h3 class="anchored" data-anchor-id="nevada">Nevada</h3>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -219,6 +249,25 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="analysis_files/figure-html/2024_nevada_results_by_county-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
+</div>
+</div>
+</section>
+</section>
+<section id="turnout" class="level2">
+<h2 class="anchored" data-anchor-id="turnout">Turnout</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="analysis_files/figure-html/2020_vs_2024_turnout-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-d5fdda3dbb3e854ffaa2" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-d5fdda3dbb3e854ffaa2">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48"],["Georgia","North Carolina","Wisconsin","Pennsylvania","Michigan","Nevada","Idaho","South Carolina","Maine","New Hampshire","Texas","Tennessee","Delaware","South Dakota","Oklahoma","North Dakota","Arizona","Utah","New Mexico","Vermont","Montana","Rhode Island","Nebraska","Wyoming","Maryland","West Virginia","Iowa","Missouri","Minnesota","Arkansas","Kansas","Hawaii","Colorado","Kentucky","Alabama","Indiana","Louisiana","Virginia","Mississippi","Oregon","Florida","Washington","Massachusetts","Ohio","New Jersey","Illinois","New York","California"],[4997716,5524801,3297352,6925255,5539302,1405376,868105,2513329,813740,804430,11317911,3053851,504010,422609,1560699,361819,3387326,1488289,923965,367428,605750,516383,956379,276765,3037030,794652,1690871,3025962,3277171,1219069,1349567,574469,3256953,2136768,2323304,3033198,2148062,4460524,1315178,2374321,11067456,4087631,3631402,5922202,4564234,6038850,8616205,17495906],[5250047,5679658,3414473,7031770,5638701,1484840,904812,2548140,834250,822153,11332414,3062660,511697,428922,1566173,365059,3389319,1487951,923403,366398,602676,510659,947063,266353,3005365,762390,1657452,2991888,3240916,1182676,1297667,516701,3190873,2068865,2248337,2924790,2006975,4315367,1150476,2207592,10893547,3898835,3381569,5652464,4268341,5581150,7897758,15732109],[252331,154857,117121,106515,99399,79464,36707,34811,20510,17723,14503,8809,7687,6313,5474,3240,1993,-338,-562,-1030,-3074,-5724,-9316,-10412,-31665,-32262,-33419,-34074,-36255,-36393,-51900,-57768,-66080,-67903,-74967,-108408,-141087,-145157,-164702,-166729,-173909,-188796,-249833,-269738,-295893,-457700,-718447,-1763797],["+ 5.05 %","+ 2.8 %","+ 3.55 %","+ 1.54 %","+ 1.79 %","+ 5.65 %","+ 4.23 %","+ 1.39 %","+ 2.52 %","+ 2.2 %","+ 0.13 %","+ 0.29 %","+ 1.53 %","+ 1.49 %","+ 0.35 %","+ 0.9 %","+ 0.06 %","-0.02 %","-0.06 %","-0.28 %","-0.51 %","-1.11 %","-0.97 %","-3.76 %","-1.04 %","-4.06 %","-1.98 %","-1.13 %","-1.11 %","-2.99 %","-3.85 %","-10.06 %","-2.03 %","-3.18 %","-3.23 %","-3.57 %","-6.57 %","-3.25 %","-12.52 %","-7.02 %","-1.57 %","-4.62 %","-6.88 %","-4.55 %","-6.48 %","-7.58 %","-8.34 %","-10.08 %"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>State<\/th>\n      <th>2020 Election<\/th>\n      <th>2024 Election<\/th>\n      <th>Vote Difference<\/th>\n      <th>% Change<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"State","targets":1},{"name":"2020 Election","targets":2},{"name":"2024 Election","targets":3},{"name":"Vote Difference","targets":4},{"name":"% Change","targets":5}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>

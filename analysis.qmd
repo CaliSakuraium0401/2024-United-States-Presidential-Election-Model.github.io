@@ -29,6 +29,8 @@ library(readxl)
 library(sf)
 library(rmapshaper)
 library(USAboundaries)
+library(knitr)
+library(DT)
 ```
 
 # Election Results
@@ -54,6 +56,13 @@ election2024_data <- read_csv("https://raw.githubusercontent.com/tonmcg/US_Count
        statecounty_fps = trimws(paste(statefp, countyfp, sep=""))
    ) |>
    relocate(statecounty_fps, .before=county_name)
+
+election2020_data <- read_csv("https://raw.githubusercontent.com/tonmcg/US_County_Level_Election_Results_08-24/refs/heads/master/2020_US_County_Level_Presidential_Results.csv") |>
+    separate(county_fips, into = c("statefp", "countyfp"), sep = 2) |>
+    mutate(
+       statecounty_fps = trimws(paste(statefp, countyfp, sep=""))
+   ) |>
+   relocate(statecounty_fps, .before=county_name)
 ```
 
 ```{r, results='hide'}
@@ -67,7 +76,42 @@ election2024_county_results <- election2024_data |>
         per_dem_lead = round(((votes_dem - votes_gop)/total_votes)*100,2),
         per_rep_lead = round(((votes_gop - votes_dem)/total_votes)*100,2)
     )
+
+election2020_county_results <- election2020_data |>
+    left_join(us_counties, join_by(statecounty_fps)) |>
+    select(state_name, county_name, votes_gop:per_point_diff, geometry) |>
+    mutate(
+        per_gop = round(per_gop * 100,2),
+        per_dem = round(per_dem * 100,2),
+        per_dem_lead = round(((votes_dem - votes_gop)/total_votes)*100,2),
+        per_rep_lead = round(((votes_gop - votes_dem)/total_votes)*100,2)
+    )
+
+turnout_2020_2024_change <- election2024_data |>
+    select(state_name,statecounty_fps,county_name,total_votes) |>
+    rename(votes_2024 = total_votes) |>
+    left_join(
+        election2020_data |> 
+            select(state_name,statecounty_fps,county_name,total_votes) |>
+            rename(votes_2020 = total_votes),
+        join_by(statecounty_fps)
+    ) |>
+    select(-state_name.y,-county_name.y) |>
+    rename(
+        state_name = state_name.x,
+        county_name = county_name.x
+    ) |>
+    mutate(
+        vote_change = (votes_2020 - votes_2024) * -1,
+        vote_pct_change = (((votes_2024 - votes_2020)/votes_2020) * 100) * -1,
+    ) |>
+    left_join(
+        us_counties |> select(statecounty_fps, geometry),
+        join_by(statecounty_fps)
+    )
 ```
+
+## National Results
 
 ```{r, results='hide', fig.width=10, fig.height=5}
 #| label: 2024_results_by_county
@@ -97,7 +141,9 @@ ggplot() +
     theme(legend.position = "left")
 ```
 
-## Pennsylvania
+## Battleground/Swing State Results
+
+### Pennsylvania
 
 ```{r, results='hide'}
 #| label: 2024_pennsylvania_results_by_county
@@ -128,7 +174,7 @@ ggplot() +
     theme(legend.position = "left")
 ```
 
-## Michigan
+### Michigan
 
 ```{r, results='hide'}
 #| label: 2024_michigan_results_by_county
@@ -159,7 +205,7 @@ ggplot() +
     theme(legend.position = "left")
 ```
 
-## Wisconsin
+### Wisconsin
 
 ```{r, results='hide'}
 #| label: 2024_wisconsin_results_by_county
@@ -190,7 +236,7 @@ ggplot() +
     theme(legend.position = "left")
 ```
 
-## North Carolina
+### North Carolina
 
 ```{r, results='hide'}
 #| label: 2024_north_carolina_results_by_county
@@ -221,7 +267,7 @@ ggplot() +
     theme(legend.position = "left")
 ```
 
-## Georgia
+### Georgia
 
 ```{r, results='hide'}
 #| label: 2024_georgia_results_by_county
@@ -252,7 +298,7 @@ ggplot() +
     theme(legend.position = "left")
 ```
 
-## Arizona
+### Arizona
 
 ```{r, results='hide'}
 #| label: 2024_arizona_results_by_county
@@ -283,7 +329,7 @@ ggplot() +
     theme(legend.position = "left")
 ```
 
-## Nevada
+### Nevada
 
 ```{r, results='hide'}
 #| label: 2024_nevada_results_by_county
@@ -312,6 +358,65 @@ ggplot() +
     guides(color = "none") +
     theme_void() +
     theme(legend.position = "left")
+```
+
+## Turnout
+
+```{r, results='hide'}
+#| label: 2020_vs_2024_turnout
+ggplot() +
+    geom_sf(
+        data=turnout_2020_2024_change |> filter(!state_name %in% c("Alaska", "Puerto Rico", "Hawaii")),
+        mapping=aes(geometry = geometry, fill=vote_pct_change, color=vote_pct_change),
+        show.legend = TRUE
+    ) +
+    scale_fill_gradient(high = "#7FFF8E", low = "#7F0000") +
+    scale_color_gradient(high = "#7FFF8E", low = "#7F0000") +
+    #scale_fill_gradient(high = "#7FFF8E", low = "#FF7F7F") +
+    #scale_color_gradient(high = "#7FFF8E", low = "#FF7F7F") +
+    geom_sf(
+        data = us_states |> filter(!state_name %in% c("Alaska", "Puerto Rico", "Hawaii")),
+        aes(geometry = geometry),
+        alpha = 0,
+        size = 1.2,
+        color="#000000",
+        show.legend = FALSE
+    ) +
+    labs(
+      title="2020 - 2024 United States Presidential Election Turnout Change",
+      caption="Source : Github (tonmc)",
+      fill=""
+    ) +
+    guides(color = "none") +
+    theme_void() +
+    theme(legend.position = "left")
+```
+
+```{r}
+#| label: 2020_vs_2024_turnout_swing_states
+datatable(
+    turnout_2020_2024_change |>
+    summarize(
+        total_2020_votes = sum(votes_2020),
+        total_2024_votes = sum(votes_2024),
+        .by = state_name
+    ) |>
+    mutate(
+        `Vote Difference` = (total_2020_votes - total_2024_votes) * -1,
+        `% Change` = ifelse((total_2024_votes - total_2020_votes) / total_2020_votes > 0,
+                         paste("+", round(((total_2024_votes - total_2020_votes) / total_2020_votes) * 100, 2), "%"),
+                         paste(round(((total_2024_votes - total_2020_votes) / total_2020_votes) * 100, 2), "%")
+                       )
+    ) |>
+    rename(
+        `State` = state_name,
+        `2020 Election` = total_2020_votes,
+        `2024 Election` = total_2024_votes
+    ) |>
+    filter(!is.na(`Vote Difference`)) |>
+    arrange(desc(`Vote Difference`)),
+    options = list(pageLength = 10, autoWidth = TRUE)
+)
 ```
 
 # Polling
