@@ -403,10 +403,11 @@ datatable(
     ) |>
     mutate(
         `Vote Difference` = (total_2020_votes - total_2024_votes) * -1,
-        `% Change` = ifelse((total_2024_votes - total_2020_votes) / total_2020_votes > 0,
-                         paste("+", round(((total_2024_votes - total_2020_votes) / total_2020_votes) * 100, 2), "%"),
-                         paste(round(((total_2024_votes - total_2020_votes) / total_2020_votes) * 100, 2), "%")
-                       )
+        `% Change` = paste(round(((total_2024_votes - total_2020_votes) / total_2020_votes) * 100,2),"%")
+        #`% Change` = ifelse((total_2024_votes - total_2020_votes) / total_2020_votes > 0,
+        #                 paste("+", round(((total_2024_votes - total_2020_votes) / total_2020_votes) * 100, 2), "%"),
+        #                 paste(round(((total_2024_votes - total_2020_votes) / total_2020_votes) * 100, 2), "%")
+        #               )
     ) |>
     rename(
         `State` = state_name,
