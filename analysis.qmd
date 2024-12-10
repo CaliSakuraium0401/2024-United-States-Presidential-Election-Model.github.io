@@ -46,6 +46,16 @@ us_counties <- us_counties() |>
        statecounty_fps = trimws(paste(statefp, countyfp, sep=""))
    ) |>
    relocate(statecounty_fps, .before=affgeoid)
+
+us_county_coordinates <- as_tibble(st_centroid(us_counties)) |>
+    mutate(
+        coordinates = st_coordinates(geometry)
+    ) |>
+    mutate(
+        lat = coordinates[, 2],
+        lon = coordinates[, 1]
+    ) |>
+    select(-geometry)
 ```
 
 ```{r, results='hide'}
@@ -101,9 +111,10 @@ turnout_2020_2024_change <- election2024_data |>
         state_name = state_name.x,
         county_name = county_name.x
     ) |>
+    relocate(votes_2020,.before=votes_2024) |>
     mutate(
-        vote_change = (votes_2020 - votes_2024) * -1,
-        vote_pct_change = (((votes_2024 - votes_2020)/votes_2020) * 100) * -1,
+        vote_change = (votes_2024 - votes_2020),
+        vote_pct_change = (((votes_2024 - votes_2020)/votes_2020) * 100),
     ) |>
     left_join(
         us_counties |> select(statecounty_fps, geometry),
@@ -362,20 +373,22 @@ ggplot() +
 
 ## Turnout
 
+### Map Chart
+
 ```{r, results='hide'}
-#| label: 2020_vs_2024_turnout
+#| label: 2020_vs_2024_turnout_color
 ggplot() +
     geom_sf(
-        data=turnout_2020_2024_change |> filter(!state_name %in% c("Alaska", "Puerto Rico", "Hawaii")),
-        mapping=aes(geometry = geometry, fill=vote_pct_change, color=vote_pct_change),
+        data=turnout_2020_2024_change |> filter(!state_name %in% c("Alaska", "Puerto Rico", "Hawaii", "District of Columbia")),
+        mapping=aes(geometry=geometry, fill=vote_pct_change/10,color=vote_pct_change/10),
         show.legend = TRUE
     ) +
-    scale_fill_gradient(high = "#7FFF8E", low = "#7F0000") +
+    scale_fill_gradient(high = "#7FFF8E", low = "#7F0000") + # LOW: #7F0000
     scale_color_gradient(high = "#7FFF8E", low = "#7F0000") +
     #scale_fill_gradient(high = "#7FFF8E", low = "#FF7F7F") +
     #scale_color_gradient(high = "#7FFF8E", low = "#FF7F7F") +
     geom_sf(
-        data = us_states |> filter(!state_name %in% c("Alaska", "Puerto Rico", "Hawaii")),
+        data = us_states |> filter(!state_name %in% c("Alaska", "Puerto Rico", "Hawaii", "District of Columbia")),
         aes(geometry = geometry),
         alpha = 0,
         size = 1.2,
@@ -392,10 +405,32 @@ ggplot() +
     theme(legend.position = "left")
 ```
 
+```{r, results='hide'}
+#| label: 2020_vs_2024_turnout_arrow
+work_in_progress_arrow <- ggplot() +
+    geom_sf(
+        data=turnout_2020_2024_change |> filter(!state_name %in% c("Alaska", "Puerto Rico", "Hawaii")),
+        mapping=aes(geometry = geometry),
+        show.legend = TRUE,
+        fill="#C0C0C0"
+    ) +
+    geom_line(
+        data=us_county_coordinates |> filter(!stusps %in% c("AK", "PR", "HI")),
+        mapping=aes(x=lon,y=lat,group=statecounty_fps)
+    )
+```
+
+### Interactive Table
+
 ```{r}
-#| label: 2020_vs_2024_turnout_swing_states
+#| label: 2020_vs_2024_turnout_table
 datatable(
     turnout_2020_2024_change |>
+    mutate(
+        # Replace NA with 0 for votes_2020 and votes_2024 before summarizing
+        votes_2020 = coalesce(votes_2020, 0),
+        votes_2024 = coalesce(votes_2024, 0)
+    ) |>
     summarize(
         total_2020_votes = sum(votes_2020),
         total_2024_votes = sum(votes_2024),
@@ -414,7 +449,10 @@ datatable(
         `2020 Election` = total_2020_votes,
         `2024 Election` = total_2024_votes
     ) |>
-    filter(!is.na(`Vote Difference`)) |>
+    filter(
+        !is.na(`Vote Difference`),
+        `2020 Election` != 0
+    ) |>
     arrange(desc(`Vote Difference`)),
     options = list(pageLength = 10, autoWidth = TRUE)
 )
