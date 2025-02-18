@@ -152,7 +152,8 @@ ggplot() +
     theme(legend.position = "left")
 ```
 
-## Battleground/Swing State Results
+````{=html}
+<!--- ## Battleground/Swing State Results
 
 ### Pennsylvania
 
@@ -419,8 +420,10 @@ work_in_progress_arrow <- ggplot() +
         mapping=aes(x=lon,y=lat,group=statecounty_fps)
     )
 ```
+-->
+````
 
-### Interactive Table
+### Interactive Turnout Table
 
 ```{r}
 #| label: 2020_vs_2024_turnout_table
